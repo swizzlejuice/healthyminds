@@ -2,10 +2,10 @@
 
 ## collaborators:
 * Sara Hamidi
-* Srishti Singh
-* Clarabelle McKiernan
-* Melanie Kuo
+* Clarabelle McKeirnan
 * Aliya Ali
+* Melanie Kuo
+* Srishti Singh
 
 We are building a web application catered towards Gen Z to encourage healthy habits, self-reflective journaling, and mood tracking. 
 
