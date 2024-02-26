@@ -8,6 +8,7 @@ header {
     height: 75px;
     border-bottom-right-radius: 22px;
     border-bottom-left-radius: 22px;
+    box-shadow: 3px 3px 3px #888888;
     white-space: nowrap;
 }
 
@@ -19,6 +20,7 @@ footer {
     padding-bottom: 1px;
     position: fixed;
     bottom: 0;
+    box-shadow: 0 -3px 10px -3px #888888;
 }
 
 footer p {
@@ -124,7 +126,6 @@ a:visited, a, a:hover {
 
 
 /* LOGIN PAGE - CLARABELLE */
-
 .flex-container-signin {
     justify-content: center;
     padding-top: 4rem;
@@ -183,7 +184,6 @@ a:visited, a, a:hover {
 
 
 /* PROFILE PAGE - CLARABELLE */
-
 .profile-body {
     background-color: #EDEAFF;
 }
@@ -268,6 +268,111 @@ a:visited, a, a:hover {
     border: 1px solid black;
 }
 
+
+/* HOME AND STORE */ 
+/* .homepage {
+    /* background-image: url('img/background.png'); }
+*/
+
+.dog {
+    background-image: url('img/background.png');
+    display: flex;
+    justify-content: center;
+    margin-top: 9px;
+    height: 39.75rem;
+    width: 94.5rem;
+    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 22px;
+}
+
+.dog-pic {
+    height: 25rem;
+    margin-top: 15rem;
+}
+
+.store-page {
+    background-color: #EDEAFF;
+}
+
+.store-navigator {
+    width: 70rem;
+    height: 5rem;
+    background-color: white;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    border-radius: 20px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1.5rem;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.clothing-btn {
+    border-radius: 20px ;
+    width: 15rem;
+    height: 4rem;
+    background-color: #5E4CC5;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    border: 1px solid black;
+}
+
+.necessities-btn, .pets-btn, .places-btn {
+    border-radius: 20px ;
+    width: 15rem;
+    height: 4rem;
+    background-color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    border: 1px solid black;
+}
+
+.store-price {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.store-price img {
+    width: 50px; 
+}
+
+.buy-button {
+    border-radius: 20px;
+    color: white;
+    background-color: #5E4CC5;
+    margin-left: 10px;
+    border: 1px solid black;
+}
+
+.item-images {
+    width: 150px;
+}
+
+.item-box {
+    text-align: center;
+}
+
+.item-text {
+    margin-bottom: 3px;
+    margin-top: 5px;
+}
+
+.store-price-buy {
+    display: flex;
+    align-items: center;
+    margin-left: 1.8rem;
+}
+
+.row {
+    margin-top: 1.5rem;
+}
+
+
 /* MEDIA QUERIES */
 @media (min-width: 320px)
 {
@@ -282,6 +387,52 @@ a:visited, a, a:hover {
     a:hover {
         text-decoration: none;
     }
+
+    .dog {
+        background-image: url('img/croppedbg.png');
+        margin-top: 9px;
+        height: 41rem;
+        width: 100%;
+        border-radius: 22px;
+    }
+    
+    .dog-pic {
+        height: 20rem;
+        margin-top: 20rem;
+    }
+
+    .store-navigator {
+        width: 22rem;
+        height: 5rem;
+        background-color: white;
+        padding-left: 1.5rem;
+        padding-top: 1.5rem;
+        border-radius: 20px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1.5rem;
+        margin: auto;
+        margin-top: 2rem;
+    }
+
+    .clothing-btn {
+        width: 6rem;
+        height: 4rem;
+        font-size: .75rem;
+    }
+    
+    .necessities-btn, .pets-btn, .places-btn {
+        width: 6rem;
+        height: 4rem;
+        font-size: .75rem;
+    }
+
+    .store-padding {
+        padding-bottom: 8rem;
+    }
+    
 }
 
 @media (min-width: 576px)
@@ -355,7 +506,43 @@ a:visited, a, a:hover {
         width: 32rem;
         height: 36rem;
     }
+
+    .dog {
+        background-image: url('img/background.png');
+        display: flex;
+        justify-content: center;
+        margin-top: 9px;
+        height: 39.75rem;
+        width: 94.5rem;
+        border-bottom-left-radius: 22px;
+        border-bottom-right-radius: 22px;
+    }
     
+    .dog-pic {
+        height: 25rem;
+        margin-top: 15rem;
+    }
+
+    .store-navigator {
+        width: 32rem;
+        height: 5rem;
+    }
+
+    .clothing-btn {
+        width: 12rem;
+        height: 4rem;
+        font-size: 1rem;
+    }
+    
+    .necessities-btn, .pets-btn, .places-btn {
+        width: 12rem;
+        height: 4rem;
+        font-size: 1rem;
+    }
+
+    .store-padding {
+        padding-bottom: 7rem;
+    }
 }
 
 @media (min-width: 992px)
@@ -443,91 +630,60 @@ a:visited, a, a:hover {
         width: 50rem;
         height: 40rem;
     }
+
+    .dog {
+        background-image: url('img/background.png');
+        display: flex;
+        justify-content: center;
+        margin-top: 9px;
+        height: 39.75rem;
+        width: 94.5rem;
+        border-bottom-left-radius: 22px;
+        border-bottom-right-radius: 22px;
+    }
     
-   
-}
+    .dog-pic {
+        height: 25rem;
+        margin-top: 15rem;
+    }
 
-.homepage {
-    background-image: url('img/background.png') ;
-}
+    .store-navigator {
+        width: 70rem;
+        height: 5rem;
+        padding-left: 1.5rem;
+        padding-top: 1.5rem;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1.5rem;
+        margin: auto;
+        margin-top: 2rem;
+    }
 
-.dog{
-    display: flex;
-    justify-content: center;
-    margin-top: 70px;
-}
-.store-page {
-    background-color: #EDEAFF;
-}
+    .clothing-btn {
+        border-radius: 20px;
+        width: 15rem;
+        height: 4rem;
+        background-color: #5E4CC5;
+        text-align: center;
+        color: white;
+        font-size: 1.5rem;
+        border: 1px solid black;
+    }
+    
+    .necessities-btn, .pets-btn, .places-btn {
+        border-radius: 20px ;
+        width: 15rem;
+        height: 4rem;
+        background-color: white;
+        text-align: center;
+        font-size: 1.5rem;
+        border: 1px solid black;
+    }
 
-.store-navigator{
-    width: 70rem;
-    height: 5rem;
-    background-color: white;
-    padding-left: 1.5rem;
-    padding-top: 1.5rem;
-    border-radius: 20px;
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 1.5rem;
-    margin: auto;
-    margin-top: 2rem;
+    .store-padding {
+        padding-bottom: 1rem;
+    }
+    
 }
-
-.clothing-btn {
-    border-radius: 20px ;
-    width: 15rem;
-    height: 4rem;
-    background-color: #5E4CC5;
-    text-align: center;
-    color: white;
-    font-size: 1.5rem;
-}
-
-.necessities-btn, .pets-btn, .places-btn {
-    border-radius: 20px ;
-    width: 15rem;
-    height: 4rem;
-    background-color: white;
-    text-align: center;
-    font-size: 1.5rem;
-}
-
-.store-price{
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.store-price img {
-    width: 50px; 
-}
-
-.buy-button {
-    border-radius: 20px;
-    color: white;
-    background-color: #5E4CC5;
-    margin-left: 10px;
-
-}
-
-.item-images {
-    width: 150px;
-}
-
-.item-box {
-    text-align: center;
-}
-
-.item-text {
-    margin-bottom: 3px;
-    margin-top: 5px;
-}
-
-.store-price-buy {
-    display: flex;
-    align-items: center;
-}
-
