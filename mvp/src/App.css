@@ -448,18 +448,23 @@ a:visited, a, a:hover {
    
 }
 
-/*.homepage {
-    /*background-image: url('public/background.png') ;
-    background-color: orange;
-}*/
+.homepage {
+    background-image: url('background.png') ;
+    background-size: cover;
+    height: 100vh;
+}
 
 .dog{
     display: flex;
     justify-content: center;
-    margin-top: 70px;
+    align-items: center;
+    height: calc(100vh - 75px);
+  
 }
 .store-page {
     background-color: #EDEAFF;
+    height: 100vh;
+    padding-top: 30px;
 }
 
 .store-navigator{
@@ -475,10 +480,10 @@ a:visited, a, a:hover {
     align-items: center;
     padding: 1.5rem;
     margin: auto;
-    margin-top: 2rem;
+    /*margin-top: 2rem;*/
 }
 
-.clothing-btn {
+/*.clothing-btn {
     border-radius: 20px ;
     width: 15rem;
     height: 4rem;
@@ -495,7 +500,38 @@ a:visited, a, a:hover {
     background-color: white;
     text-align: center;
     font-size: 1.5rem;
+}*/
+/* CSS for store navigator buttons */
+
+.clothing-btn,
+.necessities-btn,
+.pets-btn,
+.places-btn {
+    border-radius: 20px;
+    width: 15rem;
+    height: 4rem;
+    background-color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    transition: background-color 0.3s; /* Add transition for smooth color change */
 }
+
+.clothing-btn:hover,
+.necessities-btn:hover,
+.pets-btn:hover,
+.places-btn:hover {
+    background-color: #5E4CC5; /* Change background color on hover */
+    color: white; /* Change text color on hover */
+}
+
+.clothing-btn:active,
+.necessities-btn:active,
+.pets-btn:active,
+.places-btn:active {
+    background-color: #7F79B5; /* Change background color when clicked */
+    color: white; /* Change text color when clicked */
+}
+
 
 .store-price{
     display: flex;
@@ -519,13 +555,23 @@ a:visited, a, a:hover {
     width: 150px;
 }
 
+.pet-images {
+  width: 300px;
+}
+
+.place-image {
+  width: 700px;
+}
+
 .item-box {
     text-align: center;
 }
 
+
 .item-text {
     margin-bottom: 3px;
     margin-top: 5px;
+    font-family: "Nunito", sans-serif;
 }
 
 .store-price-buy {

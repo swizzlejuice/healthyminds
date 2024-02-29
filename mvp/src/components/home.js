@@ -4,7 +4,7 @@ import DogImage from './DogImage';
 
 export function Home() {
     return (
-        <div className="homepage" style={{ backgroundImage: 'url("background.png")' }}>
+        <div className="homepage">
             <DogImage />
 
         </div>
