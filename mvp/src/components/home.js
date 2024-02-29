@@ -6,7 +6,6 @@ export function Home() {
     return (
         <div className="homepage">
             <DogImage />
-
         </div>
         
     );

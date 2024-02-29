@@ -8,7 +8,6 @@ function Pets() {
         { imgSrc: "browndog.png", price: 100 },
         { imgSrc: "blueheartdog.png", price: 100 },
         { imgSrc: "whitedog.png", price: 100 },
-        
     ];
 
     return (

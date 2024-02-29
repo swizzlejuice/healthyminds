@@ -5,7 +5,6 @@ import PlaceBox from './placeBox';
 function Places() {
     const items = [
         { imgSrc: "grassygreens.png", itemName: "Grassy Greens", price: 75 },
-        
     ];
 
     return (
@@ -18,7 +17,6 @@ function Places() {
                     ))}
                 </div>
             </div>
-            
         </div>
     );
 }

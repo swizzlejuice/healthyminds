@@ -3,11 +3,10 @@ import StoreNavigator from './storeNavigator';
 import ItemBox from './itemBox'; 
 
 function StorePage() {
-
     const items = [
         { imgSrc: "basictee.png", itemName: "Basic Tee", price: 10 },
         { imgSrc: "orangepolo.png", itemName: "Orange Polo", price: 20 },
-        { imgSrc: "onsie.png", itemName: "Onsie", price: 40 },
+        { imgSrc: "onsie.png", itemName: "The Onesie", price: 40 },
         { imgSrc: "winterjacket.png", itemName: "Winter Jacket", price: 50 },
         { imgSrc: "baggysweater.png", itemName: "Baggy Sweater", price: 30 },
         { imgSrc: "redpuffer.png", itemName: "Red Puffer", price: 45 },
