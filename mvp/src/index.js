@@ -6,6 +6,23 @@ import App from './App'; // Import your root component
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAaykU2Ty99PM_OZpJv4wRCOtplJL5QH1g",
+  authDomain: "healthyminds-45655.firebaseapp.com",
+  projectId: "healthyminds-45655",
+  storageBucket: "healthyminds-45655.appspot.com",
+  messagingSenderId: "60888456273",
+  appId: "1:60888456273:web:ef45febe6ecf80358f2c70"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <Router> {/* Wrap your App component with BrowserRouter */}

@@ -10,6 +10,8 @@ import Pets from './components/pets';
 import Places from './components/places';
 import LoginPage from './components/login';
 import './App.css';
+import SignUpPage from './components/signup';
+import CheckIn from './components/checkin';
 
 function App() {
 
@@ -24,6 +26,9 @@ function App() {
           <Route path="/necessities" element={<Necessities />}/>
           <Route path="/pets" element={<Pets />}/>
           <Route path="/places" element={<Places />}/>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/checkin" element={<CheckIn />} />
       </Routes>
       <Footer /> 
     </div>
