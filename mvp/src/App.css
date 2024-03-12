@@ -101,42 +101,37 @@ nav {
 
 /* LOGIN PAGE - CLARABELLE */
 
-.flex-container-signin {
-    justify-content: center;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    background-color: white;
-}
-
 .signin-card {
     width: 16rem;
     height: 26rem;
-    background-color: #5E4CC5;
     padding: 2rem;
     border-radius: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -35rem;
+    background-color: white !important;
+    border: 2px solid black !important;
 }
 
 .login-btn {
     margin-left: .05rem;
     padding: .4rem;
-    width: 11.9rem;
-    background-color: #5E4CC5;
     border-radius: 12px;
-    border: 1.5px solid white;
     text-align: left;
-    color: white;
+    background-color: white !important;
+    color: black !important;
+    border: 1px solid black !important;
 }
 
 .loginheading {
-    color: white;
     font-size: 1.7rem;
     text-align: center;
+    color: black !important;
 }
 
 .email, .password {
     margin-left: .05rem;
     font-size: 18px;
-    color: white;
 }
 
 .email {
@@ -152,9 +147,22 @@ nav {
     margin-left: 25%;
     padding: .4rem;
     width: 6rem;
-    background-color: #f6f3eb;
     border-radius: 12px;
     border: none;
+    color: black !important;
+    background-color: white !important;
+    border: 1px solid black !important;
+}
+
+.login-body {
+    background-image: url('lbg.png') ;
+    background-size: cover;
+    height: 80vh;
+    margin-top: .5rem;
+    border-radius: 22px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 
