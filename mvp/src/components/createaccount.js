@@ -1,16 +1,16 @@
 import React from 'react';
 import { useNavigate, NavLink } from 'react-router-dom';
-import SignInForm from './loginbox.js'; 
+import SignUpForm from './signup.js'; 
 
-function LoginPage() {
+function CreateAccount() {
     let navigate = useNavigate();
   return (
     <div>
       <div className="login-body">
       </div>
-      <SignInForm />
+      <SignUpForm />
     </div>
   );
 }
 
-export default LoginPage;
+export default CreateAccount;

@@ -1,38 +1,46 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-//import {getDatabase, ref, set as firebaseSet, onValue} from 'firebase/database';
+import { useState } from 'react';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import { Link } from 'react-router-dom';
 
-/*function Validation(){
+function SignUpForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const handleSignUp = async () => {
+    try {
+      // Validate email and password formats
+      if (!email.includes('@')) {
+        throw new Error('Please enter a valid email address.');
+      }
+      if (password.length < 8) {
+        throw new Error('Password must be at least 8 characters long.');
+      }
+      // Create a new user with email and password
+      await firebase.auth().createUserWithEmailAndPassword(email, password);
+      window.location.href = '/login';
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
-    const db = getDatabase() 
-
-
-
-
-}*/
-
-function SignUpPage() {
-    let navigate = useNavigate();
   return (
-    <div className="login-body">
-        <div class="flex-container-signin">
-            <div class="signin-card">
-            <p class="loginheading">Create an Account</p>
-            <p class="email">Email</p>
-            <button class="login-btn">Enter Email</button>
-            <p class="password">Password</p>
-            <button class="login-btn">Enter Password</button>
-            <button class="signup-btn" onClick={() => navigate('/login')}>Create Account</button>
-            </div>
-        </div>  
+    <div className='signin-card'>
+      <h2 className="signin-header">Sign Up</h2>
+      <input className="signin-field" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input className="signin-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      {error && <p className="error">{error}</p>}
+      <button className="signin-btn" onClick={handleSignUp}>Sign Up</button>
+      <p className="signup-field">Already have an account? <Link to="/login" className="signup-link">Sign In</Link></p>
     </div>
   );
 }
 
+export default SignUpForm;
 
 
-export default SignUpPage;
+
+

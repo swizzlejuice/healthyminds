@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import LogoutButton from './logout'; 
 
 function ProfilePage() {
 let navigate = useNavigate();
@@ -15,7 +16,7 @@ let navigate = useNavigate();
           <div className="mood-card">
             <p className="mood-summary">Weekly Mood Summary</p>
           </div>
-          <button className="logout" onClick={() => navigate('/login')}>Log out</button>
+          <LogoutButton />
         </div>
       </div>
     </div>
