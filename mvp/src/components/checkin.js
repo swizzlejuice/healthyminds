@@ -1,24 +1,36 @@
-import React, { useState } from 'react';
-import { getDatabase, ref, push, serverTimestamp } from 'firebase/database'; // Import the database service
+import React, { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getDatabase, ref, push } from 'firebase/database'; // Import the database service
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 function CheckIn() {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const [submittedEmoji, setSubmittedEmoji] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate(); 
 
-  // Function to handle click on emoji
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser(null);
+      }
+    });
+  }, []);
+
   const handleEmojiClick = (emoji) => {
     setSelectedEmoji(emoji);
   };
 
   const handleSubmit = () => {
-    if (selectedEmoji !== null) {
+    if (selectedEmoji !== null && currentUser !== null) {
       const db = getDatabase();
-      // Get the current datetime
       const currentDate = new Date().toLocaleString();
-      push(ref(db, 'user_moods'), {
+      const userId = currentUser.uid; 
+      push(ref(db, `${userId}/moodEntries`), {
         mood: selectedEmoji,
         timestamp: currentDate 
       }).then(() => {
@@ -53,6 +65,3 @@ function CheckIn() {
 }
 
 export default CheckIn;
-
-
-

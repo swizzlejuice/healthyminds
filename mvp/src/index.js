@@ -5,7 +5,7 @@ import App from './App'; // Import your root component
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { getAuth } from "firebase/auth";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import firebase from 'firebase/compat/app';
@@ -14,7 +14,6 @@ import firebase from 'firebase/compat/app';
 const firebaseConfig = {
   apiKey: "AIzaSyAaykU2Ty99PM_OZpJv4wRCOtplJL5QH1g",
   authDomain: "healthyminds-45655.firebaseapp.com",
-  databaseURL: "https://healthyminds-45655-default-rtdb.firebaseio.com",
   projectId: "healthyminds-45655",
   storageBucket: "healthyminds-45655.appspot.com",
   messagingSenderId: "60888456273",
@@ -24,7 +23,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 firebase.initializeApp(firebaseConfig);
-
+export const auth = getAuth(app);
 ReactDOM.render(
   <Router> {/* Wrap your App component with BrowserRouter */}
     <App />

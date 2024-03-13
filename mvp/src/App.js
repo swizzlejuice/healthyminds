@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { HappyPawsNav } from './components/hpnav';
 import Necessities from './components/necessities';
 import StorePage from './components/clothing';
@@ -12,7 +12,8 @@ import LoginPage from './components/login';
 import './App.css';
 import CreateAccount from './components/createaccount';
 import CheckIn from './components/checkin';
-import { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 
 function App() {
   return (

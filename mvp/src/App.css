@@ -209,7 +209,7 @@ nav {
     margin-top: 1rem;
     font-size: 22px !important;
     font-weight: 600;
-    margin-left: 17.5rem !important;
+    margin-left: 19.15rem !important;
     padding-bottom: .8rem;
 }
 
@@ -221,11 +221,11 @@ nav {
 }
 
 .mood-summary-list {
-    margin-left: -1.75rem !important;
+    margin-left: -2.2rem !important;
 }
 
 .mood-card {
-    width: 50rem !important;
+    width: 53rem !important;
     height: 13rem !important;
     background-color: white;
     margin-top: 3rem;
@@ -236,7 +236,7 @@ nav {
 }
 
 .logout {
-    margin-left: 23rem !important;
+    margin-left: 24.5rem !important;
     margin-top: 3rem;
     padding: .25rem;
     width: 4.5rem;
@@ -256,7 +256,7 @@ nav {
 }
 
 .profile-card {
-    width: 55rem !important;
+    width: 58rem !important;
     height: 35rem !important;
     background-color: white;
     padding-left: 1.5rem;

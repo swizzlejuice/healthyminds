@@ -1,22 +1,23 @@
 import React from 'react';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import { getAuth, signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
-export default function LogoutButton() {
+function LogoutButton() {
+  const navigate = useNavigate();
+
   const handleLogout = async () => {
+    const auth = getAuth();
     try {
-      await firebase.auth().signOut();
-      // Redirect the user to the sign-in page or any other page
-      window.location.href = '/login';
+      await signOut(auth);
+      navigate('/login'); 
     } catch (error) {
-      console.error('Error logging out:', error.message);
+      console.error('Error signing out:', error.message);
     }
   };
 
   return (
-    <button className="logout" onClick={handleLogout}>Log Out</button>
+    <button className="logout" onClick={handleLogout}>Logout</button>
   );
 }
 
-
+export default LogoutButton;
