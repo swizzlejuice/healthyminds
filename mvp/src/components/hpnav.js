@@ -8,6 +8,7 @@ export function HappyPawsNav() {
       <nav>
         <ul>
           <li><NavLink to="/clothing" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="store" src="store.png" alt="store icon" />Store</NavLink></li>
+          <li><NavLink to="/checkin" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="fire" src="checkinimg.png" alt="checkin icon" />Check in</NavLink></li>
           <li><img className="coins" src="coins.png" alt="coins icon" />48</li>
           <li><img className="fire" src="fire.png" alt="fire icon" />16</li>
           <li><NavLink to="/profile"><img className="profileimage" src="profileimage.png" alt="profile icon" /></NavLink></li>

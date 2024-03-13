@@ -12,9 +12,9 @@ import LoginPage from './components/login';
 import './App.css';
 import CreateAccount from './components/createaccount';
 import CheckIn from './components/checkin';
+import { useState, useEffect } from 'react';
 
 function App() {
-
   return (
     <div >
       <HappyPawsNav/>

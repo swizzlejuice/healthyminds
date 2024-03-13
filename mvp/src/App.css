@@ -22,8 +22,7 @@ footer {
 }
 
 li:hover, header h1:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
+    text-decoration: none;
     color: #f6f3eb;
 }
 
@@ -169,6 +168,7 @@ nav {
 
 .profile-body {
     background-color: #EDEAFF;
+    border-radius: 22px;
 }
 
 .profile-name {
@@ -207,23 +207,37 @@ nav {
 
 .mood-summary {
     margin-top: 1rem;
-    font-size: 15px;
+    font-size: 22px !important;
     font-weight: 600;
-    margin-left: 2.2rem;
+    margin-left: 17.5rem !important;
+    padding-bottom: .8rem;
+}
+
+.mood-summary-list .mood-emoji {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.mood-summary-list {
+    margin-left: -1.75rem !important;
 }
 
 .mood-card {
-    width: 15rem;
-    height: 11rem;
+    width: 50rem !important;
+    height: 13rem !important;
     background-color: white;
     margin-top: 3rem;
     border-radius: 20px;
     border: 1px solid black;
+    margin-left: .9rem !important;
+    box-shadow: 0px 2px 2px 0px #d3d3d3;
 }
 
 .logout {
-    margin-left: 5rem;
-    margin-top: 2rem;
+    margin-left: 23rem !important;
+    margin-top: 3rem;
     padding: .25rem;
     width: 4.5rem;
     border-radius: 16px;
@@ -242,8 +256,8 @@ nav {
 }
 
 .profile-card {
-    width: 18rem;
-    height: 26rem;
+    width: 55rem !important;
+    height: 35rem !important;
     background-color: white;
     padding-left: 1.5rem;
     padding-top: 1.5rem;
@@ -251,23 +265,27 @@ nav {
     border: 1px solid black;
     margin-top: -1.5rem;
     margin-bottom: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .homepage, .checkin-body {
-    background-image: url('background.png') ;
+    background-image: url('basicbg.png') ;
     background-size: cover;
-    height: 100vh;
+    height: 80vh;
     margin-top: .5rem;
-    border-top-right-radius: 22px;
-    border-top-left-radius: 22px;
+    border-radius: 22px;
     margin-bottom: 0rem;
+}
+
+.homepage {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .dog {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(120vh - 50px); 
+    margin-left: 37rem;
+    width: 15rem;
+    margin-top: 22rem;
 }
 
 .store-page {
@@ -407,21 +425,25 @@ nav {
 }
 
 .checkin-card {
-    width: 30rem;
-    height: 22rem;
+    width: 35rem;
+    height: 25rem;
     background-color: #EDEAFF;
     padding: 2rem;
-    border-radius: 20px;
+    border-radius: 22px;
+    border: 2px solid black;
+    margin-top: 1rem;
 }
 
 .emoji {
-    width: 40px;
+    width: 50px;
     margin: 1rem;
 }
 
 .emojis {
     padding-left: 2rem;
     padding-right: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 .checkin-time {
@@ -437,7 +459,7 @@ nav {
 }
 
 .checkin-btn {
-    margin-left: 8rem;
+    margin-left: 11rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
     padding: .25rem;
@@ -447,17 +469,22 @@ nav {
     background-color: white;
     text-align: center;
     color: black;
-    box-shadow: 0px 2px 2px 0px #d3d3d3;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     width: 9.6rem;
     font-size: 20px;
 }
 
-.back-link {
-    font-size: 15px;
-    text-align: center;
+.xbtn {
+    width: 2.5rem;
+    margin-left: 29rem;
+    margin-top: -1rem;
 }
 
-
+.selected {
+    border: 2px solid black;
+    border-radius: 100px;
+    padding: 5px;
+}
 
 /* MEDIA QUERIES */
 @media (min-width: 320px)

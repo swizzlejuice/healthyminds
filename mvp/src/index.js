@@ -8,8 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-
 import firebase from 'firebase/compat/app';
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAaykU2Ty99PM_OZpJv4wRCOtplJL5QH1g",
