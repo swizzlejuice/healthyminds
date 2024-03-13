@@ -12,15 +12,15 @@ import LoginPage from './components/login';
 import './App.css';
 import CreateAccount from './components/createaccount';
 import CheckIn from './components/checkin';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
+import CheckModal from './components/CheckModal';
 
 function App() {
+  const selectedAvatar = 'profileimage.png';
   return (
     <div >
-      <HappyPawsNav/>
+      <HappyPawsNav selectedAvatar={selectedAvatar} />
       <Routes>
-        <Route path="/"index element={<LoginPage />} />
+          <Route path="/"index element={<LoginPage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/clothing" element={<StorePage />} />
           <Route path="/profile" element={<ProfilePage />} />
@@ -30,10 +30,10 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<CreateAccount />} />
           <Route path="/checkin" element={<CheckIn />} />
+          <Route path="/modal" element={<CheckModal />} />
       </Routes>
       <Footer /> 
     </div>
-    
   );
 }
 
