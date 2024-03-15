@@ -3,6 +3,7 @@ import { getDatabase, ref, onValue, set } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 import LogoutButton from './logout'; 
 import AvatarSelection from './avatars'; 
+import { NavLink } from 'react-router-dom';
 
 function Profile() {
   const [moodEntries, setMoodEntries] = useState([]);
@@ -101,6 +102,7 @@ function Profile() {
             alt="profile pic"
             onClick={() => setShowAvatarModal(true)} 
           />
+          <NavLink to="/help"><img className="help-icon" src="help.png"/></NavLink>
           <p className="profile-name">{displayName}</p>
           {userEmail && <p className="profile-email">{userEmail}</p>}
           <button className="change-pass" onClick={() => handleChangeDisplayName(prompt('Enter new display name'))}>

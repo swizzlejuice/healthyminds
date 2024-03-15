@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase, ref, push, update, get } from 'firebase/database'; 
+import { getDatabase, ref, push, update, get } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
-function CheckIn() {
+function CheckIn({ updateStreak }) {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
-  const [submittedEmoji, setSubmittedEmoji] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [coinCount, setCoinCount] = useState(0);
   const [lastCheckInTimestamp, setLastCheckInTimestamp] = useState(null);
-  const [hasCheckedInToday, setHasCheckedInToday] = useState(false); 
-  const navigate = useNavigate(); 
+  const [hasCheckedInToday, setHasCheckedInToday] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
-        fetchCoinCount(user.uid); 
+        fetchCoinCount(user.uid);
         fetchLastCheckInTimestamp(user.uid);
       } else {
         setCurrentUser(null);
@@ -33,7 +32,7 @@ function CheckIn() {
     get(lastCheckInRef).then((snapshot) => {
       const timestamp = snapshot.val();
       setLastCheckInTimestamp(timestamp);
-      setHasCheckedInToday(checkIfCheckedInToday(timestamp)); 
+      setHasCheckedInToday(checkIfCheckedInToday(timestamp));
     }).catch((error) => {
       console.error("Error fetching last check-in timestamp: ", error);
     });
@@ -59,19 +58,19 @@ function CheckIn() {
     if (selectedEmoji !== null && currentUser !== null && !hasCheckedInToday) {
       const db = getDatabase();
       const currentDate = new Date().toLocaleString();
-      const userId = currentUser.uid; 
+      const userId = currentUser.uid;
 
       update(ref(db, `users/${userId}`), { coinCount: coinCount + 5 })
         .then(() => {
           const moodEntry = {
             mood: selectedEmoji,
-            timestamp: currentDate 
+            timestamp: currentDate
           };
 
           push(ref(db, `${userId}/moodEntries`), moodEntry)
             .then(() => {
-              setSubmittedEmoji(selectedEmoji);
-              navigate('/modal'); 
+              updateStreakInDatabase(userId); 
+              navigate('/modal');
             })
             .catch((error) => {
               console.error("Error adding mood entry: ", error);
@@ -90,13 +89,33 @@ function CheckIn() {
     }
   };
 
+  const updateStreakInDatabase = (userId) => {
+    const db = getDatabase();
+    const streakRef = ref(db, `users/${userId}/streakCount`);
+    get(streakRef)
+      .then((snapshot) => {
+        let streak = snapshot.val() || 0;
+        streak++; 
+        update(ref(db, `users/${userId}`), { streakCount: streak })
+          .then(() => {
+            updateStreak(streak); 
+          })
+          .catch((error) => {
+            console.error("Error updating streak count: ", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Error fetching streak count: ", error);
+      });
+  };
+
   const checkIfCheckedInToday = (timestamp) => {
     if (timestamp) {
       const today = new Date().toLocaleDateString();
       const lastCheckInDate = new Date(timestamp).toLocaleDateString();
       return today === lastCheckInDate;
     }
-    return false; 
+    return false;
   };
 
   return (
@@ -113,14 +132,14 @@ function CheckIn() {
               <p className="checkin-time">Time to check in!</p>
               <p className="checkin-question">How are you feeling today?</p>
               <div className="emojis">
-              <img className={`emoji ${selectedEmoji === 'frown' && 'selected'}`} src="frown.png" alt="profile pic" onClick={() => handleEmojiClick('frown')} />
-              <img className={`emoji ${selectedEmoji === 'slightfrown' && 'selected'}`} src="slightfrown.png" alt="profile pic" onClick={() => handleEmojiClick('slightfrown')} />
-              <img className={`emoji ${selectedEmoji === 'neutral' && 'selected'}`} src="neutral.png" alt="profile pic" onClick={() => handleEmojiClick('neutral')} />
-              <img className={`emoji ${selectedEmoji === 'slightsmile' && 'selected'}`} src="slightsmile.png" alt="profile pic" onClick={() => handleEmojiClick('slightsmile')} />
-              <img className={`emoji ${selectedEmoji === 'smile' && 'selected'}`} src="smile.png" alt="profile pic" onClick={() => handleEmojiClick('smile')} />
+                <img className={`emoji ${selectedEmoji === 'frown' && 'selected'}`} src="frown.png" alt="profile pic" onClick={() => handleEmojiClick('frown')} />
+                <img className={`emoji ${selectedEmoji === 'slightfrown' && 'selected'}`} src="slightfrown.png" alt="profile pic" onClick={() => handleEmojiClick('slightfrown')} />
+                <img className={`emoji ${selectedEmoji === 'neutral' && 'selected'}`} src="neutral.png" alt="profile pic" onClick={() => handleEmojiClick('neutral')} />
+                <img className={`emoji ${selectedEmoji === 'slightsmile' && 'selected'}`} src="slightsmile.png" alt="profile pic" onClick={() => handleEmojiClick('slightsmile')} />
+                <img className={`emoji ${selectedEmoji === 'smile' && 'selected'}`} src="smile.png" alt="profile pic" onClick={() => handleEmojiClick('smile')} />
+              </div>
+              <button className="checkin-btn" onClick={handleSubmit}>Submit</button>
             </div>
-            <button className="checkin-btn" onClick={handleSubmit}>Submit</button> 
-          </div>
           )}
         </div>
       </div>

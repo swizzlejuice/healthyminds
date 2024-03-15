@@ -202,8 +202,60 @@ nav {
     background-color: white;
     text-align: center;
     color: black;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: 0px 2px 2px 0px #d3d3d3;
     font-size: 11px;
+}
+
+.help-icon {
+    width: 3rem;
+    margin-left: 42.5rem;
+    margin-top: -7rem;
+}
+
+.help-icon:hover {
+    width: 3.5rem;
+}
+
+.about-help {
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2.8rem;
+    margin-top: 1rem;
+    /* color: #5E4CC5; */
+}
+
+.about-help {
+    margin-top: 1.5rem;
+    font-size: 25px !important;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: .8rem;
+    text-decoration: none;
+    color: black;
+}
+
+.accordion {
+    margin-left: 2.4rem;
+    width: 50rem;
+}
+
+.back-help {
+    font-size: 16px;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none !important;
+    margin-top: 1rem;
+    color: black;
+}
+
+.back-help:hover {
+    font-size: 18px;
+    text-decoration: none !important;
+}
+
+.back-link {
+    text-decoration: none;
 }
 
 .mood-summary {
@@ -233,7 +285,7 @@ nav {
     border-radius: 20px;
     border: 1px solid black;
     margin-left: .9rem !important;
-    box-shadow: 0px 2px 2px 0px #d3d3d3;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .logout {
@@ -367,11 +419,13 @@ nav {
 }
 
 .pet-images {
-  width: 300px;
+  width: 180px;
 }
 
 .place-image {
-  width: 700px;
+  width: 500px;
+  border-radius: 15px;
+  border: 1px solid black;
 }
 
 .item-box {

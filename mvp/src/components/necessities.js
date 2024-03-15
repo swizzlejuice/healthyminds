@@ -38,14 +38,14 @@ import Footer from './hpfooter';
 
 function Necessities() {
     const items = [
-        { imgSrc: "basicbowl.png", itemName: "Basic Bowl", price: 20 },
-        { imgSrc: "catbowl.png", itemName: "Cat Bowl", price: 25 },
-        { imgSrc: "dogbowl.png", itemName: "Dog Bowl", price: 25 },
-        { imgSrc: "polkadot.png", itemName: "Polka Dot", price: 30 },
-        { imgSrc: "dogball.png", itemName: "Dog Ball", price: 20 },
-        { imgSrc: "cattoy.png", itemName: "Cat Toy", price: 30 },
-        { imgSrc: "basicmouse.png", itemName: "Basic Mouse", price: 15 },
-        { imgSrc: "ultimate.png", itemName: "Ultimate Mouse Toy", price: 40 },
+        { imgSrc: "basicbowl.png", itemName: "Basic Bowl", price: 25 },
+        { imgSrc: "catbowl.png", itemName: "Cat Bowl", price: 35 },
+        { imgSrc: "dogbowl.png", itemName: "Dog Bowl", price: 35 },
+        { imgSrc: "polkadot.png", itemName: "Polka Dot", price: 40 },
+        { imgSrc: "dogball.png", itemName: "Dog Ball", price: 30 },
+        { imgSrc: "cattoy.png", itemName: "Cat Toy", price: 50 },
+        { imgSrc: "basicmouse.png", itemName: "Basic Mouse", price: 25 },
+        { imgSrc: "ultimate.png", itemName: "Ultimate Mouse Toy", price: 60 },
     ];
 
     // Splitting items array into two halves

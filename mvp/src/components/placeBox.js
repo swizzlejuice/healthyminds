@@ -2,7 +2,7 @@ import React from 'react';
 
 function PlaceBox({ imgSrc, itemName, price }) {
     return (
-        <div className="col-md-2">
+        <div className="col-md-6">
             <div className="item-box d-flex flex-column align-items-center">
                 <img src={imgSrc} alt={itemName} className="place-image" />
                 <p className="item-text">{itemName}</p>

@@ -5,16 +5,19 @@ import PetBox from './petBox';
 
 function Pets() {
     const items = [
-        { imgSrc: "browndog.png", price: 100 },
-        { imgSrc: "blueheartdog.png", price: 100 },
-        { imgSrc: "whitedog.png", price: 100 },
+        { imgSrc: "hiro2.png", price: 200 },
+        { imgSrc: "cashmere.png", price: 200 },
+        { imgSrc: "toto.png", price: 200 },
+        { imgSrc: "ayumi.png", price: 200 },
+        { imgSrc: "echo.png", price: 200 },
+        { imgSrc: "simba.png", price: 200 },
     ];
 
     return (
         <div className="store-page">
             <div className="container">
                 <StoreNavigator />
-                <div className="row mt-4 justify-content-center">
+                <div className="row mt-5 justify-content-center">
                     {items.map(item => (
                         <PetBox key={item.itemName} imgSrc={item.imgSrc} itemName={item.itemName} price={item.price} />
                     ))}

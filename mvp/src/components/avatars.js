@@ -6,7 +6,7 @@ function AvatarSelection({ onSelectAvatar, handleClose, show }) {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Select an Avatar</Modal.Title>
+          <Modal.Title>Select an avatar</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="avatar-options">

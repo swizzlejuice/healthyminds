@@ -4,16 +4,15 @@ import ItemBox from './itemBox';
 
 function StorePage() {
     const items = [
-        { imgSrc: "basictee.png", itemName: "Basic Tee", price: 10 },
-        { imgSrc: "orangepolo.png", itemName: "Orange Polo", price: 20 },
-        { imgSrc: "onsie.png", itemName: "The Onesie", price: 40 },
-        { imgSrc: "winterjacket.png", itemName: "Winter Jacket", price: 50 },
-        { imgSrc: "baggysweater.png", itemName: "Baggy Sweater", price: 30 },
-        { imgSrc: "redpuffer.png", itemName: "Red Puffer", price: 45 },
-        { imgSrc: "softtee.png", itemName: "Soft Tee", price: 20 },
-        { imgSrc: "cozyfleece.png", itemName: "Cozy Fleece", price: 15 },
+        { imgSrc: "basictee.png", itemName: "Basic Tee", price: 20 },
+        { imgSrc: "orangepolo.png", itemName: "Orange Polo", price: 35 },
+        { imgSrc: "onsie.png", itemName: "The Onesie", price: 50 },
+        { imgSrc: "lavenderwrap.png", itemName: "Lavender Wrap", price: 50 },
+        { imgSrc: "baggysweater.png", itemName: "Baggy Sweater", price: 40 },
+        { imgSrc: "redpuffer.png", itemName: "Red Puffer", price: 60 },
+        { imgSrc: "softtee.png", itemName: "Soft Tee", price: 30 },
+        { imgSrc: "loungetee.png", itemName: "Lounge Tee", price: 25 },
     ];
-
 
     // Splitting items array into two halves
     const firstHalf = items.slice(0, Math.ceil(items.length / 2));

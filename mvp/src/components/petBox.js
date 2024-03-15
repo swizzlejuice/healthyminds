@@ -2,7 +2,7 @@ import React from 'react';
 
 function PetBox({ imgSrc, itemName, price }) {
     return (
-        <div className="col-md-4">
+        <div className="col-md-2">
             <div className="item-box d-flex flex-column align-items-center">
                 <img src={imgSrc} alt={itemName} className="pet-images" />
                 <p className="item-text">{itemName}</p>

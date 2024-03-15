@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getDatabase, ref, get } from 'firebase/database';
 import { HappyPawsNav } from './components/hpnav';
 import Necessities from './components/necessities';
 import StorePage from './components/clothing';
@@ -13,12 +14,19 @@ import './App.css';
 import CreateAccount from './components/createaccount';
 import CheckIn from './components/checkin';
 import CheckModal from './components/CheckModal';
+import Help from './components/help';
 
 function App() {
   const selectedAvatar = 'profileimage.png';
+  const [streakCount, setStreakCount] = useState(0); 
+
+  const updateStreak = (newStreakCount) => {
+    setStreakCount(newStreakCount);
+  };
+
   return (
     <div >
-      <HappyPawsNav selectedAvatar={selectedAvatar} />
+      <HappyPawsNav selectedAvatar={selectedAvatar} updateStreak={updateStreak} streakCount={streakCount} />
       <Routes>
           <Route path="/"index element={<LoginPage />} />
           <Route path="/home" element={<Home />} />
@@ -29,8 +37,9 @@ function App() {
           <Route path="/places" element={<Places />}/>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<CreateAccount />} />
-          <Route path="/checkin" element={<CheckIn />} />
+          <Route path="/checkin" element={<CheckIn updateStreak={updateStreak}/>} />
           <Route path="/modal" element={<CheckModal />} />
+          <Route path="/help" element={<Help />} />
       </Routes>
       <Footer /> 
     </div>

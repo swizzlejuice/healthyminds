@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { getDatabase, ref, onValue, get } from 'firebase/database';
+import { getDatabase, ref, onValue, update } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 
-export function HappyPawsNav() {
+export function HappyPawsNav({ updateStreak }) {
   const [avatar, setAvatar] = useState('profileimage.png');
-  const [coinCount, setCoinCount] = useState(0); 
-  
+  const [coinCount, setCoinCount] = useState(0);
+  const [streakCount, setStreakCount] = useState(0); 
+
   useEffect(() => {
     const auth = getAuth();
     const db = getDatabase();
@@ -17,20 +18,40 @@ export function HappyPawsNav() {
         const coinCountRef = ref(db, `users/${userId}/coinCount`);
 
         onValue(coinCountRef, (snapshot) => {
-          const count = snapshot.val() || 0; 
+          const count = snapshot.val() || 0;
           setCoinCount(count);
         });
       } else {
-        setCoinCount(0); 
+        setCoinCount(0);
+      }
+    };
+
+    const fetchStreakCount = (user) => {
+      if (user) {
+        const userId = user.uid;
+        const streakRef = ref(db, `users/${userId}/streakCount`);
+
+        onValue(streakRef, (snapshot) => {
+          const streak = snapshot.val() || 0;
+          setStreakCount(streak);
+        });
+      } else {
+        setStreakCount(0);
       }
     };
 
     fetchCoinCount(auth.currentUser);
-    const unsubscribe = auth.onAuthStateChanged(fetchCoinCount);
+    fetchStreakCount(auth.currentUser);
+
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      fetchCoinCount(user);
+      fetchStreakCount(user);
+    });
+
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [updateStreak]); 
 
   useEffect(() => {
     const auth = getAuth();
@@ -46,11 +67,11 @@ export function HappyPawsNav() {
           if (avatarUrl) {
             setAvatar(avatarUrl);
           } else {
-            setAvatar('profileimage.png'); 
+            setAvatar('profileimage.png');
           }
         });
       } else {
-        setAvatar('profileimage.png'); 
+        setAvatar('profileimage.png');
       }
     };
 
@@ -68,11 +89,13 @@ export function HappyPawsNav() {
         <ul>
           <li><NavLink to="/clothing" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="store" src="store.png" alt="store icon" />Store</NavLink></li>
           <li><NavLink to="/checkin" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="fire" src="checkinimg.png" alt="checkin icon" />Check in</NavLink></li>
-          <li><img className="coins" src="coins.png" alt="coins icon" />{coinCount}</li> {/* Display coin count */}
-          <li><img className="fire" src="fire.png" alt="fire icon" />16</li>
+          <li><img className="coins" src="coins.png" alt="coins icon" />{coinCount}</li>
+          <li><img className="fire" src="fire.png" alt="fire icon" />{streakCount}</li>
           <li><NavLink to="/profile"><img className="profileimage" src={avatar} alt="profile icon" /></NavLink></li>
         </ul>
       </nav>
     </header>
   );
 }
+
+export default HappyPawsNav;
