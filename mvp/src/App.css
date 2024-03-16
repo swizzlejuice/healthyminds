@@ -259,11 +259,18 @@ nav {
 }
 
 .mood-summary {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     font-size: 22px !important;
     font-weight: 600;
     margin-left: 19.15rem !important;
     padding-bottom: .8rem;
+}
+
+.chart-text {
+    font-size: 22px !important;
+    font-weight: 600;
+    margin-top: -3rem;
+    margin-bottom: 1.5rem;
 }
 
 .mood-summary-list .mood-emoji {
@@ -288,9 +295,20 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.bar-card {
+    width: 53rem !important;
+    height: 37rem !important;
+    background-color: white;
+    margin-top: 3rem;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-left: .9rem !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 .logout {
     margin-left: 24.5rem !important;
-    margin-top: 3rem;
+    margin-top: 4rem;
     padding: .25rem;
     width: 4.5rem;
     border-radius: 16px;
@@ -310,7 +328,7 @@ nav {
 
 .profile-card {
     width: 58rem !important;
-    height: 35rem !important;
+    height: 76rem !important;
     background-color: white;
     padding-left: 1.5rem;
     padding-top: 1.5rem;
@@ -319,6 +337,13 @@ nav {
     margin-top: -1.5rem;
     margin-bottom: 2rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.bar-chart {
+    margin-top: 5rem;
+    width: 700px;
+    text-align: center;
+    margin-left: 4.3rem;
 }
 
 .homepage, .checkin-body {

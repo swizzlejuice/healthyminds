@@ -4,6 +4,7 @@ import { getAuth } from 'firebase/auth';
 import LogoutButton from './logout'; 
 import AvatarSelection from './avatars'; 
 import { NavLink } from 'react-router-dom';
+import Chart from 'chart.js/auto'; 
 
 function Profile() {
   const [moodEntries, setMoodEntries] = useState([]);
@@ -11,7 +12,28 @@ function Profile() {
   const [displayName, setDisplayName] = useState('Enter Name'); 
   const [selectedAvatar, setSelectedAvatar] = useState(null); 
   const [showAvatarModal, setShowAvatarModal] = useState(false);
-      
+  const [overallMoodCounts, setOverallMoodCounts] = useState({
+    frown: 0,
+    slightfrown: 0,
+    neutral: 0,
+    slightsmile: 0,
+    smile: 0
+  });
+
+  const countOverallMoodOccurrences = (entries) => {
+    const counts = {
+      frown: 0,
+      slightfrown: 0,
+      neutral: 0,
+      slightsmile: 0,
+      smile: 0
+    };
+    entries.forEach(entry => {
+      counts[entry.mood] += 1;
+    });
+    return counts;
+  };
+
   useEffect(() => {
     const auth = getAuth();
     const db = getDatabase();
@@ -43,13 +65,60 @@ function Profile() {
         if (data) {
           const entries = Object.values(data);
           setMoodEntries(entries);
+
+          const overallCounts = countOverallMoodOccurrences(entries);
+          setOverallMoodCounts(overallCounts);
         } else {
           setMoodEntries([]);
         }
       });
     }
   }, []);
+
+  useEffect(() => {
+    // for my chartjs!
+    const ctx = document.getElementById('moodChart');
+    const chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['😞', '🙁', '😐', '🙂', '😊'],
+        datasets: [{
+          label: 'Overall Mood Counts',
+          data: [overallMoodCounts.frown, overallMoodCounts.slightfrown, overallMoodCounts.neutral, overallMoodCounts.slightsmile, overallMoodCounts.smile],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(255, 205, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(54, 162, 235, 1)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            precision: 0, 
+            stepSize: 1 
+          }
+        }
+      }
+    });
     
+    return () => {
+      chart.destroy();
+    };
+  }, [overallMoodCounts]);
+  
+
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
@@ -124,6 +193,11 @@ function Profile() {
               ))}
             </ul>
           </div>
+          <div className="bar-card">
+          <div className="bar-chart">
+            <p className="chart-text">All-time Mood Summary</p>
+            <canvas id="moodChart" height="200"></canvas>
+          </div></div>
           <LogoutButton />
         </div>
       </div>

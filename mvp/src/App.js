@@ -15,6 +15,7 @@ import CreateAccount from './components/createaccount';
 import CheckIn from './components/checkin';
 import CheckModal from './components/CheckModal';
 import Help from './components/help';
+import ViewPet from './components/ViewPet';
 
 function App() {
   const selectedAvatar = 'profileimage.png';
@@ -30,6 +31,7 @@ function App() {
       <Routes>
           <Route path="/"index element={<LoginPage />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/viewpet" element={<ViewPet />} />
           <Route path="/clothing" element={<StorePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/necessities" element={<Necessities />}/>
