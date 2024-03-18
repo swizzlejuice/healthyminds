@@ -77,16 +77,22 @@ nav {
 
 .store {
     width: 82px;
-    margin-right: -.5rem;
+    margin-right: -.75rem;
 }
 
 .coins {
     width: 45px;
+    margin-right: .25rem;
 }
 
 .fire {
     width: 40px;
     margin-right: .25rem;
+}
+
+.diary {
+    width: 40px;
+    margin-right: .5rem;
 }
 
 .profileimage {
@@ -166,7 +172,6 @@ nav {
 
 
 /* PROFILE PAGE - CLARABELLE */
-
 .profile-body {
     background-color: #EDEAFF;
     border-radius: 22px;
@@ -304,6 +309,101 @@ nav {
     border: 1px solid black;
     margin-left: .9rem !important;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.diary-card {
+    width: 35rem;
+    height: 37rem;
+    background-color: #EDEAFF;
+    padding: 2rem;
+    border-radius: 22px;
+    border: 2px solid black;
+    margin-top: -2.5rem;
+    max-height: 700px; 
+    overflow-y: auto; 
+}
+
+.diary-card::-webkit-scrollbar {
+    border-radius: 22px !important;
+}
+
+.diary-p, .diary-p2 {
+    font-weight: 300;
+    text-align: center;
+    font-size: 17px;
+    font-style: italic;
+    margin-top: -.25rem;
+}
+
+.diary-p2 {
+    margin-top: 2rem;
+}
+
+.diary-form {
+    width: 30rem;
+    margin-bottom: 2rem;
+    margin-left: .375rem;
+    border-radius: 8px;
+    border: 1.5px solid black;
+}
+
+.diary-heading {
+    font-weight: 600;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 0.4rem;
+    margin-top: -2.5rem;
+}
+
+.item-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+  
+.diary-text {
+    font-weight: 500;
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: -2.5rem;
+    margin-top: 1.75rem;
+    margin-left: -.75rem;
+}
+
+.diarytags {
+    width: 60px;
+}
+
+.col-md-2 {
+    margin-right: .5rem;
+}
+
+.tag-title {
+    font-size: 11px;
+    text-align: center;
+}
+
+.diary-btn {
+    margin-left: 10rem;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+    padding: .25rem;
+    width: 3rem;
+    border-radius: 16px;
+    border: 1px solid black;
+    background-color: white;
+    text-align: center;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 9.6rem;
+    font-size: 16px;
 }
 
 .logout {
@@ -451,10 +551,6 @@ nav {
   width: 500px;
   border-radius: 15px;
   border: 1px solid black;
-}
-
-.item-box {
-    text-align: center;
 }
 
 .item-text {

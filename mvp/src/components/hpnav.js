@@ -88,6 +88,7 @@ export function HappyPawsNav({ updateStreak }) {
       <nav>
         <ul>
           <li><NavLink to="/clothing" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="store" src="store.png" alt="store icon" />Store</NavLink></li>
+          <li><NavLink to="/diary" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="diary" src="bluediary.png" alt="diary icon" />Diary</NavLink></li>
           <li><NavLink to="/checkin" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="fire" src="checkinimg.png" alt="checkin icon" />Check in</NavLink></li>
           <li><img className="coins" src="coins.png" alt="coins icon" />{coinCount}</li>
           <li><img className="fire" src="fire.png" alt="fire icon" />{streakCount}</li>

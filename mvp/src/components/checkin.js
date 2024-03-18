@@ -82,10 +82,10 @@ function CheckIn({ updateStreak }) {
 
       update(ref(db, `users/${userId}`), { lastCheckInTimestamp: currentDate })
         .catch((error) => {
-          console.error("Error updating last check-in timestamp: ", error);
+          console.error("Error updating check-in timestamp: ", error);
         });
     } else {
-      console.log("You have already checked in today.");
+      console.log("You already checked in today.");
     }
   };
 

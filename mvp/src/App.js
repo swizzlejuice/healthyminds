@@ -16,6 +16,7 @@ import CheckIn from './components/checkin';
 import CheckModal from './components/CheckModal';
 import Help from './components/help';
 import ViewPet from './components/ViewPet';
+import Diary from './components/Diary';
 
 function App() {
   const selectedAvatar = 'profileimage.png';
@@ -42,6 +43,7 @@ function App() {
           <Route path="/checkin" element={<CheckIn updateStreak={updateStreak}/>} />
           <Route path="/modal" element={<CheckModal />} />
           <Route path="/help" element={<Help />} />
+          <Route path="/diary" element={<Diary />} />
       </Routes>
       <Footer /> 
     </div>
