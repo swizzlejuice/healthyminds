@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DiaryBox from './DiaryBox'; 
+import { Input } from 'rsuite';
+import { push, ref, getDatabase } from 'firebase/database';
 
 function DiaryTags() {
     const items1 = [
@@ -43,78 +45,57 @@ function DiaryTags() {
         { imgSrc: "makeup.png", tag: "Makeup" },
     ];
 
-    const rows1 = [];
-    for (let i = 0; i < items1.length; i += 5) {
-        rows1.push(items1.slice(i, i + 5));
-    }
-
-    const rows2 = [];
-    for (let i = 0; i < items2.length; i += 5) {
-        rows2.push(items2.slice(i, i + 5));
-    }
-
-    const rows3 = [];
-    for (let i = 0; i < items3.length; i += 5) {
-        rows3.push(items3.slice(i, i + 5));
-    }
-
-    const rows4 = [];
-    for (let i = 0; i < items4.length; i += 5) {
-        rows4.push(items4.slice(i, i + 5));
-    }
+    const rows1 = chunkArray(items1, 5);
+    const rows2 = chunkArray(items2, 5);
+    const rows3 = chunkArray(items3, 5);
+    const rows4 = chunkArray(items4, 5);
 
     return (
-        <div className="container">
+        <div className="tags-cont">
             <p className="diary-text">Weather</p>
             <div className="row mt-5 justify-content-center">
-                {rows1.map((row, index) => (
-                    <div key={index} className="row">
-                        {row.map((item, idx) => (
-                            <div key={idx} className="col-md-2">
-                                <DiaryBox imgSrc={item.imgSrc} tag={item.tag} />
-                            </div>
-                        ))}
-                    </div>
-                ))}
+                {renderRows(rows1)}
             </div>
             <p className="diary-text">Events</p>
             <div className="row mt-5 justify-content-center">
-                {rows2.map((row, index) => (
-                    <div key={index} className="row">
-                        {row.map((item, idx) => (
-                            <div key={idx} className="col-md-2">
-                                <DiaryBox imgSrc={item.imgSrc} tag={item.tag} />
-                            </div>
-                        ))}
-                    </div>
-                ))}
+                {renderRows(rows2)}
             </div>
             <p className="diary-text">Social</p>
             <div className="row mt-5 justify-content-center">
-                {rows3.map((row, index) => (
-                    <div key={index} className="row">
-                        {row.map((item, idx) => (
-                            <div key={idx} className="col-md-2">
-                                <DiaryBox imgSrc={item.imgSrc} tag={item.tag} />
-                            </div>
-                        ))}
-                    </div>
-                ))}
+                {renderRows(rows3)}
             </div>
             <p className="diary-text">Hobbies</p>
             <div className="row mt-5 justify-content-center">
-                {rows4.map((row, index) => (
-                    <div key={index} className="row">
-                        {row.map((item, idx) => (
-                            <div key={idx} className="col-md-2">
-                                <DiaryBox imgSrc={item.imgSrc} tag={item.tag} />
-                            </div>
-                        ))}
+                {renderRows(rows4)}
+            </div>
+            <p className="diary-p2">Add an optional description :)</p>
+            <Input as="textarea" rows={4} placeholder="Type diary entry here" className="diary-form"/>
+            <button className="diary-btn">Submit</button>
+        </div>
+            
+    );
+
+    function chunkArray(array, size) {
+        const chunkedArr = [];
+        for (let i = 0; i < array.length; i += size) {
+            chunkedArr.push(array.slice(i, i + size));
+        }
+        return chunkedArr;
+    }
+
+    function renderRows(rows) {
+        return rows.map((row, index) => (
+            <div key={index} className="row">
+                {row.map((item, idx) => (
+                    <div key={idx} className="col-md-2">
+                        <DiaryBox imgSrc={item.imgSrc} tag={item.tag} />
                     </div>
                 ))}
             </div>
-        </div>
-    );
+        ));
+    }
 }
 
 export default DiaryTags;
+
+

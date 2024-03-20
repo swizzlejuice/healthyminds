@@ -342,7 +342,7 @@ nav {
 .diary-form {
     width: 30rem;
     margin-bottom: 2rem;
-    margin-left: .375rem;
+    margin-left: -.55rem;
     border-radius: 8px;
     border: 1.5px solid black;
 }
@@ -388,6 +388,16 @@ nav {
 .tag-title {
     font-size: 11px;
     text-align: center;
+}
+
+.tags-selected {
+    border: 2px solid black;
+    border-radius: 100px;
+    padding: 5px;
+}
+
+.tags-cont {
+    margin-left: 1rem;
 }
 
 .diary-btn {
