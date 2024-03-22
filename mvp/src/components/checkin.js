@@ -17,36 +17,24 @@ function CheckIn({ updateStreak }) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
-        fetchCoinCount(user.uid);
-        fetchLastCheckInTimestamp(user.uid);
+        fetchUserData(user.uid);
       } else {
         setCurrentUser(null);
       }
     });
   }, []);
 
-  const fetchLastCheckInTimestamp = (userId) => {
+  const fetchUserData = (userId) => {
     const db = getDatabase();
-    const lastCheckInRef = ref(db, `users/${userId}/lastCheckInTimestamp`);
+    const userRef = ref(db, `users/${userId}`);
 
-    get(lastCheckInRef).then((snapshot) => {
-      const timestamp = snapshot.val();
-      setLastCheckInTimestamp(timestamp);
-      setHasCheckedInToday(checkIfCheckedInToday(timestamp));
-    }).catch((error) => {
-      console.error("Error fetching last check-in timestamp: ", error);
-    });
-  };
-
-  const fetchCoinCount = (userId) => {
-    const db = getDatabase();
-    const coinCountRef = ref(db, `users/${userId}/coinCount`);
-
-    get(coinCountRef).then((snapshot) => {
-      const count = snapshot.val() || 0;
-      setCoinCount(count);
-    }).catch((error) => {
-      console.error("Error fetching coin count: ", error);
+    get(userRef).then((snapshot) => {
+      const userData = snapshot.val();
+      if (userData) {
+        setCoinCount(userData.coinCount || 0);
+        setLastCheckInTimestamp(userData.lastCheckInTimestamp);
+        setHasCheckedInToday(checkIfCheckedInToday(userData.lastCheckInTimestamp));
+      }
     });
   };
 
@@ -55,7 +43,7 @@ function CheckIn({ updateStreak }) {
   };
 
   const handleSubmit = () => {
-    if (selectedEmoji !== null && currentUser !== null && !hasCheckedInToday) {
+    if (selectedEmoji && currentUser && !hasCheckedInToday) {
       const db = getDatabase();
       const currentDate = new Date().toLocaleString();
       const userId = currentUser.uid;
@@ -71,19 +59,10 @@ function CheckIn({ updateStreak }) {
             .then(() => {
               updateStreakInDatabase(userId); 
               navigate('/modal');
-            })
-            .catch((error) => {
-              console.error("Error adding mood entry: ", error);
             });
-        })
-        .catch((error) => {
-          console.error("Error updating coin count: ", error);
         });
-
-      update(ref(db, `users/${userId}`), { lastCheckInTimestamp: currentDate })
-        .catch((error) => {
-          console.error("Error updating check-in timestamp: ", error);
-        });
+      
+      update(ref(db, `users/${userId}`), { lastCheckInTimestamp: currentDate });
     } else {
       console.log("You already checked in today.");
     }
@@ -99,13 +78,7 @@ function CheckIn({ updateStreak }) {
         update(ref(db, `users/${userId}`), { streakCount: streak })
           .then(() => {
             updateStreak(streak); 
-          })
-          .catch((error) => {
-            console.error("Error updating streak count: ", error);
           });
-      })
-      .catch((error) => {
-        console.error("Error fetching streak count: ", error);
       });
   };
 

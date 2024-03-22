@@ -117,7 +117,6 @@ function Profile() {
       chart.destroy();
     };
   }, [overallMoodCounts]);
-  
 
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
