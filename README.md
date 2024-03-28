@@ -1,12 +1,14 @@
 # healthyminds
 
-## collaborators:
-* Sara Hamidi
+## Developers:
 * Clarabelle McKeirnan
+* Sara Hamidi
 * Aliya Ali
+
+## Collaborators:
 * Melanie Kuo
 * Srishti Singh
 
-We are building a web application catered towards Gen Z to encourage healthy habits, self-reflective journaling, and mood tracking. 
+happy paws is a web application catered towards Gen Z to promote the development of healthy habits, self-reflective journaling, and mood tracking. 
 
-In the future, this file will contain more specific information regarding our project code. 
+Development of happy paws will continue post-capstone.
