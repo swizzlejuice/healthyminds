@@ -48,7 +48,7 @@ function CheckIn({ updateStreak }) {
       const currentDate = new Date().toLocaleString();
       const userId = currentUser.uid;
 
-      update(ref(db, `users/${userId}`), { coinCount: coinCount + 5 })
+      update(ref(db, `users/${userId}`), { coinCount: coinCount + 2 })
         .then(() => {
           const moodEntry = {
             mood: selectedEmoji,

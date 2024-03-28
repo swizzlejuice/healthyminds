@@ -14,6 +14,7 @@ import './App.css';
 import CreateAccount from './components/createaccount';
 import CheckIn from './components/checkin';
 import CheckModal from './components/CheckModal';
+import DiaryModal from './components/DiaryModal';
 import Help from './components/help';
 import ViewPet from './components/ViewPet';
 import Diary from './components/Diary';
@@ -44,6 +45,7 @@ function App() {
           <Route path="/modal" element={<CheckModal />} />
           <Route path="/help" element={<Help />} />
           <Route path="/diary" element={<Diary />} />
+          <Route path="/diarymodal" element={<DiaryModal />} />
       </Routes>
       <Footer /> 
     </div>

@@ -1,9 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import DiaryBox from './DiaryBox'; 
 import { Input } from 'rsuite';
-import { push, ref, getDatabase } from 'firebase/database';
+import { push, ref, getDatabase, get, update } from 'firebase/database';
+import { getAuth } from 'firebase/auth'; 
+import { useNavigate } from 'react-router-dom';
 
 function DiaryTags() {
+    const [selectedTags, setSelectedTags] = useState([]);
+    const textareaRef = useRef(null); 
+    const navigate = useNavigate();
+
+    const handleTagClick = (tag) => {
+        if (selectedTags.includes(tag)) {
+            setSelectedTags(prevTags => prevTags.filter(item => item !== tag));
+        } else {
+            setSelectedTags(prevTags => [...prevTags, tag]);
+        }
+    };
+    
+    const handleFormSubmit = () => {
+        const auth = getAuth();
+        const user = auth.currentUser;
+        if (user) {
+            const userId = user.uid;
+            const db = getDatabase();
+            const diaryEntriesRef = ref(db, 'users/' + userId + '/diaryEntries');
+            const entryData = {
+                tags: selectedTags,
+                description: textareaRef.current.value 
+            };
+    
+            push(diaryEntriesRef, entryData).then(() => {
+                updateCoinCount(userId, 5);
+                navigate('/diarymodal');
+            });
+        }
+    };    
+    
+    const updateCoinCount = (userId, coins) => {
+        const db = getDatabase();
+        const userRef = ref(db, 'users/' + userId);
+        get(userRef).then(snapshot => {
+            const userData = snapshot.val();
+            if (userData && userData.coinCount !== undefined) {
+                const newCoinCount = userData.coinCount + coins;
+                const updates = {};
+                updates['coinCount'] = newCoinCount;
+                update(ref(db, 'users/' + userId), updates);
+            }
+        });
+    };
+    
     const items1 = [
         { imgSrc: "sunny.png", tag: "Sunny" },
         { imgSrc: "cloudy.png", tag: "Cloudy" },
@@ -69,10 +116,10 @@ function DiaryTags() {
                 {renderRows(rows4)}
             </div>
             <p className="diary-p2">Add an optional description :)</p>
-            <Input as="textarea" rows={4} placeholder="Type diary entry here" className="diary-form"/>
-            <button className="diary-btn">Submit</button>
+            <Input as="textarea" rows={4} placeholder="Type diary entry here" className="diary-form"
+                inputRef={textareaRef} />
+            <button className="diary-btn" onClick={handleFormSubmit}>Submit</button>
         </div>
-            
     );
 
     function chunkArray(array, size) {
@@ -87,7 +134,7 @@ function DiaryTags() {
         return rows.map((row, index) => (
             <div key={index} className="row">
                 {row.map((item, idx) => (
-                    <div key={idx} className="col-md-2">
+                    <div key={idx} className="col-md-2" onClick={() => handleTagClick(item.tag)}>
                         <DiaryBox imgSrc={item.imgSrc} tag={item.tag} />
                     </div>
                 ))}
@@ -97,5 +144,3 @@ function DiaryTags() {
 }
 
 export default DiaryTags;
-
-

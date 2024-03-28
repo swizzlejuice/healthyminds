@@ -8,7 +8,7 @@ function CheckModal() {
         <div className="checkin-card">
           <NavLink to="/home"><img className="xbtn" src="x.png" alt="close button"></img></NavLink>
           <img className="cheering" src="giphy.gif" alt="giphy"></img>
-          <p className="checkin-state">You earned 5 coins for completing your daily check in!</p>
+          <p className="checkin-state">You earned 2 coins for completing your daily check in!</p>
         </div>
       </div>
     </div>
