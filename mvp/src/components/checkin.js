@@ -98,6 +98,7 @@ function CheckIn({ updateStreak }) {
           <NavLink to="/home"><img className="xbtn" src="x.png" alt="close button"></img></NavLink>
           {hasCheckedInToday ? (
             <div>
+              <img className="cheer-three" src="cheer3.gif" alt="giphy"></img>
               <p className="checkedin-already">Already checked in today! (woop woop)</p>
             </div>
           ) : (
