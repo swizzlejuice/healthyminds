@@ -33,6 +33,14 @@ function Help() {
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="2">
+        <Accordion.Header>About the Creators of happy paws</Accordion.Header>
+        <Accordion.Body>
+        happy paws was created by a group of 5 students at the University of Washington for their senior capstone project.
+        Passionate about mental health and wellness, they decided to create happy paws as a fun resource to encourage
+        Gen Z individuals to prioritize their mental wellbeing.
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey="3">
         <Accordion.Header>Send Feedback</Accordion.Header>
         <Accordion.Body>
         Feel free to send any feedback or suggestions you have to help us improve our app! 
