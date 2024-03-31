@@ -10,6 +10,13 @@ function Help() {
       <h2 className="about-help">About & Help</h2>
       <Accordion className="accordion">
       <Accordion.Item eventKey="0">
+        <Accordion.Header>How to use happy paws</Accordion.Header>
+        <Accordion.Body>
+        View our tutorial here!
+        <br></br>Link:
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey="1">
         <Accordion.Header>Disclaimer</Accordion.Header>
         <Accordion.Body>
         Our website and all content displayed on this website are not to be perceived as or relied upon 
@@ -25,7 +32,7 @@ function Help() {
         certifications to provide medical or mental health advice.
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="1">
+      <Accordion.Item eventKey="2">
         <Accordion.Header>Send Feedback</Accordion.Header>
         <Accordion.Body>
         Feel free to send any feedback or suggestions you have to help us improve our app! 

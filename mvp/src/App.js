@@ -18,6 +18,7 @@ import DiaryModal from './components/DiaryModal';
 import Help from './components/help';
 import ViewPet from './components/ViewPet';
 import Diary from './components/Diary';
+import DiaryPage from './components/DiaryPage';
 
 function App() {
   const selectedAvatar = 'profileimage.png';
@@ -46,6 +47,7 @@ function App() {
           <Route path="/help" element={<Help />} />
           <Route path="/diary" element={<Diary />} />
           <Route path="/diarymodal" element={<DiaryModal />} />
+          <Route path="/diaryentries" element={<DiaryPage />} />
       </Routes>
       <Footer /> 
     </div>

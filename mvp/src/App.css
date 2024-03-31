@@ -173,7 +173,7 @@ nav {
 
 /* PROFILE PAGE - CLARABELLE */
 .profile-body {
-    background-color: #EDEAFF;
+    background-color: #EDEAFF !important;
     border-radius: 22px;
 }
 
@@ -438,7 +438,7 @@ nav {
 
 .profile-card {
     width: 58rem !important;
-    height: 76rem !important;
+    height: 87rem !important;
     background-color: white;
     padding-left: 1.5rem;
     padding-top: 1.5rem;
@@ -447,6 +447,101 @@ nav {
     margin-top: -1.5rem;
     margin-bottom: 2rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.diary-ent-card {
+    width: 20rem !important;
+    height: 8rem !important;
+    background-color: white;
+    margin-top: 3rem;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-left: 17.5rem !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.diary-ent-text {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 2.75rem;
+    color: black !important;
+    text-decoration: none !important;
+}
+
+.diary-entries-card {
+    width: 58rem !important;
+    background-color: white;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-top: -1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.each-entry {
+    background-color: white;
+    width: 35rem;
+    padding: 2rem;
+    margin-left: 10.75rem;
+    margin-bottom: 3rem;
+    border-radius: 20px;
+    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.diarypage-text {
+    text-align: center;
+    margin-top: -3rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.tagtitle {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 0rem;
+}
+
+.tagtitle-two {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 0rem;
+    margin-top: 1rem;
+}
+
+.entrytext {
+    font-size: 16px;
+}
+
+.diaryentrydate {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.tagspan {
+    font-size: 16px;
+}
+
+.back-help2 {
+    font-size: 16px;
+    text-align: left;
+    font-weight: 600;
+    margin-left: 1.5rem;
+    text-decoration: none !important;
+    margin-top: 1rem;
+    color: black;
+}
+
+.back-help2:hover {
+    font-size: 18px;
+    text-decoration: none !important;
+}
+
+.diarytag-img {
+    width: 60px;
 }
 
 .bar-chart {

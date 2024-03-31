@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import DiaryBox from './DiaryBox'; 
 import { Input } from 'rsuite';
-import { push, ref, getDatabase, get, update } from 'firebase/database';
+import { push, ref, getDatabase, get, update, serverTimestamp } from 'firebase/database'; 
 import { getAuth } from 'firebase/auth'; 
 import { useNavigate } from 'react-router-dom';
 
@@ -26,6 +26,7 @@ function DiaryTags() {
             const db = getDatabase();
             const diaryEntriesRef = ref(db, 'users/' + userId + '/diaryEntries');
             const entryData = {
+                timestamp: new Date().toISOString(), 
                 tags: selectedTags,
                 description: textareaRef.current.value 
             };

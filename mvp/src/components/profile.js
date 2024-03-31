@@ -197,6 +197,9 @@ function Profile() {
             <p className="chart-text">All-time Mood Summary</p>
             <canvas id="moodChart" height="200"></canvas>
           </div></div>
+          <NavLink to="/diaryentries" style={{ textDecoration: 'none'}}><div className="diary-ent-card">
+            <p className="diary-ent-text">View Diary Entries</p>
+          </div></NavLink>
           <LogoutButton />
         </div>
       </div>
