@@ -136,6 +136,14 @@ nav {
     text-decoration: underline;
 }
 
+.back-btn {
+    color: black !important;
+    text-decoration: underline;
+    margin-top: 13rem;
+    text-align: center;
+}
+
+
 .signup-field {
     margin-top: 1.5rem;
     text-align: center;
@@ -690,7 +698,6 @@ nav {
     width: 35rem;
     height: 25rem;
     background-color: #EDEAFF;
-    padding: 2rem;
     border-radius: 22px;
     border: 2px solid black;
     margin-top: 1rem;
@@ -741,8 +748,8 @@ nav {
 
 .xbtn {
     width: 2.5rem;
-    margin-left: 29rem;
-    margin-top: -1rem;
+    margin-left: 30rem;
+    margin-top: 1rem;
 }
 
 .selected {
@@ -784,6 +791,27 @@ nav {
     font-weight: 500;
     margin-top: 2.5rem;
 }
+
+.change-name {
+    font-size: 15px;
+    color: black;
+    text-align: center;
+    margin-top: 0rem;
+}
+
+.pet-name {
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 0rem;
+    margin-top: 1rem; 
+    display: inline-block; 
+    text-align: center;
+}
+
+.left-arrow {
+    margin-left: 5rem;
+}
+
 
 /* Animation for the coin count when the coin count increases */
 @keyframes bounce {
