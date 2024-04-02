@@ -286,7 +286,7 @@ nav {
 }
 
 .mood-summary-list {
-    margin-left: -2.2rem !important;
+    margin-left: -.8rem !important;
 }
 
 .mood-card {
@@ -785,6 +785,30 @@ nav {
     margin-top: 2.5rem;
 }
 
+/* Animation for the coin count when the coin count increases */
+@keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(-15px); 
+    }
+    50% {
+      transform: translateY(0);
+    }
+    75% {
+      transform: translateY(-10px); 
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+.bounce {
+    animation: bounce 1s ease-in-out 5; 
+}
+  
+  
 
 /* MEDIA QUERIES */
 @media (min-width: 320px)

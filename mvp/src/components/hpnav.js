@@ -7,6 +7,8 @@ export function HappyPawsNav({ updateStreak }) {
   const [avatar, setAvatar] = useState('profileimage.png');
   const [coinCount, setCoinCount] = useState(0);
   const [streakCount, setStreakCount] = useState(0); 
+  const [coinCountUpdated, setCoinCountUpdated] = useState(false);
+  const [streakUpdated, setStreakUpdated] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
@@ -19,6 +21,12 @@ export function HappyPawsNav({ updateStreak }) {
 
         onValue(coinCountRef, (snapshot) => {
           const count = snapshot.val() || 0;
+          if (count !== coinCount) {
+            setCoinCountUpdated(true); 
+            setTimeout(() => {
+              setCoinCountUpdated(false);
+            }, 1000);
+          }
           setCoinCount(count);
         });
       } else {
@@ -33,6 +41,12 @@ export function HappyPawsNav({ updateStreak }) {
 
         onValue(streakRef, (snapshot) => {
           const streak = snapshot.val() || 0;
+          if (streak !== streakCount) {
+            setStreakUpdated(true); 
+            setTimeout(() => {
+              setStreakUpdated(false);
+            }, 500);
+          }
           setStreakCount(streak);
         });
       } else {
@@ -90,8 +104,8 @@ export function HappyPawsNav({ updateStreak }) {
           <li><NavLink to="/clothing" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="store" src="store.png" alt="store icon" />Store</NavLink></li>
           <li><NavLink to="/diary" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="diary" src="bluediary.png" alt="diary icon" />Diary</NavLink></li>
           <li><NavLink to="/checkin" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="fire" src="checkinimg.png" alt="checkin icon" />Check in</NavLink></li>
-          <li><img className="coins" src="coins.png" alt="coins icon" />{coinCount}</li>
-          <li><img className="fire" src="fire.png" alt="fire icon" />{streakCount}</li>
+          <li><img className={`coins ${coinCountUpdated ? 'bounce' : ''}`} src="coins.png" alt="coins icon" />{coinCount}</li>
+          <li><img className="fire" src="fire.png" alt="fire icon" style={{ transform: streakUpdated ? 'scale(1.5)' : 'scale(1)', transition: 'transform 0.8s ease-in-out' }}/>{streakCount}</li>
           <li><NavLink to="/profile"><img className="profileimage" src={avatar} alt="profile icon" /></NavLink></li>
         </ul>
       </nav>

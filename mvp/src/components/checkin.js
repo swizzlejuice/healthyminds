@@ -61,7 +61,6 @@ function CheckIn({ updateStreak }) {
               navigate('/modal');
             });
         });
-      
       update(ref(db, `users/${userId}`), { lastCheckInTimestamp: currentDate });
     } else {
       console.log("You already checked in today.");
