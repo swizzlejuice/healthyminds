@@ -36,24 +36,6 @@ export default function ViewPet() {
     }
   }, []);
 
-  /*return (
-    <div className="checkin-body">
-      <div className="flex-container-profile">
-        <div className="checkin-card">
-          <NavLink to="/home"><img className="xbtn" src="x.png" alt="close button"></img></NavLink>
-            <div>
-              <p className="pet-name">{displayPetName}</p>
-              <p className="change-name" onClick={() => handleChangePetName(prompt('Enter new pet name'))}>
-            Change Name
-          </p>
-            </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-*/
-
 return (
   <div className="checkin-body">
     <div className="flex-container-profile">
