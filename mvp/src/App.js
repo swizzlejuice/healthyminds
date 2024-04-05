@@ -19,6 +19,8 @@ import Help from './components/help';
 import ViewPet from './components/ViewPet';
 import Diary from './components/Diary';
 import DiaryPage from './components/DiaryPage';
+import MyCloset from './components/myCloset';
+import MyPlaces from './components/myPlaces';
 
 function App() {
   const selectedAvatar = 'profileimage.png';
@@ -48,6 +50,9 @@ function App() {
           <Route path="/diary" element={<Diary />} />
           <Route path="/diarymodal" element={<DiaryModal />} />
           <Route path="/diaryentries" element={<DiaryPage />} />
+          <Route path="/mycloset" element ={<MyCloset />}  />
+          <Route path="/myplaces" element ={<MyPlaces />}  />
+
       </Routes>
       <Footer /> 
     </div>
