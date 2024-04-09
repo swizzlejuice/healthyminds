@@ -94,7 +94,7 @@ function CheckIn({ updateStreak }) {
     <div className="checkin-body">
       <div className="flex-container-profile">
         <div className="checkin-card">
-          <NavLink to="/home"><img className="xbtn" src="x.png" alt="close button"></img></NavLink>
+          <NavLink to="/home"><img className="x-btn" src="x.png" alt="close button"></img></NavLink>
           {hasCheckedInToday ? (
             <div>
               <img className="cheer-three" src="cheer3.gif" alt="giphy"></img>

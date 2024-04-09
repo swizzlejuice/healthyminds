@@ -41,6 +41,7 @@ return (
     <div className="flex-container-profile">
       <div className="checkin-card">
           <div>
+          <NavLink to="/home"><img className="xbutton" src="x.png" alt="close button"></img></NavLink>
             <div className='arrows-name'>
                 <img className="left-arrow" src="Leftt_Arrow.png" alt="left arrow"></img>
                 <p className="pet-name" onClick={() => handleChangePetName(prompt('Enter new pet name'))}>{displayPetName}</p>
@@ -63,16 +64,6 @@ return (
             </div>
 
           </div>
-
-
-
-
-
-
-
-
-    
-            <NavLink to="/home"><p className="back-btn"> Back </p></NavLink>
           </div>
       </div>
     </div>
