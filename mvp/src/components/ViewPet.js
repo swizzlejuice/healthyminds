@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { getDatabase, ref, onValue, set } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 
 export default function ViewPet() {
-
+  const location = useLocation();
+  const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
   const [displayPetName, setPetName] = useState('Enter Name');
 
   const handleChangePetName = (newPetName) => {
@@ -37,7 +38,7 @@ export default function ViewPet() {
   }, []);
 
 return (
-  <div className="checkin-body">
+  <div className="checkin-body" style={{ backgroundImage: `url(${backgroundImage})` }}>
     <div className="flex-container-profile">
       <div className="checkin-card">
           <div>

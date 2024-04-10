@@ -1,33 +1,3 @@
-// import React, { useState } from 'react';
-// import DogImage from './DogImage';
-// import { NavLink } from 'react-router-dom';
-
-
-// export function Home() {
-//     const [backgroundImage, setBackgroundImage] = useState('basicbg.png'); 
-
-//     const changeBackground = (newBackground) => {
-//         setBackgroundImage(newBackground);
-//     };
-
-//     const backgrounds = [
-//         'basicbg.png',
-//         'bg1.png',
-//         'bg2.png',
-//         'bg3.png',
-//     ];
-
-//     return (
-//         <div className="homepage" style={{backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', height: '80vh', marginTop: '.4rem', borderRadius: '22px', marginBottom: '0rem'}}>
-//             <div className="bg-btns">
-//                 {backgrounds.map((bg, index) => (
-//                     <button className="bg-buttons" key={index} onClick={() => changeBackground(bg)}>Background {index + 1}</button>
-//                 ))}
-//             </div>
-//             <NavLink to="/viewpet"><DogImage/></NavLink>
-//         </div>
-//     );
-// }
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, set, get } from 'firebase/database';
@@ -98,7 +68,7 @@ function Home() {
           <button className="bg-buttons" key={index} onClick={() => changeBackground(bg.url)}>{bg.name}</button>
         ))}
       </div>
-      <NavLink to="/viewpet"><DogImage/></NavLink>
+      <NavLink to={{ pathname: "/viewpet", search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}><DogImage/></NavLink>
     </div>
   );
 }

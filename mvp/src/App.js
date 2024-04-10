@@ -52,7 +52,6 @@ function App() {
           <Route path="/diaryentries" element={<DiaryPage />} />
           <Route path="/mycloset" element ={<MyCloset />}  />
           <Route path="/myplaces" element ={<MyPlaces />}  />
-
       </Routes>
       <Footer /> 
     </div>
