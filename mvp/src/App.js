@@ -4,7 +4,7 @@ import { HappyPawsNav } from './components/hpnav';
 import Necessities from './components/necessities';
 import StorePage from './components/clothing';
 import Footer from './components/hpfooter';
-import { Home } from './components/home';
+import Home from './components/home';
 import ProfilePage from './components/profile';
 import { Routes, Route } from 'react-router-dom';
 import Pets from './components/pets';

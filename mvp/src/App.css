@@ -102,7 +102,25 @@ nav {
 .selected {
     border: 2px solid white; /* Add your desired styling for the selected emoji */
 }
-  
+
+.bg-buttons {
+    padding: .25rem;
+    margin-right: 1rem;
+    width: 9rem !important;
+    border-radius: 16px;
+    border: 1px solid black;
+    background-color: white;
+    text-align: center;
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 9.6rem;
+    font-size: 13px;
+}
+
+.bg-btns {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
 
 /* LOGIN PAGE - CLARABELLE */
 .signin-card {
@@ -560,7 +578,7 @@ nav {
 }
 
 .homepage, .checkin-body {
-    background-image: url('basicbg.png') ;
+    background-image: url('/public/basicbg.png') ;
     background-size: cover;
     height: 80vh;
     margin-top: .4rem;
@@ -576,7 +594,7 @@ nav {
     display: flex;
     margin-left: 37rem;
     width: 15rem;
-    margin-top: 22rem;
+    margin-top: 19.25rem;
 }
 
 .store-page {
