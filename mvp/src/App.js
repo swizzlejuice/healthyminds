@@ -25,7 +25,7 @@ import MyPlaces from './components/myPlaces';
 function App() {
   const selectedAvatar = 'profileimage.png';
   const [streakCount, setStreakCount] = useState(0); 
-
+  const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
   const updateStreak = (newStreakCount) => {
     setStreakCount(newStreakCount);
   };
@@ -35,7 +35,7 @@ function App() {
       <HappyPawsNav selectedAvatar={selectedAvatar} updateStreak={updateStreak} streakCount={streakCount} />
       <Routes>
           <Route path="/"index element={<LoginPage />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home setBackgroundImage={setBackgroundImage}/>} />
           <Route path="/viewpet" element={<ViewPet />} />
           <Route path="/clothing" element={<StorePage />} />
           <Route path="/profile" element={<ProfilePage />} />

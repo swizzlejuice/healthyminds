@@ -4,9 +4,8 @@ import PlaceBox from './placeBox';
 
 function Places() {
     const items = [
-        { imgSrc: "bg1.png", itemName: "Basic Backyard", price: 100 },
+        { imgSrc: "bg4.png", itemName: "Backyard Barbecue", price: 100 },
         { imgSrc: "bg2.png", itemName: "Rainbow Meadow", price: 150 },
-        // { imgSrc: "bg3.png", itemName: "Grassy Greens", price: 150 },
     ];
     
 

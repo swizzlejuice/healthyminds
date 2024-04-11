@@ -38,7 +38,7 @@ export default function ViewPet() {
   }, []);
 
 return (
-  <div className="checkin-body" style={{ backgroundImage: `url(${backgroundImage})` }}>
+  <div className="homepage" style={{ backgroundImage: `url(${backgroundImage})` }}>
     <div className="flex-container-profile">
       <div className="checkin-card">
           <div>
