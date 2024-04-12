@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 export default function MyCloset() {
-
 return (
   <div className="checkin-body">
     <div className="flex-container-profile">

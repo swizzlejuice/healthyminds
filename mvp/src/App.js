@@ -26,13 +26,14 @@ function App() {
   const selectedAvatar = 'profileimage.png';
   const [streakCount, setStreakCount] = useState(0); 
   const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
+  
   const updateStreak = (newStreakCount) => {
     setStreakCount(newStreakCount);
   };
 
   return (
     <div >
-      <HappyPawsNav selectedAvatar={selectedAvatar} updateStreak={updateStreak} streakCount={streakCount} />
+      <HappyPawsNav selectedAvatar={selectedAvatar} updateStreak={updateStreak} streakCount={streakCount}/>
       <Routes>
           <Route path="/"index element={<LoginPage />} />
           <Route path="/home" element={<Home setBackgroundImage={setBackgroundImage}/>} />
@@ -44,7 +45,7 @@ function App() {
           <Route path="/places" element={<Places />}/>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<CreateAccount />} />
-          <Route path="/checkin" element={<CheckIn updateStreak={updateStreak}/>} />
+          <Route path="/checkin" element={<CheckIn updateStreak={updateStreak} />} />
           <Route path="/modal" element={<CheckModal />} />
           <Route path="/help" element={<Help />} />
           <Route path="/diary" element={<Diary />} />

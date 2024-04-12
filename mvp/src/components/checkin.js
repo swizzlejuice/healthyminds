@@ -121,3 +121,4 @@ function CheckIn({ updateStreak }) {
 }
 
 export default CheckIn;
+
