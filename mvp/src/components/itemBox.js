@@ -1,70 +1,3 @@
-/*import React, { useState, useEffect } from 'react';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase, ref, update, get } from 'firebase/database';
-
-function ItemBox({ imgSrc, itemName, price }) {
-
-    const [currentUser, setCurrentUser] = useState(null);
-    const [coinCount, setCoinCount] = useState(0);
-
-    useEffect(() => {
-        const auth = getAuth();
-        onAuthStateChanged(auth, (user) => {
-          if (user) {
-            setCurrentUser(user);
-            fetchUserData(user.uid);
-          } else {
-            setCurrentUser(null);
-          }
-        });
-      }, []);
-
-      const fetchUserData = (userId) => {
-        const db = getDatabase();
-        const userRef = ref(db, `users/${userId}`);
-    
-        get(userRef).then((snapshot) => {
-          const userData = snapshot.val();
-          if (userData) {
-            setCoinCount(userData.coinCount || 0);
-          }
-        });
-      };
-      
-
-      const handleClick = (price) => {
-        if (currentUser) {
-            const db = getDatabase();
-            const userId = currentUser.uid;
-            if(coinCount - price < 0){
-                console.log("Insufficient funds");
-            } else{
-                update(ref(db, `users/${userId}`), { coinCount: coinCount - price})
-            }
-
-        }
-      }
-
-    return (
-        <div className="col-md-2">
-            <div className="item-box d-flex flex-column align-items-center">
-                <img src={imgSrc} alt={itemName} className="item-images" />
-                <p className="item-text">{itemName}</p>
-                <div className="store-price-buy">
-                    <div className="store-price">
-                        <img src="coin.png" alt="Coin" />
-                        <span>{price}</span>
-                    </div>
-                    <button className="buy-button" onClick={handleClick(price)}>Buy</button>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-export default ItemBox;*/
-
-
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, update, get } from 'firebase/database';
@@ -99,26 +32,37 @@ function ItemBox({ imgSrc, itemName, price }) {
     };
       
 
-    const handleClick = (itemPrice) => () => {
-        if (currentUser) {
-            const db = getDatabase();
-            const userId = currentUser.uid;
-            const newCoinCount = coinCount - itemPrice;
-            if(newCoinCount < 0){
-                alert("You need more coins to purchase this item!");
-            } else{
-                update(ref(db, `users/${userId}`), { coinCount: newCoinCount})
+const handleClick = (itemPrice, itemName, imgSrc) => () => {
+    if (currentUser) {
+        const db = getDatabase();
+        const userId = currentUser.uid;
+        const newCoinCount = coinCount - itemPrice;
+
+        if(newCoinCount < 0){
+            alert("You need more coins to purchase this item!");
+        } else {
+            const userRef = ref(db, `users/${userId}`);
+            const itemRef = ref(db, `users/${userId}/purchasedItems/${itemName}`); // Specific path to the item
+
+            update(userRef, { coinCount: newCoinCount })
+            .then(() => {
+                // Update the specific item
+                update(itemRef, { imgSrc, itemName })
                 .then(() => {
-                    // Successfully updated in the database, now reflect this change locally
                     setCoinCount(newCoinCount);
                 })
                 .catch((error) => {
-                    // Handle potential errors here
-                    console.error("Error updating coin count: ", error);
+                    console.error("Error adding item to closet: ", error);
                 });
-            }
+            })
+            .catch((error) => {
+                console.error("Error updating coin count: ", error);
+            });
         }
     }
+}
+
+    
 
     return (
         <div className="col-md-2">
@@ -130,7 +74,7 @@ function ItemBox({ imgSrc, itemName, price }) {
                         <img src="coin.png" alt="Coin" />
                         <span>{price}</span>
                     </div>
-                    <button className="buy-button" onClick={handleClick(price)}>Buy</button>
+                    <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>Buy</button>
                 </div>
             </div>
         </div>
