@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, set, get } from 'firebase/database';
 import { NavLink } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import DogImage from './DogImage';
 
 function Home() {
   const [currentUser, setCurrentUser] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
+  const [showModal, setShowModal] = useState(false); 
 
   useEffect(() => {
     const auth = getAuth();
@@ -18,7 +21,7 @@ function Home() {
         fetchBackgroundImage(user.uid);
       } else {
         setCurrentUser(null);
-        setBackgroundImage('basicbg.png'); 
+        setBackgroundImage('basicbg.png');
       }
     });
 
@@ -48,8 +51,12 @@ function Home() {
       const db = getDatabase();
       const userRef = ref(db, `users/${currentUser.uid}/backgroundImage`);
       set(userRef, newBackground)
-        .catch(error => console.error("Error updating background image:", error));
+        .catch((error) => console.error("Error updating background image:", error));
     }
+  };
+
+  const toggleModal = () => {
+    setShowModal(!showModal); 
   };
 
   const backgrounds = [
@@ -62,13 +69,26 @@ function Home() {
   ];
 
   return (
-    <div className="homepage" style={{backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', height: '80vh', marginTop: '.4rem', borderRadius: '22px', marginBottom: '0rem'}}>
+    <div className="homepage" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', height: '80vh', marginTop: '.4rem', borderRadius: '22px', marginBottom: '0rem' }}>
       <div className="bg-btns">
         {backgrounds.map((bg, index) => (
           <button className="bg-buttons" key={index} onClick={() => changeBackground(bg.url)}>{bg.name}</button>
         ))}
       </div>
-      <NavLink to={{ pathname: "/viewpet", search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}><DogImage/></NavLink>
+      <button className="outfit-buttons" onClick={toggleModal}>Change Pet Outfit</button>
+      <NavLink to={{ pathname: "/viewpet", search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}><DogImage /></NavLink>
+
+      <Modal show={showModal} onHide={toggleModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Change Pet Outfit</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>aliya and sara use this modal to hold the list of outfits the user has purchased - make them pics ofthe outfits
+            and if they
+            select a clothing item (pic) from this list they can automatically change pet's outfit!
+          </p>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }

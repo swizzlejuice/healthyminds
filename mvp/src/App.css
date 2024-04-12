@@ -122,6 +122,31 @@ nav {
     padding-left: 1rem;
 }
 
+.outfit-buttons {
+    padding: .25rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    width: 9rem !important;
+    border-radius: 16px;
+    border: 1px solid black;
+    background-color: #5E4CC5;
+    text-align: center;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    width: 9.6rem;
+    font-size: 13px;
+}
+
+.modal {
+    display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+  
+  .modal.show {
+    opacity: 1;
+}
+
 /* LOGIN PAGE - CLARABELLE */
 .signin-card {
     width: 16rem;
@@ -594,7 +619,7 @@ nav {
     display: flex;
     margin-left: 37rem;
     width: 15rem;
-    margin-top: 19.25rem;
+    margin-top: 16.5rem;
 }
 
 .store-page {
