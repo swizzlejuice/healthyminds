@@ -887,8 +887,8 @@ nav {
 }
 
 .place-closet {
-    width: 7.5rem !important;
-    height: 4.5rem;
+    width: 6.5rem !important;
+    height: 3.5rem;
     background-color: white;
     border-radius: 35px;
     border: 1px solid black;
@@ -899,9 +899,9 @@ nav {
 }
 
 .closet-btn-image {
-    margin-top: 1.5px;
+    margin-top: 1px;
     margin-bottom: 0;
-    width: 45px;
+    width: 35px;
 }
 
 .places-btn-image {
@@ -912,7 +912,7 @@ nav {
 
 .closet-places-text {
     text-align: center;
-    font-size: 13px;
+    font-size: 12px;
     margin-bottom: 7px;
     color: black;
     text-decoration: none;
@@ -921,7 +921,7 @@ nav {
 .closet-places-btns {
     display: flex;
     justify-content: center;
-    margin-top: 4.5rem;
+    margin-top: 0.2rem;
 }
 
 .closet-div {
@@ -934,9 +934,7 @@ nav {
     padding-right: 3rem;
 }
 
-.left-arrow, .right-arrow {
-    height: 5rem;
-}
+
 
 /* Animation for the coin count when the coin count increases */
 @keyframes bounce {
@@ -1019,6 +1017,39 @@ nav {
     text-align: center;
     color: #333;
 }
+
+.pet-health {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem; 
+}
+
+
+.progress-container {
+    background-color: white;
+    height: 25px;  
+    width: 400px; 
+    border-radius: 12px;  
+        
+  }
+  
+  .progress-bar-color {
+    background-color: #5E4CC5;
+    height: 100%;
+    color: white;
+    font-size: 13.5px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .health-msg {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
 
   
   

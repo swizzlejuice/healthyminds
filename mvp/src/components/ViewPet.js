@@ -44,13 +44,20 @@ return (
           <div>
           <NavLink to="/home"><img className="xbutton" src="x.png" alt="close button"></img></NavLink>
             <div className='arrows-name'>
-                <img className="left-arrow" src="Leftt_Arrow.png" alt="left arrow"></img>
                 <p className="pet-name" onClick={() => handleChangePetName(prompt('Enter new pet name'))}>{displayPetName}</p>
-                <img className="right-arrow" src="Right_Arrow 2.png" alt="right arrow"></img>
             </div>
           <div>
             <img className ='dog-view' src="hiro.png" alt="picture of a dog"/>
           </div>
+
+          <div className="pet-health"> 
+            <div className="progress-container" role="progressbar" aria-label="Default striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div className="progress-bar-color" style={{ width: '50%' }}> Pet Health 50% </div>
+            </div>
+          </div>
+          <p className='health-msg'> Complete more activities to increase their health! </p>
+
+
           <div className='closet-places-btns'>
             <div className='closet-div'>
               <NavLink to="/myCloset" style={{ textDecoration: 'none'}}><div className="place-closet"> <img className="closet-btn-image" src="Boy_Shirt.png" alt="picture of a shirt icon"></img>
