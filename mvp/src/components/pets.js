@@ -9,7 +9,7 @@ function Pets() {
         { imgSrc: "cashmere.png", price: 200 },
         { imgSrc: "toto.png", price: 200 },
         { imgSrc: "ayumi.png", price: 200 },
-        { imgSrc: "echo.png", price: 200 },
+        { imgSrc: "simba.png", price: 200 },
         { imgSrc: "cat1.png", price: 200 },
         { imgSrc: "cat2.png", price: 200 },
         { imgSrc: "cat3.png", price: 200 },

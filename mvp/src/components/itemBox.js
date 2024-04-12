@@ -4,11 +4,10 @@ import { getDatabase, ref, update, get } from 'firebase/database';
 import { useNavigate } from 'react-router-dom'; 
 
 function ItemBox({ imgSrc, itemName, price }) {
-
     const [currentUser, setCurrentUser] = useState(null);
     const [coinCount, setCoinCount] = useState(0);
-    const [isPurchased, setIsPurchased] = useState(false); // New state to track if item is purchased
-    const navigate = useNavigate(); // Hook for navigation
+    const [isPurchased, setIsPurchased] = useState(false); 
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const auth = getAuth();
@@ -57,7 +56,7 @@ function ItemBox({ imgSrc, itemName, price }) {
                         .then(() => {
                             setCoinCount(newCoinCount); // Update coin count in state
                             setIsPurchased(true); // Set item as purchased
-                            alert("Purchase successful! View your item in the closet.");
+                            alert("Purchase successful! You can view the item in your closet.");
                         })
                         .catch((error) => {
                             console.error("Error updating user data: ", error);
@@ -66,10 +65,6 @@ function ItemBox({ imgSrc, itemName, price }) {
             }
         }
     };
-    
-
-
-    
 
     return (
         <div className="col-md-2">
@@ -81,7 +76,10 @@ function ItemBox({ imgSrc, itemName, price }) {
                         <img src="coin.png" alt="Coin" />
                         <span>{price}</span>
                     </div>
-                    <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>{isPurchased ? 'View item in closet' : 'Buy'}</button>
+                    <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>
+                      {isPurchased ? <span className="view-in-closet-text">View in closet</span> : <span className="buy-text">Buy</span>}
+                    </button>
+                    {/* <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>{isPurchased ? 'View in closet' : 'Buy'}</button> */}
                 </div>
             </div>
         </div>

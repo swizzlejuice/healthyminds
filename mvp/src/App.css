@@ -157,10 +157,10 @@ nav {
 .back-btn {
     color: black !important;
     text-decoration: underline;
-    /*margin-top: 1.5rem;*/
     text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
 }
-
 
 .signup-field {
     margin-top: 1.5rem;
@@ -604,8 +604,8 @@ nav {
 }
 
 .store-navigator {
-    width: 68rem;
-    height: 5rem;
+    width: 70rem;
+    height: 4rem;
     background-color: white;
     padding-left: 1.5rem;
     padding-top: 1.5rem;
@@ -626,29 +626,29 @@ nav {
 .pets-btn,
 .places-btn {
     border-radius: 20px;
-    width: 15rem;
-    height: 4rem;
+    width: 12rem;
+    height: 3rem;
     background-color: white;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     border: 1px solid black;
-    transition: background-color 0.3s; /* Add transition for smooth color change */
+    transition: background-color 0.3s; 
 }
 
 .clothing-btn:hover,
 .necessities-btn:hover,
 .pets-btn:hover,
 .places-btn:hover {
-    background-color: #5E4CC5; /* Change background color on hover */
-    color: white; /* Change text color on hover */
+    background-color: #5E4CC5; 
+    color: white; 
 }
 
 .clothing-btn:active,
 .necessities-btn:active,
 .pets-btn:active,
 .places-btn:active {
-    background-color: #7F79B5; /* Change background color when clicked */
-    color: white; /* Change text color when clicked */
+    background-color: #7F79B5; 
+    color: white; 
 }
 
 
@@ -664,6 +664,8 @@ nav {
 
 .buy-button {
     border-radius: 20px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     color: white;
     background-color: #5E4CC5;
     margin-left: 10px;
@@ -836,7 +838,7 @@ nav {
 }
 
 .pet-name {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 28px;
     margin-bottom: 1rem;
     margin-top: 1.25rem; 
@@ -852,8 +854,8 @@ nav {
 }
 
 .closet-title {
-    font-weight: bold;
-    font-size: 30px;
+    font-weight: 600;
+    font-size: 26px;
     margin-bottom: 0rem;
     margin-top: 1rem;  
     text-align: center;
@@ -935,34 +937,60 @@ nav {
 }
 
 .clothing-list, .places-list {
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
-    padding: 10px;
+    gap: 25px;
     justify-content: center;
+}
+
+.closet-card {
+    width: 35rem;
+    height: 25rem;
+    background-color: #EDEAFF;
+    border-radius: 22px;
+    border: 2px solid black;
+    margin-top: 1rem;
+    max-height: 700px; 
+    overflow-y: auto; 
+}
+
+.closet-card::-webkit-scrollbar {
+    border-radius: 22px !important;
+}
+
+.view-in-closet-text {
+    font-size: 14px;
 }
 
 .clothing-item, .places-item {
     display: flex;
     flex-direction: column;
+    padding-top: 1rem !important;
+    width: 8.5rem;
     align-items: center;
     border: 1px solid #ccc;
+    background-color: white;
     border-radius: 10px;
     padding: 5px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.clothing-item img, .places-item img {
-    width: 100%; /* Responsive image size */
+.img-closet {
+    width: 5rem !important;
     height: auto;
-    max-height: 80px; /* Limiting the image height */
+    max-height: 80px;
     object-fit: cover;
     border-radius: 5px;
 }
 
+.p-closet {
+    margin-top: 1rem !important;
+}
+
+
 .clothing-item p, .places-item p {
-    font-size: 0.8rem; /* Smaller text for item names */
-    margin-top: 5px;
+    font-size: 0.8rem; 
     text-align: center;
     color: #333;
 }

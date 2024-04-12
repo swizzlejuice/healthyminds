@@ -71,7 +71,8 @@ const handleClick = (itemPrice, itemName, imgSrc) => () => {
                         <img src="coin.png" alt="Coin" />
                         <span>{price}</span>
                     </div>
-                    <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>Buy</button>                </div>
+                    <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>Buy</button>                
+                </div>
             </div>
         </div>
     );
