@@ -61,11 +61,17 @@ function Home() {
 
   const backgrounds = [
     { name: 'Starter Background', url: 'basicbg.png' },
+        // attribution: vector by drogatnev from depositphotos
     { name: 'Rainbow Meadow', url: 'bg2.png' },
+        // {/* attribution: <a href="https://www.freepik.com/free-vector/nature-park-scene-background-with-rainbow-sky_16457014.htm#query=cartoon%20garden&position=3&from_view=keyword&track=ais&uuid=f3d787e6-db30-45ea-8aa3-44689432194c">
+        // Image by brgfx</a> on Freepik */}
     { name: 'Backyard Barbecue', url: 'bg4.png' },
+        // attribution: <a href="https://www.vecteezy.com/free-vector/drawing">Drawing Vectors by Vecteezy</a>
     { name: 'Day at the Park', url: 'bg5.png' },
+        // attribution: {/* <a href="https://www.vecteezy.com/free-vector/procreate-logo">Procreate Logo Vectors by Vecteezy</a> */}
     { name: 'Cabin in the Woods', url: 'bg6.png' },
     { name: 'City Living', url: 'bg7.png' },
+        // attribution: file number 566024130 by irina on adobe stock
   ];
 
   return (
