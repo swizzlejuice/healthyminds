@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, update, get } from 'firebase/database';
+import { useNavigate } from 'react-router-dom'; 
 
 function ItemBox({ imgSrc, itemName, price }) {
 
     const [currentUser, setCurrentUser] = useState(null);
     const [coinCount, setCoinCount] = useState(0);
+    const [isPurchased, setIsPurchased] = useState(false); // New state to track if item is purchased
+    const navigate = useNavigate(); // Hook for navigation
 
     useEffect(() => {
         const auth = getAuth();
@@ -27,40 +30,44 @@ function ItemBox({ imgSrc, itemName, price }) {
             const userData = snapshot.val();
             if (userData) {
                 setCoinCount(userData.coinCount || 0);
+                setIsPurchased(userData.purchasedItems && userData.purchasedItems.hasOwnProperty(itemName));
             }
         });
     };
-      
 
-const handleClick = (itemPrice, itemName, imgSrc) => () => {
-    if (currentUser) {
-        const db = getDatabase();
-        const userId = currentUser.uid;
-        const newCoinCount = coinCount - itemPrice;
 
-        if(newCoinCount < 0){
-            alert("You need more coins to purchase this item!");
-        } else {
-            const userRef = ref(db, `users/${userId}`);
-            const itemRef = ref(db, `users/${userId}/purchasedItems/${itemName}`); // Specific path to the item
-
-            update(userRef, { coinCount: newCoinCount })
-            .then(() => {
-                // Update the specific item
-                update(itemRef, { imgSrc, itemName })
-                .then(() => {
-                    setCoinCount(newCoinCount);
-                })
-                .catch((error) => {
-                    console.error("Error adding item to closet: ", error);
-                });
-            })
-            .catch((error) => {
-                console.error("Error updating coin count: ", error);
-            });
+    const handleClick = (itemPrice, itemName, imgSrc) => () => {
+        if (currentUser) {
+            if (isPurchased) {
+                navigate('/myCloset'); // Navigate to closet if item is already purchased
+            } else {
+                const db = getDatabase();
+                const userId = currentUser.uid;
+                const newCoinCount = coinCount - itemPrice;
+    
+                if (newCoinCount < 0) {
+                    alert("You need more coins to purchase this item!");
+                } else {
+                    const userRef = ref(db, `users/${userId}`);
+                    const updates = {};
+                    updates['coinCount'] = newCoinCount; // Update coin count
+                    updates[`purchasedItems/${itemName}`] = { imgSrc, itemName }; // Update purchased items
+    
+                    update(userRef, updates) // Perform a single update call
+                        .then(() => {
+                            setCoinCount(newCoinCount); // Update coin count in state
+                            setIsPurchased(true); // Set item as purchased
+                            alert("Purchase successful! View your item in the closet.");
+                        })
+                        .catch((error) => {
+                            console.error("Error updating user data: ", error);
+                        });
+                }
+            }
         }
-    }
-}
+    };
+    
+
 
     
 
@@ -74,7 +81,7 @@ const handleClick = (itemPrice, itemName, imgSrc) => () => {
                         <img src="coin.png" alt="Coin" />
                         <span>{price}</span>
                     </div>
-                    <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>Buy</button>
+                    <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>{isPurchased ? 'View item in closet' : 'Buy'}</button>
                 </div>
             </div>
         </div>

@@ -157,7 +157,7 @@ nav {
 .back-btn {
     color: black !important;
     text-decoration: underline;
-    margin-top: 1.5rem;
+    /*margin-top: 1.5rem;*/
     text-align: center;
 }
 
@@ -933,6 +933,40 @@ nav {
 .bounce {
     animation: bounce 1s ease-in-out 5; 
 }
+
+.clothing-list, .places-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+}
+
+.clothing-item, .places-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.clothing-item img, .places-item img {
+    width: 100%; /* Responsive image size */
+    height: auto;
+    max-height: 80px; /* Limiting the image height */
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.clothing-item p, .places-item p {
+    font-size: 0.8rem; /* Smaller text for item names */
+    margin-top: 5px;
+    text-align: center;
+    color: #333;
+}
+
   
   
 

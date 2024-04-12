@@ -58,11 +58,7 @@ return (
               </div></NavLink>
             </div>
 
-            <div className='places-div'>
-              <NavLink to="/myPlaces" style={{ textDecoration: 'none'}}><div className="place-closet"> <img className="places-btn-image" src="Vector.png" alt="picture of a places icon"></img>
-                <p className="closet-places-text">My Places</p>
-              </div></NavLink>
-            </div>
+         
 
           </div>
           </div>

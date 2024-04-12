@@ -5,9 +5,9 @@ import ItemBox from './itemBox';
 function StorePage() {
     const items = [
         { imgSrc: "basictee.png", itemName: "Basic Tee", price: 2 },
-        { imgSrc: "orangepolo.png", itemName: "Orange Polo", price: 35 },
-        { imgSrc: "onsie.png", itemName: "The Onesie", price: 50 },
-        { imgSrc: "lavenderwrap.png", itemName: "Lavender Wrap", price: 50 },
+        { imgSrc: "orangepolo.png", itemName: "Orange Polo", price: 1 },
+        { imgSrc: "onsie.png", itemName: "The Onesie", price: 1 },
+        { imgSrc: "lavenderwrap.png", itemName: "Lavender Wrap", price: 1 },
         { imgSrc: "baggysweater.png", itemName: "Baggy Sweater", price: 40 },
         { imgSrc: "redpuffer.png", itemName: "Red Puffer", price: 60 },
         { imgSrc: "softtee.png", itemName: "Soft Tee", price: 30 },
