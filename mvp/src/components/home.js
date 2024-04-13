@@ -62,16 +62,18 @@ function Home() {
   const backgrounds = [
     { name: 'Starter Background', url: 'basicbg.png' },
         // attribution: vector by drogatnev from depositphotos
-    { name: 'Rainbow Meadow', url: 'bg2.png' },
-        // {/* attribution: <a href="https://www.freepik.com/free-vector/nature-park-scene-background-with-rainbow-sky_16457014.htm#query=cartoon%20garden&position=3&from_view=keyword&track=ais&uuid=f3d787e6-db30-45ea-8aa3-44689432194c">
-        // Image by brgfx</a> on Freepik */}
-    { name: 'Backyard Barbecue', url: 'bg4.png' },
-        // attribution: <a href="https://www.vecteezy.com/free-vector/drawing">Drawing Vectors by Vecteezy</a>
-    { name: 'Day at the Park', url: 'bg5.png' },
-        // attribution: {/* <a href="https://www.vecteezy.com/free-vector/procreate-logo">Procreate Logo Vectors by Vecteezy</a> */}
-    { name: 'Cabin in the Woods', url: 'bg6.png' },
-    { name: 'City Living', url: 'bg7.png' },
-        // attribution: file number 566024130 by irina on adobe stock
+    { name: 'Red Orchard', url: 'bg2.png' },
+        // attribution: <a href="https://www.vecteezy.com/free-vector/house-street">House Street Vectors by Vecteezy</a>
+    { name: 'Fireside Evening', url: 'bg11.png' },
+        // free vector with premium trial, no attribution required
+    { name: 'The Neighborhood', url: 'bg9.png' },
+        // attribution: <a href="https://www.freepik.com/free-vector/scene-with-house-garden_25539962.htm">Image by brgfx</a> on Freepik
+    { name: 'Cabin at Sundown', url: 'bg6.png' },
+        // attribution: <a href="https://www.vecteezy.com/free-vector/wooden-house">Wooden House Vectors by Vecteezy</a>
+    { name: 'Roadside Gazebo', url: 'bg8.png' },
+        // attribution: <a href="https://www.freepik.com/free-vector/outdoor-scene-with-doodle-house-cartoon_25679522.htm">Image by brgfx</a> on Freepik
+    { name: 'Day at the Park', url: 'bg3.png' },
+        // attribution: <a href="https://www.vecteezy.com/vector-art/24592378-playground-park-in-kindergarten-cartoon-landscape">Vectors by Vecteezy</a>
   ];
 
   return (
