@@ -67,7 +67,6 @@ function Profile() {
         if (data) {
           const entries = Object.values(data);
           setMoodEntries(entries);
-
           const overallCounts = countOverallMoodOccurrences(entries);
           setOverallMoodCounts(overallCounts);
         } else {
@@ -204,6 +203,7 @@ function Profile() {
             <p className="chart-text">All-time Mood Summary</p>
             <canvas id="moodChart" height="200"></canvas>
           </div></div>
+
           <NavLink to="/diaryentries" style={{ textDecoration: 'none'}}><div className="diary-ent-card">
             <p className="diary-ent-text">View Diary Entries</p>
           </div></NavLink>
@@ -215,3 +215,5 @@ function Profile() {
 }
 
 export default Profile;
+
+
