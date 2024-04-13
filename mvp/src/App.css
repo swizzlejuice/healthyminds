@@ -211,7 +211,7 @@ nav {
 }
 
 .login-body {
-    background-image: url('lbg.png') ;
+    background-image: url('/public/bg2.png') ;
     background-size: cover;
     height: 80vh;
     margin-top: .5rem;
