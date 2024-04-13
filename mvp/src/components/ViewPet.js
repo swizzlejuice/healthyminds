@@ -9,12 +9,16 @@ export default function ViewPet() {
   const [displayPetName, setPetName] = useState('Enter Name');
 
   const handleChangePetName = (newPetName) => {
-    setPetName(newPetName);
-    const auth = getAuth();
-    const db = getDatabase();
-    const petId = auth.currentUser.uid;
-    const petRef = ref(db, `${petId}/petData`);
-    set(petRef, { displayPetName: newPetName });
+    if (newPetName) { 
+      setPetName(newPetName);
+      const auth = getAuth();
+      const db = getDatabase();
+      const petId = auth.currentUser.uid;
+      const petRef = ref(db, `${petId}/petData`);
+      set(petRef, { displayPetName: newPetName });
+    } else { 
+      // having it do nothing
+    }
   };
 
   useEffect(() => {
@@ -56,17 +60,12 @@ return (
             </div>
           </div>
           <p className='health-msg'> Complete more activities to increase their health! </p>
-
-
           <div className='closet-places-btns'>
             <div className='closet-div'>
               <NavLink to="/myCloset" style={{ textDecoration: 'none'}}><div className="place-closet"> <img className="closet-btn-image" src="Boy_Shirt.png" alt="picture of a shirt icon"></img>
                 <p className="closet-places-text">My Closet</p>
               </div></NavLink>
             </div>
-
-         
-
           </div>
           </div>
       </div>

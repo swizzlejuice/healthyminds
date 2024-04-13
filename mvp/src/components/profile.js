@@ -10,6 +10,7 @@ function Profile() {
   const [moodEntries, setMoodEntries] = useState([]);
   const [userEmail, setUserEmail] = useState(null);
   const [displayName, setDisplayName] = useState('Enter Name'); 
+  const [previousDisplayName, setPreviousDisplayName] = useState('Enter Name');
   const [selectedAvatar, setSelectedAvatar] = useState(null); 
   const [showAvatarModal, setShowAvatarModal] = useState(false);
   const [overallMoodCounts, setOverallMoodCounts] = useState({
@@ -50,6 +51,7 @@ function Profile() {
         const userData = snapshot.val();
         if (userData && userData.displayName) {
           setDisplayName(userData.displayName);
+          setPreviousDisplayName(userData.displayName); 
         }
       });
 
@@ -142,13 +144,18 @@ function Profile() {
   };
 
   const handleChangeDisplayName = (newName) => {
-    setDisplayName(newName);
-    const auth = getAuth();
-    const db = getDatabase();
-    const userId = auth.currentUser.uid;
-    const userRef = ref(db, `${userId}/userData`);
-    set(userRef, { displayName: newName });
+    if (newName) { 
+      setDisplayName(newName);
+      const auth = getAuth();
+      const db = getDatabase();
+      const userId = auth.currentUser.uid;
+      const userRef = ref(db, `${userId}/userData`);
+      set(userRef, { displayName: newName });
+    } else { // if the user decides not to change (i.e. if they cancel)
+      setDisplayName(previousDisplayName); 
+    }
   };
+  
 
   const handleAvatarChange = (newAvatar) => {
     setSelectedAvatar(newAvatar);
