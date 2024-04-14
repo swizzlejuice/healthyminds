@@ -38,33 +38,42 @@ function ItemBox({ imgSrc, itemName, price }) {
     const handleClick = (itemPrice, itemName, imgSrc) => () => {
         if (currentUser) {
             if (isPurchased) {
-                navigate('/myCloset'); // Navigate to closet if item is already purchased
+                navigate('/myCloset'); 
             } else {
                 const db = getDatabase();
                 const userId = currentUser.uid;
-                const newCoinCount = coinCount - itemPrice;
+                const userRef = ref(db, `users/${userId}`);
     
-                if (newCoinCount < 0) {
-                    alert("You need more coins to purchase this item!");
-                } else {
-                    const userRef = ref(db, `users/${userId}`);
-                    const updates = {};
-                    updates['coinCount'] = newCoinCount; // Update coin count
-                    updates[`purchasedItems/${itemName}`] = { imgSrc, itemName }; // Update purchased items
+
+                get(userRef).then((snapshot) => {
+                    const userData = snapshot.val();
+                    if (userData) {
+                        const currentCoins = userData.coinCount || 0;
+                        const newCoinCount = currentCoins - itemPrice;
     
-                    update(userRef, updates) // Perform a single update call
-                        .then(() => {
-                            setCoinCount(newCoinCount); // Update coin count in state
-                            setIsPurchased(true); // Set item as purchased
-                            alert("Purchase successful! You can view the item in your closet.");
-                        })
-                        .catch((error) => {
-                            console.error("Error updating user data: ", error);
-                        });
-                }
+                        if (newCoinCount < 0) {
+                            alert("You need more coins to purchase this item!");
+                        } else {
+                            const updates = {};
+                            updates['coinCount'] = newCoinCount; 
+                            updates[`purchasedItems/${itemName}`] = { imgSrc, itemName };
+    
+                            update(userRef, updates) 
+                                .then(() => {
+                                    setCoinCount(newCoinCount); 
+                                    setIsPurchased(true); 
+                                    alert("Purchase successful! You can view the item in your closet.");
+                                })
+                                .catch((error) => {
+                                    console.error("Error updating user data: ", error);
+                                });
+                        }
+                    }
+                });
             }
         }
     };
+    
 
     return (
         <div className="col-md-2">
