@@ -58,6 +58,7 @@ function CheckIn({ updateStreak }) {
           push(ref(db, `${userId}/moodEntries`), moodEntry)
             .then(() => {
               updateStreakInDatabase(userId); 
+              updateProgressBy(25, userId);
               navigate('/modal');
             });
         });
@@ -80,6 +81,36 @@ function CheckIn({ updateStreak }) {
           });
       });
   };
+
+  const updateProgressBy = (increment, userId) => {
+    const db = getDatabase();
+    const today = new Date().toLocaleDateString();
+    const progressRef = ref(db, `users/${userId}/petData`);
+
+    get(progressRef).then((snapshot) => {
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            // Ensure we only increment today's progress
+            if (data.lastProgressUpdate === today) {
+                let currentProgress = data.progress || 25;
+                let newProgress = currentProgress + increment;
+                if (newProgress > 100) newProgress = 100;
+                update(ref(db, `users/${userId}/petData`), { progress: newProgress, lastProgressUpdate: today });
+            } else {
+                // Reset to 25% then add the increment if it's a new day
+                let newProgress = 25 + increment;
+                if (newProgress > 100) newProgress = 100;
+                update(ref(db, `users/${userId}/petData`), { progress: newProgress, lastProgressUpdate: today });
+            }
+        } else {
+            // Initialize if there's no data
+            let initialProgress = 25 + increment;
+            update(ref(db, `users/${userId}/petData`), { progress: initialProgress, lastProgressUpdate: today });
+        }
+    }).catch(error => {
+        console.error("Failed to update progress:", error);
+    });
+};
 
   const checkIfCheckedInToday = (timestamp) => {
     if (timestamp) {

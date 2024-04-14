@@ -7,6 +7,8 @@ export default function ViewPet() {
   const location = useLocation();
   const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
   const [displayPetName, setPetName] = useState('Enter Name');
+  const [progress, setProgress] = useState(25); 
+
 
   const handleChangePetName = (newPetName) => {
     if (newPetName) { 
@@ -21,7 +23,7 @@ export default function ViewPet() {
     }
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     const auth = getAuth();
     const db = getDatabase();
   
@@ -34,12 +36,55 @@ export default function ViewPet() {
         const petData = snapshot.val();
         if (petData && petData.displayPetName) {
           setPetName(petData.displayPetName);
+          resetProgress(petData.lastProgressUpdate);
         }
       });
 
       
     }
-  }, []);
+  }, []);*/
+
+  useEffect(() => {
+    const auth = getAuth();
+    const db = getDatabase();
+
+    if (auth.currentUser) {
+        const userId = auth.currentUser.uid;
+        const petRef = ref(db, `users/${userId}/petData`);
+        
+        onValue(petRef, (snapshot) => {
+            const petData = snapshot.val();
+            if (petData) {
+                if (petData.lastProgressUpdate === new Date().toLocaleDateString()) {
+                    setProgress(petData.progress);
+                } else {
+                    setProgress(25); // Reset if it's a new day
+                }
+            }
+        });
+    }
+}, []);
+
+
+
+  const resetProgress = (lastUpdate) => {
+    const today = new Date().toLocaleDateString();
+    if (lastUpdate !== today) {
+      setProgress(25); // Reset progress to 25% for a new day
+      updateProgressInDB(25, today); 
+    }
+  };
+
+  const updateProgressInDB = (newProgress, date) => {
+    const auth = getAuth();
+    const db = getDatabase();
+    const petId = auth.currentUser.uid;
+    const petRef = ref(db, `${petId}/petData`);
+    set(petRef, { progress: newProgress, lastProgressUpdate: date });
+  };
+
+const healthMessage = progress === 100 ? "Congrats! Your pet is healthy!" : "Complete more activities to increase their health!";
+
 
 return (
   <div className="homepage" style={{ backgroundImage: `url(${backgroundImage})` }}>
@@ -55,11 +100,11 @@ return (
           </div>
 
           <div className="pet-health"> 
-            <div className="progress-container" role="progressbar" aria-label="Default striped example" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-              <div className="progress-bar-color" style={{ width: '50%' }}> Pet Health 50% </div>
+            <div className="progress-container" role="progressbar" aria-label="Pet Health Progress" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
+            <div className="progress-bar-color" style={{ width: `${progress}%` }}>Pet Health {progress}%</div>
             </div>
           </div>
-          <p className='health-msg'> Complete more activities to increase their health! </p>
+          <p className='health-msg'> {healthMessage} </p>
           <div className='closet-places-btns'>
             <div className='closet-div'>
               <NavLink to="/myCloset" style={{ textDecoration: 'none'}}><div className="place-closet"> <img className="closet-btn-image" src="Boy_Shirt.png" alt="picture of a shirt icon"></img>
