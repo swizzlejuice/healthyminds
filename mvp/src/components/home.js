@@ -91,9 +91,7 @@ function Home() {
           <Modal.Title>Change Pet Outfit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>aliya and sara use this modal to hold the list of outfits the user has purchased - make them pics ofthe outfits
-            and if they
-            select a clothing item (pic) from this list they can automatically change pet's outfit!
+          <p>Feature not enabled yet, coming soon!
           </p>
         </Modal.Body>
       </Modal>

@@ -9,7 +9,6 @@ export default function ViewPet() {
   const [displayPetName, setPetName] = useState('Enter Name');
   const [progress, setProgress] = useState(25); 
 
-
   const handleChangePetName = (newPetName) => {
     if (newPetName) { 
       setPetName(newPetName);
@@ -17,21 +16,25 @@ export default function ViewPet() {
       const db = getDatabase();
       const petId = auth.currentUser.uid;
       const petRef = ref(db, `${petId}/petData`);
-      set(petRef, { displayPetName: newPetName });
+      onValue(petRef, (snapshot) => {
+        const petData = snapshot.val();
+        if (petData) {
+          const updatedPetData = { ...petData, displayPetName: newPetName };
+          set(petRef, updatedPetData);
+        }
+      });
     } else { 
       // having it do nothing
     }
   };
 
-  /*useEffect(() => {
+  useEffect(() => {
     const auth = getAuth();
     const db = getDatabase();
   
     if (auth.currentUser) {
       const petId = auth.currentUser.uid;
       const petRef = ref(db, `${petId}/petData`);
-      
-    
       onValue(petRef, (snapshot) => {
         const petData = snapshot.val();
         if (petData && petData.displayPetName) {
@@ -39,10 +42,8 @@ export default function ViewPet() {
           resetProgress(petData.lastProgressUpdate);
         }
       });
-
-      
     }
-  }, []);*/
+  }, []);
 
   useEffect(() => {
     const auth = getAuth();
@@ -65,8 +66,6 @@ export default function ViewPet() {
     }
 }, []);
 
-
-
   const resetProgress = (lastUpdate) => {
     const today = new Date().toLocaleDateString();
     if (lastUpdate !== today) {
@@ -83,8 +82,7 @@ export default function ViewPet() {
     set(petRef, { progress: newProgress, lastProgressUpdate: date });
   };
 
-const healthMessage = progress === 100 ? "Congrats! Your pet is healthy!" : "Complete more activities to increase their health!";
-
+const healthMessage = progress === 100 ? "Your pet is healthy! Check in again tomorrow :)" : "Complete more activities to increase their health!";
 
 return (
   <div className="homepage" style={{ backgroundImage: `url(${backgroundImage})` }}>
