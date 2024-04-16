@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase, ref, set, get } from 'firebase/database';
+import { getDatabase, ref, onValue, set, get } from 'firebase/database';
 import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -10,6 +10,8 @@ function Home() {
   const [currentUser, setCurrentUser] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
   const [showModal, setShowModal] = useState(false); 
+  const [currentPetImage, setCurrentPetImage] = useState('hiro.png');
+
 
   useEffect(() => {
     const auth = getAuth();
@@ -27,6 +29,24 @@ function Home() {
 
     return () => unsubscribeAuth();
   }, []);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const db = getDatabase();
+  
+    if (auth.currentUser) {
+        const userId = auth.currentUser.uid;
+        const petRef = ref(db, `users/${userId}/currentPet`);
+  
+        onValue(petRef, (snapshot) => {
+            const currentPet = snapshot.val();
+            if (currentPet) {
+                setCurrentPetImage(currentPet);
+            }
+        });
+    }
+}, []);
+
 
   const fetchBackgroundImage = (userId) => {
     const db = getDatabase();
@@ -84,7 +104,7 @@ function Home() {
         ))}
       </div>
       <button className="outfit-buttons" onClick={toggleModal}>Change Pet Outfit</button>
-      <NavLink to={{ pathname: "/viewpet", search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}><DogImage /></NavLink>
+      <NavLink to={{ pathname: "/viewpet", search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}><img className ="dog" src={currentPetImage} alt="picture of dog"></img></NavLink>
 
       <Modal show={showModal} onHide={toggleModal}>
         <Modal.Header closeButton>

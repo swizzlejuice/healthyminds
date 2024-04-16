@@ -8,6 +8,8 @@ export default function ViewPet() {
   const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
   const [displayPetName, setPetName] = useState('Enter Name');
   const [progress, setProgress] = useState(25); 
+  const [currentPetImage, setCurrentPetImage] = useState('hiro.png'); // default image URL
+
 
   const handleChangePetName = (newPetName) => {
     if (newPetName) { 
@@ -33,17 +35,39 @@ export default function ViewPet() {
     const db = getDatabase();
   
     if (auth.currentUser) {
-      const petId = auth.currentUser.uid;
-      const petRef = ref(db, `${petId}/petData`);
-      onValue(petRef, (snapshot) => {
-        const petData = snapshot.val();
-        if (petData && petData.displayPetName) {
-          setPetName(petData.displayPetName);
-          resetProgress(petData.lastProgressUpdate);
-        }
-      });
+        const userId = auth.currentUser.uid;
+        const petRef = ref(db, `users/${userId}/petData`);
+  
+        onValue(petRef, (snapshot) => {
+            const userData = snapshot.val();
+            if (userData) {
+                if (userData.currentPetName) {
+                  setPetName(userData.currentPetName);
+                }
+                resetProgress(userData.lastProgressUpdate);
+            }
+        });
     }
   }, []);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const db = getDatabase();
+  
+    if (auth.currentUser) {
+        const userId = auth.currentUser.uid;
+        const petRef = ref(db, `users/${userId}/currentPet`);
+  
+        onValue(petRef, (snapshot) => {
+            const currentPet = snapshot.val();
+            if (currentPet) {
+                setCurrentPetImage(currentPet);
+            }
+        });
+    }
+}, []);
+
+  
 
   useEffect(() => {
     const auth = getAuth();
@@ -94,7 +118,8 @@ return (
                 <p className="pet-name" onClick={() => handleChangePetName(prompt('Enter new pet name'))}>{displayPetName}</p>
             </div>
           <div>
-            <img className ='dog-view' src="hiro.png" alt="picture of a dog"/>
+          <img className='dog-view' src={currentPetImage} alt="picture of a pet"/>
+
           </div>
 
           <div className="pet-health"> 

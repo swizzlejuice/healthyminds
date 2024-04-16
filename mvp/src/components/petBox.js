@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, update, get } from 'firebase/database';
+import { useNavigate } from 'react-router-dom';
 
 function PetBox({ imgSrc, itemName, price }) {
-
-
     const [currentUser, setCurrentUser] = useState(null);
     const [coinCount, setCoinCount] = useState(0);
+    const [petPurchased, setPetPurchased] = useState(false); 
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const auth = getAuth();
@@ -23,54 +24,60 @@ function PetBox({ imgSrc, itemName, price }) {
     const fetchUserData = (userId) => {
         const db = getDatabase();
         const userRef = ref(db, `users/${userId}`);
-    
+
         get(userRef).then((snapshot) => {
             const userData = snapshot.val();
             if (userData) {
                 setCoinCount(userData.coinCount || 0);
+                setPetPurchased(userData.currentPet === imgSrc); // Ensure this checks for current pet
             }
         });
     };
-      
 
-    const handleClick = (itemPrice, itemName, imgSrc) => () => {
-        if (currentUser) {
-            const db = getDatabase();
-            const userId = currentUser.uid;
-            const newCoinCount = coinCount - itemPrice;
-            if(newCoinCount < 0){
-                alert("You need more coins to purchase this item!");
-            } else {
-                const userRef = ref(db, `users/${userId}`);  // Make sure to use backticks here
-                update(userRef, {
-                    coinCount: newCoinCount,
-                    // Add the purchased item to the user's closet
-                    purchasedItems: {
-                        ...currentUser.purchasedItems,
-                        [itemName]: { imgSrc, itemName }
-                    }
-                })
-                .then(() => {
-                    setCoinCount(newCoinCount);
-                })
-                .catch((error) => {
-                    console.error("Error updating user data: ", error);
-                });
-            }
+    const handleClick = (price, imgSrc, itemName) => () => {
+        if (!currentUser) return;
+
+        if (petPurchased) {
+            navigate('/viewpet');
+            return;
         }
-    }
+
+        const db = getDatabase();
+        const userId = currentUser.uid;
+        const userRef = ref(db, `users/${userId}`);
+        const newCoinCount = coinCount - price;
+
+        if (newCoinCount < 0) {
+            alert("You need more coins to purchase this pet!");
+            return;
+        }
+        
+        update(userRef, {
+            coinCount: newCoinCount,
+            currentPet: imgSrc,
+            currentPetName: itemName
+        })
+        .then(() => {
+            setCoinCount(newCoinCount);
+            setPetPurchased(true);
+        })
+        .catch((error) => {
+            console.error("Error updating user data: ", error);
+        });
+    };
 
     return (
         <div className="col-md-2">
             <div className="item-box d-flex flex-column align-items-center">
                 <img src={imgSrc} alt={itemName} className="pet-images" />
-                <p className="item-text">{itemName}</p>
                 <div className="store-price-buy">
                     <div className="store-price">
                         <img src="coin.png" alt="Coin" />
                         <span>{price}</span>
                     </div>
-                    <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>Buy</button>
+                    <button className="buy-button" onClick={handleClick(price, imgSrc, itemName)}>
+                        {petPurchased ? "View Pet" : "Buy"}
+                    </button>
                 </div>
             </div>
         </div>
