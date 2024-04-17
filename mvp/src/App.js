@@ -51,7 +51,7 @@ function App() {
           <Route path="/diary" element={<Diary />} />
           <Route path="/diarymodal" element={<DiaryModal />} />
           <Route path="/diaryentries" element={<DiaryPage />} />
-          <Route path="/mycloset" element ={<MyCloset />}  />
+          <Route path="/mycloset" element ={<MyCloset/>}  />
           <Route path="/myplaces" element ={<MyPlaces />}  />
       </Routes>
       <Footer /> 

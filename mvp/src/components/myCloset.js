@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function MyCloset() {
   const [items, setItems] = useState({});
+
   useEffect(() => {
       const auth = getAuth();
       onAuthStateChanged(auth, (user) => {
