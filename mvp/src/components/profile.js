@@ -39,15 +39,12 @@ function Profile() {
   useEffect(() => {
     const auth = getAuth();
     const db = getDatabase();
-  
     if (auth.currentUser) {
       const userId = auth.currentUser.uid;
       const moodRef = ref(db, `${userId}/moodEntries`);
       const userRef = ref(db, `${userId}/userData`);
       const avatarRef = ref(db, `${userId}/userAvatar`);
-      
       setUserEmail(auth.currentUser.email);
-    
       onValue(userRef, (snapshot) => {
         const userData = snapshot.val();
         if (userData && userData.displayName) {
@@ -173,7 +170,6 @@ function Profile() {
     if (auth.currentUser) {
       const userId = auth.currentUser.uid;
       const diaryEntriesRef = ref(db, `users/${userId}/diaryEntries`);
-
       onValue(diaryEntriesRef, (snapshot) => {
         const data = snapshot.val();
         if (data) {

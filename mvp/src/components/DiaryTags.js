@@ -69,7 +69,6 @@ function DiaryTags() {
         });
     };
     
-    
     const updateCoinCount = (userId, coins) => {
         const db = getDatabase();
         const userRef = ref(db, 'users/' + userId);

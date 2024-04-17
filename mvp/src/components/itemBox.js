@@ -34,7 +34,6 @@ function ItemBox({ imgSrc, itemName, price }) {
         });
     };
 
-
     const handleClick = (itemPrice, itemName, imgSrc) => () => {
         if (currentUser) {
             if (isPurchased) {
@@ -73,7 +72,6 @@ function ItemBox({ imgSrc, itemName, price }) {
             }
         }
     };
-    
 
     return (
         <div className="col-md-2">

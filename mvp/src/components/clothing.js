@@ -14,7 +14,6 @@ function StorePage() {
         { imgSrc: "loungetee.png", itemName: "Lounge Tee", price: 25 },
     ];
 
-    // Splitting items array into two halves
     const firstHalf = items.slice(0, Math.ceil(items.length / 2));
     const secondHalf = items.slice(Math.ceil(items.length / 2));
 

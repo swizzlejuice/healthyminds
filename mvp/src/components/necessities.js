@@ -1,4 +1,3 @@
-
 import React from 'react';
 import StoreNavigator from './storeNavigator'; 
 import ItemBox from './itemBox'; 

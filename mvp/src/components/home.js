@@ -4,7 +4,6 @@ import { getDatabase, ref, onValue, set, get } from 'firebase/database';
 import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import DogImage from './DogImage';
 
 function Home() {
   const [currentUser, setCurrentUser] = useState(null);

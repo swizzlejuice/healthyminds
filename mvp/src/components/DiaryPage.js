@@ -13,7 +13,6 @@ function DiaryPage() {
     if (auth.currentUser) {
       const userId = auth.currentUser.uid;
       const diaryEntriesRef = ref(db, `users/${userId}/diaryEntries`);
-
       onValue(diaryEntriesRef, (snapshot) => {
         const data = snapshot.val();
         if (data) {

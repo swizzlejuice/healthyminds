@@ -7,7 +7,6 @@ function Places() {
         { imgSrc: "bg4.png", itemName: "Backyard Barbecue", price: 100 },
         { imgSrc: "bg2.png", itemName: "Rainbow Meadow", price: 150 },
     ];
-    
 
     return (
         <div className="store-page">

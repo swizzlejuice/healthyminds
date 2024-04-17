@@ -36,22 +36,18 @@ function PetBox({ imgSrc, itemName, price }) {
 
     const handleClick = (price, imgSrc, itemName) => () => {
         if (!currentUser) return;
-
         if (petPurchased) {
             navigate('/viewpet');
             return;
         }
-
         const db = getDatabase();
         const userId = currentUser.uid;
         const userRef = ref(db, `users/${userId}`);
         const newCoinCount = coinCount - price;
-
         if (newCoinCount < 0) {
             alert("You need more coins to purchase this pet!");
             return;
         }
-        
         update(userRef, {
             coinCount: newCoinCount,
             currentPet: imgSrc,

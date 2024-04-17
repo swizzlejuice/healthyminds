@@ -20,7 +20,6 @@ function PlaceBox({ imgSrc, itemName, price }) {
     const fetchUserData = (userId) => {
         const db = getDatabase();
         const userRef = ref(db, `users/${userId}`);
-    
         get(userRef).then((snapshot) => {
             const userData = snapshot.val();
             if (userData) {
@@ -35,16 +34,13 @@ const handleClick = (itemPrice, itemName, imgSrc) => () => {
         const db = getDatabase();
         const userId = currentUser.uid;
         const newCoinCount = coinCount - itemPrice;
-
         if(newCoinCount < 0){
             alert("You need more coins to purchase this item!");
         } else {
             const userRef = ref(db, `users/${userId}`);
             const itemRef = ref(db, `users/${userId}/purchasedItems/${itemName}`); // Specific path to the item
-
             update(userRef, { coinCount: newCoinCount })
             .then(() => {
-                // Update the specific item
                 update(itemRef, { imgSrc, itemName })
                 .then(() => {
                     setCoinCount(newCoinCount);
@@ -57,9 +53,8 @@ const handleClick = (itemPrice, itemName, imgSrc) => () => {
                 console.error("Error updating coin count: ", error);
             });
         }
+        }
     }
-}
-
 
     return (
         <div className="col-md-6">

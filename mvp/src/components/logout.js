@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 function LogoutButton() {
   const navigate = useNavigate();
-
   const handleLogout = async () => {
     const auth = getAuth();
     try {
