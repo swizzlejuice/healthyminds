@@ -13,6 +13,7 @@ function Profile() {
   const [previousDisplayName, setPreviousDisplayName] = useState('Enter Name');
   const [selectedAvatar, setSelectedAvatar] = useState(null); 
   const [showAvatarModal, setShowAvatarModal] = useState(false);
+  const [topTags, setTopTags] = useState([]);
   const [overallMoodCounts, setOverallMoodCounts] = useState({
     frown: 0,
     slightfrown: 0,
@@ -154,7 +155,6 @@ function Profile() {
       setDisplayName(previousDisplayName); 
     }
   };
-  
 
   const handleAvatarChange = (newAvatar) => {
     setSelectedAvatar(newAvatar);
@@ -165,6 +165,108 @@ function Profile() {
     const avatarRef = ref(db, `${userId}/userAvatar`);
     set(avatarRef, newAvatar);
   };
+
+  useEffect(() => {
+    const auth = getAuth();
+    const db = getDatabase();
+
+    if (auth.currentUser) {
+      const userId = auth.currentUser.uid;
+      const diaryEntriesRef = ref(db, `users/${userId}/diaryEntries`);
+
+      onValue(diaryEntriesRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          const entries = Object.values(data);
+          const tagCounts = calculateTagCounts(entries);
+          const sortedTags = sortTagsByCount(tagCounts);
+          const topThreeTags = sortedTags.slice(0, 3);
+          setTopTags(topThreeTags);
+        } else {
+          setTopTags([]);
+        }
+      });
+    }
+  }, []);
+
+  const calculateTagCounts = (entries) => {
+    const tagCounts = {};
+    entries.forEach((entry) => {
+      entry.tags.forEach((tag) => {
+        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+      });
+    });
+    return tagCounts;
+  };
+
+  const sortTagsByCount = (tagCounts) => {
+    return Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]).map(tag => ({ tag, count: tagCounts[tag] }));
+  };
+
+  const getImageSource = (tag) => {
+    switch (tag) {
+    case 'Sunny':
+        return 'sunny.png';
+    case 'Cloudy':
+        return 'cloudy.png';
+    case 'Rainy':
+        return 'rainy2.png';
+    case 'Snowy':
+        return 'snow.png';
+    case 'Windy':
+        return 'windy2.png';
+    case 'School':
+        return 'school.png';
+    case 'Work':
+        return 'work.png';
+    case 'Vacation':
+        return 'vacation.png';
+    case 'Travel':
+        return 'travel.png';
+    case 'Family':
+        return 'family.png';
+    case 'Friends':
+        return 'friends.png';
+    case 'Party':
+        return 'party.png';
+    case 'Call':
+        return 'call.png';
+    case 'Dating':
+        return 'dating.png';
+    case 'Games':
+        return 'games.png';
+    case 'Shopping':
+        return 'shopping.png';
+    case 'Photography':
+        return 'photography.png';
+    case 'Listening to Music':
+        return 'listenmusic.png';
+    case 'Playing Instrument':
+        return 'playinginstrument.png';
+    case 'Gardening':
+        return 'gardening.png';
+    case 'Baking':
+        return 'baking.png';
+    case 'Cooking':
+        return 'cooking.png';
+    case 'Arts & Crafts':
+        return 'art & crafts.png';
+    case 'Movies & TV':
+        return 'moviestv.png';
+    case 'Fitness':
+        return 'health&fitness.png';
+    case 'Sports':
+        return 'sports.png';
+    case 'Reading':
+        return 'reading.png';
+    case 'Writing':
+        return 'writing.png';
+    case 'Makeup':
+        return 'makeup.png';
+    default:
+        return ''; 
+    }
+};
     
   return (
     <div className="profile-body">
@@ -204,8 +306,21 @@ function Profile() {
             <canvas id="moodChart" height="200"></canvas>
           </div></div>
 
+          <div className="tagz-card">
+            <h2 className="tagz-summary">Frequently Recorded Diary Tags</h2>
+            <div className="top-tags-section">
+              {topTags.map((tag, index) => (
+                <div key={index} className="top-tag">
+                  <img src={getImageSource(tag.tag)} alt={tag.tag} className="diarytag-img" />
+                  <span>{tag.tag}</span>
+                  <span style={{ marginLeft: '4px' }}>(x{tag.count})</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
           <NavLink to="/diaryentries" style={{ textDecoration: 'none'}}><div className="diary-ent-card">
-            <p className="diary-ent-text">View Diary Entries</p>
+            <p className="diary-ent-text">View All Diary Entries</p>
           </div></NavLink>
           <LogoutButton />
         </div>

@@ -489,7 +489,7 @@ nav {
 
 .profile-card {
     width: 58rem !important;
-    height: 87rem !important;
+    height: 100rem !important;
     background-color: white;
     padding-left: 1.5rem;
     padding-top: 1.5rem;
@@ -500,14 +500,55 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
+.tagz-summary {
+    margin-top: 1.5rem;
+    font-size: 22px !important;
+    font-weight: 600;
+    margin-left: 12.5rem !important;
+    padding-bottom: .8rem;
+}
+
+.tagz-card {
+    width: 45rem !important;
+    height: 10rem !important;
+    background-color: white;
+    margin-top: 3rem;
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-left: 5rem !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.top-tags-section {
+    display: flex; 
+    flex-wrap: wrap; 
+    margin-left: 5.25rem !important;
+}
+  
+.top-tag {
+    margin-right: 60px; /* spacing between tags */
+}
+  
+.diarytag-img {
+    width: 60px; 
+}
+  
+.tagspan {
+    margin-left: 2px; 
+}
+
+.top-tags-section {
+    margin-left: 3rem;
+}
+
 .diary-ent-card {
-    width: 20rem !important;
+    width: 22rem !important;
     height: 8rem !important;
     background-color: white;
     margin-top: 3rem;
     border-radius: 20px;
     border: 1px solid black;
-    margin-left: 17.5rem !important;
+    margin-left: 16.5rem !important;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
