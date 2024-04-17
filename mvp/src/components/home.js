@@ -15,7 +15,6 @@ function Home() {
   useEffect(() => {
     const auth = getAuth();
     const db = getDatabase();
-
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
@@ -25,7 +24,6 @@ function Home() {
         setBackgroundImage('basicbg.png');
       }
     });
-
     return () => unsubscribeAuth();
   }, []);
 
@@ -44,12 +42,11 @@ function Home() {
             }
         });
     }
-}, []);
+  }, []);
 
   const fetchBackgroundImage = (userId) => {
     const db = getDatabase();
     const userRef = ref(db, `users/${userId}/backgroundImage`);
-
     get(userRef)
       .then((snapshot) => {
         const savedBackground = snapshot.val();
@@ -57,9 +54,7 @@ function Home() {
           setBackgroundImage(savedBackground);
         }
       })
-      .catch((error) => {
-        console.error("Error fetching background image:", error);
-      });
+      .catch(() => {});
   };
 
   const changeBackground = (newBackground) => {
@@ -69,9 +64,9 @@ function Home() {
       const db = getDatabase();
       const userRef = ref(db, `users/${currentUser.uid}/backgroundImage`);
       set(userRef, newBackground)
-        .catch((error) => console.error("Error updating background image:", error));
+        .catch(() => {});
     }
-  };
+  };  
 
   const toggleModal = () => {
     setShowModal(!showModal); 
@@ -79,7 +74,7 @@ function Home() {
 
   const backgrounds = [
     { name: 'Starter Background', url: 'basicbg.png' },
-        // attribution: vector by drogatnev from depositphotos
+        // attribution: free with premium trial, no attr required
     { name: 'Red Orchard', url: 'bg2.png' },
         // attribution: <a href="https://www.vecteezy.com/free-vector/house-street">House Street Vectors by Vecteezy</a>
     { name: 'Fireside Evening', url: 'bg11.png' },
