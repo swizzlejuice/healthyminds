@@ -615,13 +615,6 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.dog {
-    display: flex;
-    margin-left: 37rem;
-    width: 15rem;
-    margin-top: 16.5rem;
-}
-
 .store-page {
     background-color: #EDEAFF;
     height: 100vh;
@@ -702,7 +695,7 @@ nav {
 }
 
 .pet-images {
-  width: 180px;
+  height: 160px !important;
 }
 
 .place-image {
@@ -872,10 +865,19 @@ nav {
 }
 
 .dog-view {
-    width: 125px;
+    max-width: 140px;
+    max-height: 140px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.dog {
+    max-width: 11rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 17.5rem;
 }
 
 .closet-title {

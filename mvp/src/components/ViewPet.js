@@ -8,8 +8,7 @@ export default function ViewPet() {
   const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
   const [displayPetName, setPetName] = useState('Enter Name');
   const [progress, setProgress] = useState(25); 
-  const [currentPetImage, setCurrentPetImage] = useState('hiro.png'); // default image URL
-
+  const [currentPetImage, setCurrentPetImage] = useState('dog1.png'); 
 
   const handleChangePetName = (newPetName) => {
     if (newPetName) { 
@@ -67,8 +66,6 @@ export default function ViewPet() {
     }
 }, []);
 
-  
-
   useEffect(() => {
     const auth = getAuth();
     const db = getDatabase();
@@ -119,7 +116,6 @@ return (
             </div>
           <div>
           <img className='dog-view' src={currentPetImage} alt="picture of a pet"/>
-
           </div>
 
           <div className="pet-health"> 

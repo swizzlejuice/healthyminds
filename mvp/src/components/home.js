@@ -10,8 +10,7 @@ function Home() {
   const [currentUser, setCurrentUser] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
   const [showModal, setShowModal] = useState(false); 
-  const [currentPetImage, setCurrentPetImage] = useState('hiro.png');
-
+  const [currentPetImage, setCurrentPetImage] = useState('dog1.png');
 
   useEffect(() => {
     const auth = getAuth();
@@ -46,7 +45,6 @@ function Home() {
         });
     }
 }, []);
-
 
   const fetchBackgroundImage = (userId) => {
     const db = getDatabase();

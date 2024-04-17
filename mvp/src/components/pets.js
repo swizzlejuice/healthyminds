@@ -5,16 +5,16 @@ import PetBox from './petBox';
 
 function Pets() {
     const items = [
-        { imgSrc: "hiro2.png", price: 1, itemName: "hiro2" },
-        { imgSrc: "cashmere.png", price: 2, itemName: "cashmere" },
-        { imgSrc: "toto.png", price: 1, itemName: "toto" },
-        { imgSrc: "ayumi.png", price: 200, itemName: "ayumi" },
-        { imgSrc: "simba.png", price: 200, itemName: "simba" },
-        { imgSrc: "cat1.png", price: 200, itemName: "cat1" },
-        { imgSrc: "cat2.png", price: 200, itemName: "cat2" },
-        { imgSrc: "cat3.png", price: 200, itemName: "cat3" },
-        { imgSrc: "cat4.png", price: 200, itemName: "cat4" },
-        { imgSrc: "cat5.png", price: 200, itemName: "cat5" },
+        { imgSrc: "dog1.png", price: 1, itemName: "hiro2" },
+        { imgSrc: "dog2.png", price: 2, itemName: "cashmere" },
+        { imgSrc: "dog3.png", price: 1, itemName: "toto" },
+        { imgSrc: "dog4.png", price: 1, itemName: "ayumi" },
+        { imgSrc: "dog5.png", price: 1, itemName: "simba" },
+        { imgSrc: "cat1.png", price: 1, itemName: "cat1" },
+        { imgSrc: "cat2.png", price: 1, itemName: "cat2" },
+        { imgSrc: "cat3.png", price: 2, itemName: "cat3" },
+        { imgSrc: "cat4.png", price: 2, itemName: "cat4" },
+        { imgSrc: "cat5.png", price: 2, itemName: "cat5" },
     ];
 
     const firstHalf = items.slice(0, Math.ceil(items.length / 2));
