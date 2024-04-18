@@ -143,7 +143,7 @@ nav {
     transition: opacity 0.3s ease;
 }
   
-  .modal.show {
+.modal.show {
     opacity: 1;
 }
 
@@ -539,6 +539,33 @@ nav {
 
 .top-tags-section {
     margin-left: 3rem;
+}
+
+.clear-btn {
+    padding: .2rem;
+    width: 6rem;
+    border-radius: 12px;
+    border: none;
+    color: black !important;
+    background-color: #EDEAFF !important;
+    border: 1px solid black !important;
+    margin-bottom: 1.5rem;
+}
+
+.filterby {
+    margin-right: .5rem;
+    margin-left: 11rem;
+}
+
+.filterer {
+    padding: .2rem;
+    margin-right: .5rem;
+    width: 10rem;
+    border-radius: 12px;
+    border: none;
+    color: black !important;
+    background-color: white !important;
+    border: 1px solid black !important;
 }
 
 .diary-ent-card {
