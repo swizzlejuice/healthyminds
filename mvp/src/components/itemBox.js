@@ -37,12 +37,11 @@ function ItemBox({ imgSrc, itemName, price }) {
     const handleClick = (itemPrice, itemName, imgSrc) => () => {
         if (currentUser) {
             if (isPurchased) {
-                navigate('/myCloset'); 
+                navigate('/mycloset'); 
             } else {
                 const db = getDatabase();
                 const userId = currentUser.uid;
                 const userRef = ref(db, `users/${userId}`);
-    
 
                 get(userRef).then((snapshot) => {
                     const userData = snapshot.val();
