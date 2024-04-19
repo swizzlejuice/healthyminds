@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { getDatabase, ref, onValue, set } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
+import { usePetImage } from './PetImageContext';
 
 export default function ViewPet() {
   const location = useLocation();
   const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
   const [displayPetName, setDisplayPetName] = useState('Enter Name');
   const [progress, setProgress] = useState(25);
-  const [currentPetImage, setCurrentPetImage] = useState('dog1.png');
+  const { currentPetImage, updatePetImage } = usePetImage();
   const [petData, setPetData] = useState(null);
-  const [petRef, setPetRef] = useState(null);
 
   useEffect(() => {
     const auth = getAuth();
@@ -21,25 +21,25 @@ export default function ViewPet() {
       const petRef = ref(db, refPath);
 
       const fetchData = (snapshot) => {
-        const petData = snapshot.val();
-        if (petData && petData.displayPetName) {
-          setPetData(petData);
-          setDisplayPetName(petData.displayPetName);
-          setProgress(petData.progress || 25);
-          if (petData.currentPetImage) {
-            setCurrentPetImage(petData.currentPetImage);
-          }
+        const data = snapshot.val();
+        if (data && data.displayPetName) {
+          setPetData(data);
+          setDisplayPetName(data.displayPetName);
+          setProgress(data.progress || 25);
         }
       };
-      setPetRef(petRef);
       const unsubscribe = onValue(petRef, fetchData);
-      return () => {
-        if (unsubscribe) {
-          unsubscribe();
-        }
-      };
+      return () => unsubscribe?.();
     }
   }, []);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const currentPetImageParam = queryParams.get('currentPetImage');
+    if (currentPetImageParam) {
+      updatePetImage(currentPetImageParam);
+    }
+  }, [location.search, updatePetImage]);
 
   const handleChangePetName = (newPetName) => {
     if (newPetName) {
@@ -50,50 +50,15 @@ export default function ViewPet() {
       const petRef = ref(db, `users/${petId}/petData`);
       set(petRef, { ...petData, displayPetName: newPetName })
         .then(() => {})
-        .catch(() => {});
+        .catch((error) => console.error("Error updating pet name: ", error));
     }
-  };  
-
-  useEffect(() => {
-    const auth = getAuth();
-    const db = getDatabase();
-  
-    if (auth.currentUser) {
-        const userId = auth.currentUser.uid;
-        const petRef = ref(db, `users/${userId}/currentPet`);
-        onValue(petRef, (snapshot) => {
-            const currentPet = snapshot.val();
-            if (currentPet) {
-                setCurrentPetImage(currentPet);
-            }
-        });
-    }
-}, []);
-
-  useEffect(() => {
-    const auth = getAuth();
-    const db = getDatabase();
-    if (auth.currentUser) {
-        const userId = auth.currentUser.uid;
-        const petRef = ref(db, `users/${userId}/petData`);
-        onValue(petRef, (snapshot) => {
-            const petData = snapshot.val();
-            if (petData) {
-                if (petData.lastProgressUpdate === new Date().toLocaleDateString()) {
-                    setProgress(petData.progress);
-                } else {
-                    setProgress(25); // Reset if it's a new day
-                }
-            }
-        });
-    }
-}, []);
+  };
 
   const resetProgress = (lastUpdate) => {
     const today = new Date().toLocaleDateString();
     if (lastUpdate !== today) {
       setProgress(25); // Reset progress to 25% for a new day
-      updateProgressInDB(25, today); 
+      updateProgressInDB(25, today);
     }
   };
 
@@ -101,11 +66,12 @@ export default function ViewPet() {
     const auth = getAuth();
     const db = getDatabase();
     const petId = auth.currentUser.uid;
-    const petRef = ref(db, `${petId}/petData`);
+    const petRef = ref(db, `users/${petId}/petData`);
     set(petRef, { progress: newProgress, lastProgressUpdate: date });
   };
 
-const healthMessage = progress === 100 ? "Your pet is healthy! Check in again tomorrow :)" : "Complete more activities to increase their health!";
+  const healthMessage = progress === 100 ? "Your pet is healthy! Check in again tomorrow :)" : "Complete more activities to increase their health!";
+
 
 return (
   <div className="homepage" style={{ backgroundImage: `url(${backgroundImage})` }}>

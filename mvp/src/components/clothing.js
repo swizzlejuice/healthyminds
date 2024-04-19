@@ -4,7 +4,7 @@ import ItemBox from './itemBox';
 
 function StorePage() {
     const items = [
-        { imgSrc: "basictee.png", itemName: "Basic Tee", price: 2 },
+        { imgSrc: "basictee.png", itemimage: "basictee", itemName: "Basic Tee", price: 2 },
         { imgSrc: "orangepolo.png", itemName: "Orange Polo", price: 1 },
         { imgSrc: "onsie.png", itemName: "The Onesie", price: 1 },
         { imgSrc: "lavenderwrap.png", itemName: "Lavender Wrap", price: 1 },

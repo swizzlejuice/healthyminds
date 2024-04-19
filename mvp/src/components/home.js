@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getDatabase, ref, onValue, set, get } from 'firebase/database';
-import { NavLink } from 'react-router-dom';
+import { getDatabase, ref, onValue, get, set } from 'firebase/database';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
+import { usePetImage } from './PetImageContext';
 
 function Home({ updateBackgroundImage }) {
+  let navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
   const [showModal, setShowModal] = useState(false);
-  const [currentPetImage, setCurrentPetImage] = useState('dog1.png');
+  const { currentPetImage } = usePetImage(); // using context to manage pet image
 
   useEffect(() => {
     const auth = getAuth();
@@ -25,35 +27,16 @@ function Home({ updateBackgroundImage }) {
     return () => unsubscribeAuth();
   }, []);
 
-  useEffect(() => {
-    const auth = getAuth();
-    const db = getDatabase();
-
-    if (auth.currentUser) {
-      const userId = auth.currentUser.uid;
-      const petRef = ref(db, `users/${userId}/currentPet`);
-
-      onValue(petRef, (snapshot) => {
-        const currentPet = snapshot.val();
-        if (currentPet) {
-          setCurrentPetImage(currentPet);
-        }
-      });
-    }
-  }, []);
-
   const fetchBackgroundImage = (userId) => {
     const db = getDatabase();
     const userRef = ref(db, `users/${userId}/backgroundImage`);
-    get(userRef)
-      .then((snapshot) => {
-        const savedBackground = snapshot.val();
-        if (savedBackground) {
-          setBackgroundImage(savedBackground);
-          updateBackgroundImage(savedBackground); 
-        }
-      })
-      .catch(() => {});
+    get(userRef).then((snapshot) => {
+      const savedBackground = snapshot.val();
+      if (savedBackground) {
+        setBackgroundImage(savedBackground);
+        updateBackgroundImage(savedBackground);
+      }
+    }).catch(() => {});
   };
 
   const changeBackground = (newBackground) => {
@@ -65,6 +48,7 @@ function Home({ updateBackgroundImage }) {
       set(userRef, newBackground).catch(() => {});
     }
   };
+
 
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -106,13 +90,11 @@ function Home({ updateBackgroundImage }) {
           </button>
         ))}
       </div>
-      <button className="outfit-buttons" onClick={toggleModal}>
-        Change Pet Outfit
-      </button>
+      <button className='outfit-buttons' onClick={() => navigate('/mycloset')}>Change Pet Outfit</button>
       <NavLink to={{ pathname: '/viewpet', search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
         <img className="dog" src={currentPetImage} alt="picture of dog"></img>
       </NavLink>
-
+      
       <Modal show={showModal} onHide={toggleModal}>
         <Modal.Header closeButton>
           <Modal.Title>Change Pet Outfit</Modal.Title>
@@ -125,4 +107,39 @@ function Home({ updateBackgroundImage }) {
   );
 }
 
-export default Home;
+/*return (
+  <div
+    className="homepage"
+    style={{
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: 'cover',
+      height: '80vh',
+      marginTop: '.4rem',
+      borderRadius: '22px',
+      marginBottom: '0rem',
+    }}
+  >
+    <div className="bg-btns">
+      {backgrounds.map((bg, index) => (
+        <button className="bg-buttons" key={index} onClick={() => changeBackground(bg.url)}>
+          {bg.name}
+        </button>
+      ))}
+    </div>
+    <button className='outfit-buttons' onClick={() => navigate('/mycloset')}>Change Pet Outfit</button>
+    <img className="dog" src={currentPetImage} alt="picture of dog"></img>
+    <MyCloset updatePetImage={updatePetImage} />
+
+    <Modal show={showModal} onHide={toggleModal}>
+      <Modal.Header closeButton>
+        <Modal.Title>Change Pet Outfit</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>Feature not enabled yet, coming soon!</p>
+      </Modal.Body>
+    </Modal>
+  </div>
+);
+} */
+
+export default Home; 
