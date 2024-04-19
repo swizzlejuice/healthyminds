@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, onValue, set, get } from 'firebase/database';
 import { NavLink } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function Home() {
+function Home({ updateBackgroundImage }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
-  const [showModal, setShowModal] = useState(false); 
+  const [showModal, setShowModal] = useState(false);
   const [currentPetImage, setCurrentPetImage] = useState('dog1.png');
 
   useEffect(() => {
@@ -29,17 +28,17 @@ function Home() {
   useEffect(() => {
     const auth = getAuth();
     const db = getDatabase();
-  
+
     if (auth.currentUser) {
-        const userId = auth.currentUser.uid;
-        const petRef = ref(db, `users/${userId}/currentPet`);
-  
-        onValue(petRef, (snapshot) => {
-            const currentPet = snapshot.val();
-            if (currentPet) {
-                setCurrentPetImage(currentPet);
-            }
-        });
+      const userId = auth.currentUser.uid;
+      const petRef = ref(db, `users/${userId}/currentPet`);
+
+      onValue(petRef, (snapshot) => {
+        const currentPet = snapshot.val();
+        if (currentPet) {
+          setCurrentPetImage(currentPet);
+        }
+      });
     }
   }, []);
 
@@ -51,6 +50,7 @@ function Home() {
         const savedBackground = snapshot.val();
         if (savedBackground) {
           setBackgroundImage(savedBackground);
+          updateBackgroundImage(savedBackground); 
         }
       })
       .catch(() => {});
@@ -62,49 +62,63 @@ function Home() {
     if (currentUser) {
       const db = getDatabase();
       const userRef = ref(db, `users/${currentUser.uid}/backgroundImage`);
-      set(userRef, newBackground)
-        .catch(() => {});
+      set(userRef, newBackground).catch(() => {});
     }
-  };  
+  };
 
   const toggleModal = () => {
-    setShowModal(!showModal); 
+    setShowModal(!showModal);
   };
 
   const backgrounds = [
     { name: 'Starter Background', url: 'basicbg.png' },
-        // attribution: free with premium trial, no attr required
+    // attribution: free with premium trial, no attr required
     { name: 'Red Orchard', url: 'bg2.png' },
-        // attribution: <a href="https://www.vecteezy.com/free-vector/house-street">House Street Vectors by Vecteezy</a>
+    // attribution: <a href="https://www.vecteezy.com/free-vector/house-street">House Street Vectors by Vecteezy</a>
     { name: 'Fireside Evening', url: 'bg11.png' },
-        // free vector with premium trial, no attribution required
+    // free vector with premium trial, no attribution required
     { name: 'The Neighborhood', url: 'bg9.png' },
-        // attribution: <a href="https://www.freepik.com/free-vector/scene-with-house-garden_25539962.htm">Image by brgfx</a> on Freepik
+    // attribution: <a href="https://www.freepik.com/free-vector/scene-with-house-garden_25539962.htm">Image by brgfx</a> on Freepik
     { name: 'Cabin at Sundown', url: 'bg6.png' },
-        // attribution: <a href="https://www.vecteezy.com/free-vector/wooden-house">Wooden House Vectors by Vecteezy</a>
+    // attribution: <a href="https://www.vecteezy.com/free-vector/wooden-house">Wooden House Vectors by Vecteezy</a>
     { name: 'Roadside Gazebo', url: 'bg8.png' },
-        // attribution: <a href="https://www.freepik.com/free-vector/outdoor-scene-with-doodle-house-cartoon_25679522.htm">Image by brgfx</a> on Freepik
+    // attribution: <a href="https://www.freepik.com/free-vector/outdoor-scene-with-doodle-house-cartoon_25679522.htm">Image by brgfx</a> on Freepik
     { name: 'Day at the Park', url: 'bg3.png' },
-        // attribution: <a href="https://www.vecteezy.com/vector-art/24592378-playground-park-in-kindergarten-cartoon-landscape">Vectors by Vecteezy</a>
+    // attribution: <a href="https://www.vecteezy.com/vector-art/24592378-playground-park-in-kindergarten-cartoon-landscape">Vectors by Vecteezy</a>
   ];
 
   return (
-    <div className="homepage" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', height: '80vh', marginTop: '.4rem', borderRadius: '22px', marginBottom: '0rem' }}>
+    <div
+      className="homepage"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        height: '80vh',
+        marginTop: '.4rem',
+        borderRadius: '22px',
+        marginBottom: '0rem',
+      }}
+    >
       <div className="bg-btns">
         {backgrounds.map((bg, index) => (
-          <button className="bg-buttons" key={index} onClick={() => changeBackground(bg.url)}>{bg.name}</button>
+          <button className="bg-buttons" key={index} onClick={() => changeBackground(bg.url)}>
+            {bg.name}
+          </button>
         ))}
       </div>
-      <button className="outfit-buttons" onClick={toggleModal}>Change Pet Outfit</button>
-      <NavLink to={{ pathname: "/viewpet", search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}><img className ="dog" src={currentPetImage} alt="picture of dog"></img></NavLink>
+      <button className="outfit-buttons" onClick={toggleModal}>
+        Change Pet Outfit
+      </button>
+      <NavLink to={{ pathname: '/viewpet', search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
+        <img className="dog" src={currentPetImage} alt="picture of dog"></img>
+      </NavLink>
 
       <Modal show={showModal} onHide={toggleModal}>
         <Modal.Header closeButton>
           <Modal.Title>Change Pet Outfit</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Feature not enabled yet, coming soon!
-          </p>
+          <p>Feature not enabled yet, coming soon!</p>
         </Modal.Body>
       </Modal>
     </div>

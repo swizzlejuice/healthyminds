@@ -128,7 +128,7 @@ return (
           <p className='health-msg'> {healthMessage} </p>
           <div className='closet-places-btns'>
             <div className='closet-div'>
-              <NavLink to="/myCloset" style={{ textDecoration: 'none'}}><div className="place-closet"> <img className="closet-btn-image" src="Boy_Shirt.png" alt="picture of a shirt icon"></img>
+              <NavLink to={{ pathname: "/mycloset", search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}><div className="place-closet"> <img className="closet-btn-image" src="Boy_Shirt.png" alt="picture of a shirt icon"></img>
                 <p className="closet-places-text">My Closet</p>
               </div></NavLink>
             </div>

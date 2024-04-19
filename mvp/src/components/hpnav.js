@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { getDatabase, ref, onValue, update } from 'firebase/database';
+import { NavLink, useLocation } from 'react-router-dom';
+import { getDatabase, ref, onValue } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 
-export function HappyPawsNav({ updateStreak }) {
+export function HappyPawsNav({ updateStreak, backgroundImage}) {
   const [avatar, setAvatar] = useState('profileimage.png');
   const [coinCount, setCoinCount] = useState(0);
   const [streakCount, setStreakCount] = useState(0); 

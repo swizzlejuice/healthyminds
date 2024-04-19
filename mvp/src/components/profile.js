@@ -303,7 +303,7 @@ function Profile() {
           </div></div>
 
           <div className="tagz-card">
-            <h2 className="tagz-summary">Frequently Recorded Diary Tags</h2>
+            <h2 className="tagz-summary">Most Recorded Diary Tags</h2>
             <div className="top-tags-section">
               {topTags.map((tag, index) => (
                 <div key={index} className="top-tag">

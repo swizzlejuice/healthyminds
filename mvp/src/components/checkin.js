@@ -4,7 +4,7 @@ import { getDatabase, ref, push, update, get } from 'firebase/database';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
-function CheckIn({ updateStreak }) {
+function CheckIn({ updateStreak, backgroundImage}) {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
   const [coinCount, setCoinCount] = useState(0);
@@ -122,7 +122,7 @@ function CheckIn({ updateStreak }) {
   };
 
   return (
-    <div className="checkin-body">
+    <div className="checkin-body" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="flex-container-profile">
         <div className="checkin-card">
           <NavLink to="/home"><img className="x-btn" src="x.png" alt="close button"></img></NavLink>
