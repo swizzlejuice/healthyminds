@@ -543,13 +543,13 @@ nav {
 
 .clear-btn {
     padding: .2rem;
-    width: 6rem;
+    width: 4.5rem;
     border-radius: 12px;
     border: none;
     color: black !important;
     background-color: #EDEAFF !important;
     border: 1px solid black !important;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .filterby {
@@ -566,6 +566,12 @@ nav {
     color: black !important;
     background-color: white !important;
     border: 1px solid black !important;
+}
+
+.total-entries-p {
+    margin-top: -3.8rem;
+    margin-left: 35rem;
+    margin-bottom: 1.5rem;
 }
 
 .diary-ent-card {

@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 function DiaryPage() {
   const [diaryEntries, setDiaryEntries] = useState([]);
   const [selectedDate, setSelectedDate] = useState('');
+  const [totalEntries, setTotalEntries] = useState(0); // my total entries count
 
   useEffect(() => {
     const auth = getAuth();
@@ -14,14 +15,17 @@ function DiaryPage() {
     if (auth.currentUser) {
       const userId = auth.currentUser.uid;
       const diaryEntriesRef = ref(db, `users/${userId}/diaryEntries`);
+
       onValue(diaryEntriesRef, (snapshot) => {
         const data = snapshot.val();
         if (data) {
           const entries = Object.values(data);
           entries.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
           setDiaryEntries(entries);
+          setTotalEntries(entries.length);
         } else {
           setDiaryEntries([]);
+          setTotalEntries(0);
         }
       });
     }
@@ -127,6 +131,7 @@ function DiaryPage() {
                   onChange={handleDateChange}
                 />
                 <button className="clear-btn" onClick={clearFilter}>Clear</button>
+                <p className="total-entries-p">Total Entries Made: {totalEntries}</p>
                 {filteredEntries.map((entry, index) => (
                 <div key={index} className="each-entry">
                     <p className="diaryentrydate">Date of Entry: {formatDate(entry.timestamp)}</p>
