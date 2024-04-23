@@ -13,7 +13,7 @@ function Help() {
         <Accordion.Header>How to use happy paws</Accordion.Header>
         <Accordion.Body>
         <iframe src="https://scribehow.com/embed/How_to_use_happy_paws__QB-sXZv9RA6pyOLsyGvbhA" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
-        <br></br>Link:
+        <br></br>
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item eventKey="1">
