@@ -6,6 +6,7 @@ import { usePetImage } from './PetImageContext';
 
 export default function MyCloset() {
   const [items, setItems] = useState({});
+  const [selectedOutfit, setSelectedOutfit] = useState('');  // Store the selected outfit name as a string
   const location = useLocation();
   const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
 
@@ -38,10 +39,13 @@ export default function MyCloset() {
     });
   }, []);
 
-  const handleItemClick = (itemName) => {
-    const formattedItemName = itemName.replace(/\s+/g, '').toLowerCase(); // Remove spaces and convert to lower case
+  const handleItemClick = (item) => {
+    console.log("Item clicked:", item.itemName); // Debug output
+    const formattedItemName = item.itemName.replace(/\s+/g, '').toLowerCase(); // Remove spaces and convert to lower case
     const newPetImage = `${basePetName}${formattedItemName}.png`;
     updatePetImage(newPetImage);
+    setSelectedOutfit(item.itemName);  
+    console.log("Selected outfit set to:", item.itemName); // Check what is being set
   };
 
   return (
@@ -52,8 +56,8 @@ export default function MyCloset() {
             <p className="closet-title">My Closet</p>
             <div className='clothing-list'>
               {Object.values(items).map((item) => (
-                <div key={item.itemName} className="clothing-item" onClick={() => handleItemClick(item.itemName)}>
-                  <img className="img-closet" src={item.imgSrc} alt={item.itemName} />
+                <div key={item.itemName} className={`clothing-item ${selectedOutfit === item.itemName ? 'closet-selected' : ''}`} onClick={() => handleItemClick(item)}>
+                <img className="img-closet" src={item.imgSrc} alt={item.itemName} />
                   <p className="p-closet">{item.itemName}</p>
                 </div>
               ))}
@@ -65,7 +69,4 @@ export default function MyCloset() {
     </div>
   );
 }
-
-
-
 

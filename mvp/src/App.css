@@ -976,6 +976,22 @@ nav {
     width: 35px;
 }
 
+.clothing-item:hover {
+    box-shadow: 0 0 8px black; /* Example hover effect */
+}
+
+.clothing-item {
+    cursor: grab; /* Change the cursor to indicate it's clickable */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    border: 2px solid transparent; /* Default border to ensure layout doesn't shift on selection */
+}
+
+.closet-selected {
+    border: 3px solid black !important; /* More prominent border */
+}
+
+
+
 .places-btn-image {
     width: 35px;
     margin-top: 9.5px;
