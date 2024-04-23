@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { getDatabase, ref, onValue, set } from 'firebase/database';
+import { getDatabase, ref, onValue, set, get } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
 import { usePetImage } from './PetImageContext';
 
@@ -12,9 +12,10 @@ export default function ViewPet() {
   const { currentPetImage, updatePetImage } = usePetImage();
   const [petData, setPetData] = useState(null);
 
+  const auth = getAuth();
+  const db = getDatabase();
+
   useEffect(() => {
-    const auth = getAuth();
-    const db = getDatabase();
     if (auth.currentUser) {
       const userId = auth.currentUser.uid;
       const refPath = `users/${userId}/petData`;
@@ -34,12 +35,18 @@ export default function ViewPet() {
   }, []);
 
   useEffect(() => {
-    const queryParams = new URLSearchParams(location.search);
-    const currentPetImageParam = queryParams.get('currentPetImage');
-    if (currentPetImageParam) {
-      updatePetImage(currentPetImageParam);
+    if (auth.currentUser) {
+        const userId = auth.currentUser.uid;
+        const db = getDatabase();
+        const userRef = ref(db, `users/${userId}/currentPet`);
+        get(userRef).then((snapshot) => {
+            if (snapshot.exists()) {
+                updatePetImage(snapshot.val());
+            }
+        });
     }
-  }, [location.search, updatePetImage]);
+}, [auth.currentUser, db, updatePetImage]);
+
 
   const handleChangePetName = (newPetName) => {
     if (newPetName) {

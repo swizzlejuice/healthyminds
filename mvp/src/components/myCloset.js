@@ -9,8 +9,8 @@ export default function MyCloset() {
   const location = useLocation();
   const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
 
-  const { currentPetImage, updatePetImage } = usePetImage();
-  const [basePetName, setBasePetName] = useState(''); 
+  const { updatePetImage } = usePetImage();
+  const [basePetName, setBasePetName] = useState('');
 
   useEffect(() => {
     const auth = getAuth();
@@ -18,27 +18,20 @@ export default function MyCloset() {
       if (user) {
         const db = getDatabase();
         const itemsRef = ref(db, `users/${user.uid}/purchasedItems`);
-        get(itemsRef).then((snapshot) => {
+        get(itemsRef).then(snapshot => {
           if (snapshot.exists()) {
-            console.log("Items loaded:", snapshot.val());
             setItems(snapshot.val());
           }
         });
-      }
-    });
-  }, []);
 
-  useEffect(() => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const db = getDatabase();
         const userRef = ref(db, `users/${user.uid}/currentPet`);
-        get(userRef).then((snapshot) => {
+        get(userRef).then(snapshot => {
           if (snapshot.exists()) {
             const fullPetName = snapshot.val(); // e.g., "dog1.png"
-            const petName = fullPetName.replace(/\..*$/, ''); // Remove file extension
-            setBasePetName(petName); // Set base pet name with numbers
+            const match = fullPetName.match(/^([a-zA-Z]+\d+)/); // Regex to extract the base pet name with numbers
+            if (match) {
+              setBasePetName(match[1]); // Sets something like 'dog1', 'cat3'
+            }
           }
         });
       }
@@ -47,11 +40,9 @@ export default function MyCloset() {
 
   const handleItemClick = (itemName) => {
     const formattedItemName = itemName.replace(/\s+/g, '').toLowerCase(); // Remove spaces and convert to lower case
-    const imageFileName = `${basePetName}${formattedItemName}.png`;
-    updatePetImage(imageFileName);
+    const newPetImage = `${basePetName}${formattedItemName}.png`;
+    updatePetImage(newPetImage);
   };
-
-
 
   return (
     <div className="checkin-body" style={{ backgroundImage: `url(${backgroundImage})` }}>
@@ -74,5 +65,7 @@ export default function MyCloset() {
     </div>
   );
 }
+
+
 
 
