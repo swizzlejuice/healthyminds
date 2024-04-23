@@ -10,7 +10,7 @@ function Help() {
       <h2 className="about-help">About & Help</h2>
       <Accordion className="accordion">
       <Accordion.Item eventKey="0">
-        <Accordion.Header>How to use happy paws</Accordion.Header>
+        <Accordion.Header>How to use happy paws Tutorial</Accordion.Header>
         <Accordion.Body>
         <iframe src="https://scribehow.com/embed/How_to_use_happy_paws__QB-sXZv9RA6pyOLsyGvbhA" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
         <br></br>
