@@ -269,14 +269,14 @@ nav {
 }
 
 .help-home {
-    width: 5rem;
+    width: 4rem;
     position: fixed;
     bottom: 80px;
     right: 20px;
 }
 
 .help-home:hover {
-    width: 5.5rem;
+    width: 5rem;
 }
 
 .help-icon:hover {
