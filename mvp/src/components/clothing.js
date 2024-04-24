@@ -22,13 +22,11 @@ function StorePage() {
             <div className="container">
                 <StoreNavigator />
                 <div className="row mt-4 justify-content-center">
-                    {/* First Row */}
                     {firstHalf.map(item => (
                         <ItemBox key={item.itemName} imgSrc={item.imgSrc} itemName={item.itemName} price={item.price} />
                     ))}
                 </div>
                 <div className="row mt-4 justify-content-center">
-                    {/* Second Row */}
                     {secondHalf.map(item => (
                         <ItemBox key={item.itemName} imgSrc={item.imgSrc} itemName={item.itemName} price={item.price} />
                     ))}

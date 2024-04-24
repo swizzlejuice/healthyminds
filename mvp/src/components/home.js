@@ -105,7 +105,6 @@ function Home({ updateBackgroundImage }) {
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
-        height: '80vh',
         marginTop: '.4rem',
         borderRadius: '22px',
         marginBottom: '0rem',
@@ -132,10 +131,14 @@ function Home({ updateBackgroundImage }) {
           </button>
         ))}
       </div>
-      <button className='outfit-buttons' onClick={() => navigate('/mycloset')}>Change Pet Outfit</button>
+      <NavLink to={{ pathname: '/mycloset', search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
+        <button className='outfit-buttons'>Change Pet Outfit</button>
+      </NavLink>
+      
       <NavLink to={{ pathname: '/viewpet', search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
         <img className="dog" src={currentPetImage} alt="picture of dog"></img>
       </NavLink>
+      <NavLink to="/help"><img className="help-home" src="helphome.png"/></NavLink>
     </div>
   );
 }

@@ -176,3 +176,36 @@ function DiaryTags() {
 }
 
 export default DiaryTags;
+
+
+// // Diary Tag Images Attributions: (downloaded from Flaticon)
+// <a href="https://www.flaticon.com/free-icons/baking" title="baking icons">Baking icons created by mynamepong - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/gamepad" title="gamepad icons">Gamepad icons created by Smashicons - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/briefcase" title="briefcase icons">Briefcase icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/textbook" title="textbook icons">Textbook icons created by Flat Icons - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/trip" title="trip icons">Trip icons created by Payungkead - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/beach" title="beach icons">Beach icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/windy" title="windy icons">Windy icons created by Vitaly Gorbachev - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/rain" title="rain icons">Rain icons created by kornkun - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/snowy" title="snowy icons">Snowy icons created by Superarticons - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/sun" title="sun icons">Sun icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/cloud" title="cloud icons">Cloud icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/dating-app" title="dating app icons">Dating app icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/phone" title="phone icons">Phone icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/friends" title="friends icons">Friends icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/congratulation" title="congratulation icons">Congratulation icons created by juicy_fish - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/friends" title="friends icons">Friends icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/family" title="family icons">Family icons created by iconixar - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/violin" title="violin icons">Violin icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/beauty" title="beauty icons">Beauty icons created by photo3idea_studio - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/cooking" title="cooking icons">Cooking icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/write" title="write icons">Write icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/tripod" title="tripod icons">Tripod icons created by DinosoftLabs - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/team-sport" title="team sport icons">Team sport icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/books" title="books icons">Books icons created by popo2021 - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/fitness" title="fitness icons">Fitness icons created by juicy_fish - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/tv-watching" title="tv watching icons">Tv watching icons created by iconixar - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/art" title="art icons">Art icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/gardening" title="gardening icons">Gardening icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/music" title="music icons">Music icons created by Freepik - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/food" title="food icons">Food icons created by Freepik - Flaticon</a>

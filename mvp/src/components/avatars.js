@@ -15,36 +15,42 @@ function AvatarSelection({ onSelectAvatar, handleClose, show }) {
               src="profileimage.png"
               alt="profile pic"
               onClick={() => onSelectAvatar("profileimage.png")}
+              // <a href="https://www.vecteezy.com/free-vector/avatar">Avatar Vectors by Vecteezy</a>
             />
             <img
               className="profile-pic"
               src="dogavatar.png"
               alt="profile pic"
               onClick={() => onSelectAvatar("dogavatar.png")}
+              // <a href="https://www.vecteezy.com/free-vector/avatar">Avatar Vectors by Vecteezy</a>
             />
             <img
               className="profile-pic"
               src="bearavatar.png"
               alt="profile pic"
               onClick={() => onSelectAvatar("bearavatar.png")}
+              // <a href="https://www.vecteezy.com/free-vector/avatar">Avatar Vectors by Vecteezy</a>
             />
             <img
               className="profile-pic"
               src="foxavatar.png"
               alt="profile pic"
               onClick={() => onSelectAvatar("foxavatar.png")}
+              // <a href="https://www.vecteezy.com/free-vector/avatar">Avatar Vectors by Vecteezy</a>
             />
             <img
               className="profile-pic"
               src="pigavatar.png"
               alt="profile pic"
               onClick={() => onSelectAvatar("pigavatar.png")}
+              // <a href="https://www.vecteezy.com/free-vector/avatar">Avatar Vectors by Vecteezy</a>
             />
             <img
               className="profile-pic"
               src="mouseavatar.png"
               alt="profile pic"
               onClick={() => onSelectAvatar("mouseavatar.png")}
+              // <a href="https://www.vecteezy.com/free-vector/avatar">Avatar Vectors by Vecteezy</a>
             />
           </div>
         </Modal.Body>

@@ -268,6 +268,17 @@ nav {
     margin-top: -7rem;
 }
 
+.help-home {
+    width: 5rem;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+}
+
+.help-home:hover {
+    width: 5.5rem;
+}
+
 .help-icon:hover {
     width: 3.5rem;
 }
@@ -944,11 +955,20 @@ nav {
 }
 
 .dog {
-    max-width: 11rem;
-    display: block;
+    max-width: 11rem; 
+    /* display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 17.5rem;
+    margin-top: 17.5rem; */ 
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 75px;
+    left: 45%;
+    right: 0;
+}
+.cow img {
+  align-self: flex-end;
 }
 
 .closet-title {
@@ -1303,5 +1323,18 @@ nav {
     .profile-card {
         width: 50rem;
         height: 40rem;
+    }
+}
+
+@media (min-width: 1600px) 
+{
+    .homepage, .checkin-body {
+        background-image: url('/public/basicbg.png') ;
+        background-size: cover;
+        height: 100vh;
+        margin-top: .4rem;
+        border-radius: 22px;
+        margin-bottom: 0rem;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 }
