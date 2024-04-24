@@ -11,7 +11,7 @@ function Home({ updateBackgroundImage }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
   const [showModal, setShowModal] = useState(false);
-  const { currentPetImage } = usePetImage();
+  const { currentPetImage } = usePetImage('dog1.png');
 
   useEffect(() => {
     const auth = getAuth();

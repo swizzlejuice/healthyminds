@@ -9,7 +9,7 @@ export default function ViewPet() {
   const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
   const [displayPetName, setDisplayPetName] = useState('Enter Name');
   const [progress, setProgress] = useState(25);
-  const { currentPetImage, updatePetImage } = usePetImage();
+  const { currentPetImage, updatePetImage } = usePetImage('dog1.png');
   const [petData, setPetData] = useState(null);
 
   const auth = getAuth();
