@@ -8,6 +8,7 @@ function DiaryModal( {backgroundImage} ) {
         <div className="checkin-card">
           <NavLink to="/home"><img className="x-btn" src="x.png" alt="close button"></img></NavLink>
           <img className="cheer" src="cheergif.gif" alt="giphy"></img>
+          {/* gif sourced from giphy */}
           <p className="checkin-state">You earned 5 coins for completing a diary entry!</p>
         </div>
       </div>

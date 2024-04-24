@@ -10,7 +10,9 @@ function Necessities() {
         { imgSrc: "dogbowl.png", itemName: "Dog Bowl", price: 35 },
         { imgSrc: "polkadot.png", itemName: "Polka Dot", price: 40 },
         { imgSrc: "dogball.png", itemName: "Dog Ball", price: 30 },
+        // inspo attribution: freepik, vector created in figma
         { imgSrc: "cattoy.png", itemName: "Cat Toy", price: 50 },
+        // inspo attribution: shutterstock, vector created in figma
         { imgSrc: "basicmouse.png", itemName: "Basic Mouse", price: 25 },
         { imgSrc: "ultimate.png", itemName: "Ultimate Mouse Toy", price: 60 },
     ];

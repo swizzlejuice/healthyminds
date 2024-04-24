@@ -129,6 +129,7 @@ function CheckIn({ updateStreak, backgroundImage}) {
           {hasCheckedInToday ? (
             <div>
               <img className="cheer-three" src="cheer3.gif" alt="giphy"></img>
+              {/* gif sourced from giphy */}
               <p className="checkedin-already">Already checked in today! (woop woop)</p>
             </div>
           ) : (

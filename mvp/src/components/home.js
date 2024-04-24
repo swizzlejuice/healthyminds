@@ -84,11 +84,9 @@ function Home({ updateBackgroundImage }) {
 
   const backgrounds = [
     { name: 'Starter Background', url: 'basicbg.png' },
-    // attribution: free with premium trial, no attr required
     { name: 'Red Orchard', url: 'bg2.png' },
     // attribution: <a href="https://www.vecteezy.com/free-vector/house-street">House Street Vectors by Vecteezy</a>
     { name: 'Fireside Evening', url: 'bg11.png' },
-    // free vector with premium trial, no attribution required
     { name: 'The Neighborhood', url: 'bg9.png' },
     // attribution: <a href="https://www.freepik.com/free-vector/scene-with-house-garden_25539962.htm">Image by brgfx</a> on Freepik
     { name: 'Cabin at Sundown', url: 'bg6.png' },
