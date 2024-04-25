@@ -88,28 +88,28 @@ function CheckIn({ updateStreak, backgroundImage}) {
     const progressRef = ref(db, `users/${userId}/petData`);
 
     get(progressRef).then((snapshot) => {
-        if (snapshot.exists()) {
-            const data = snapshot.val();
-            // Ensure we only increment today's progress
-            if (data.lastProgressUpdate === today) {
-                let currentProgress = data.progress || 25;
-                let newProgress = currentProgress + increment;
-                if (newProgress > 100) newProgress = 100;
-                update(ref(db, `users/${userId}/petData`), { progress: newProgress, lastProgressUpdate: today });
-            } else {
-                // Reset to 25% then add the increment if it's a new day
-                let newProgress = 25 + increment;
-                if (newProgress > 100) newProgress = 100;
-                update(ref(db, `users/${userId}/petData`), { progress: newProgress, lastProgressUpdate: today });
-            }
-        } else {
-            // Initialize if there's no data
-            let initialProgress = 25 + increment;
-            update(ref(db, `users/${userId}/petData`), { progress: initialProgress, lastProgressUpdate: today });
-        }
-    }).catch(error => {
-        console.error("Failed to update progress:", error);
-    });
+      if (snapshot.exists()) {
+          const data = snapshot.val();
+          console.log("Existing petData:", data); // Debugging log
+          let newProgress = data.progress || 25;
+          console.log(`Current progress: ${newProgress}, Increment: ${increment}, New progress: ${newProgress}`);
+
+          if (data.lastProgressUpdate === today) {
+              newProgress = Math.min(newProgress + increment, 100);
+          } else {
+              newProgress = Math.min(25 + increment, 100);  // Assumes reset to 25% if not today
+          }
+          update(ref(db, `users/${userId}/petData`), { progress: newProgress, lastProgressUpdate: today });
+      } else {
+          console.log("Initializing petData for the first time"); // Debugging log
+          // Initialize if there's no data
+          const initialProgress = Math.min(25 + increment, 100);
+          update(ref(db, `users/${userId}/petData`), { progress: initialProgress, lastProgressUpdate: today });
+      }
+  }).catch(error => {
+      console.error("Failed to update progress:", error);
+  });
+
 };
 
   const checkIfCheckedInToday = (timestamp) => {

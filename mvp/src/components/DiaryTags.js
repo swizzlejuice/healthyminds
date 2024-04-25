@@ -32,12 +32,18 @@ function DiaryTags() {
             };
     
             push(diaryEntriesRef, entryData).then(() => {
-                updateProgressBy(50, userId);
-                updateCoinCount(userId, 5);
+                console.log('Diary entry added successfully.');
+                updateProgressBy(50, userId);  
+                updateCoinCount(userId, 5);    
                 navigate('/diarymodal');
+            }).catch(error => {
+                console.error('Failed to add diary entry:', error);
             });
+        } else {
+            console.error('No authenticated user found.');
         }
-    };   
+    };
+      
     
     const updateProgressBy = (increment, userId) => {
         const db = getDatabase();
@@ -47,41 +53,68 @@ function DiaryTags() {
         get(progressRef).then((snapshot) => {
             if (snapshot.exists()) {
                 const data = snapshot.val();
-                // Ensure we only increment today's progress
-                if (data.lastProgressUpdate === today) {
-                    let currentProgress = data.progress || 25;
-                    let newProgress = currentProgress + increment;
-                    if (newProgress > 100) newProgress = 100;
-                    update(ref(db, `users/${userId}/petData`), { progress: newProgress, lastProgressUpdate: today });
-                } else {
-                    // Reset to 25% then add the increment if it's a new day
-                    let newProgress = 25 + increment;
-                    if (newProgress > 100) newProgress = 100;
-                    update(ref(db, `users/${userId}/petData`), { progress: newProgress, lastProgressUpdate: today });
-                }
+                let currentProgress = data.progress || 25;  // Ensure there's a fallback value
+                let newProgress = currentProgress + increment;
+    
+                if (newProgress > 100) newProgress = 100; // Ensure it does not exceed 100%
+    
+                console.log(`Current progress: ${currentProgress}, Increment: ${increment}, New progress: ${newProgress}`);
+    
+                update(ref(db, `users/${userId}/petData`), {
+                    progress: newProgress,
+                    lastProgressUpdate: today
+                }).then(() => {
+                    console.log('Progress updated successfully to:', newProgress);
+                }).catch(error => {
+                    console.error('Failed to update progress in database:', error);
+                });
             } else {
-                // Initialize if there's no data
-                let initialProgress = 25 + increment;
-                update(ref(db, `users/${userId}/petData`), { progress: initialProgress, lastProgressUpdate: today });
+                console.log('No existing petData, initializing...');
+                let initialProgress = Math.min(25 + increment, 100);
+                update(ref(db, `users/${userId}/petData`), {
+                    progress: initialProgress,
+                    lastProgressUpdate: today
+                }).then(() => {
+                    console.log('Pet data initialized and progress updated to:', initialProgress);
+                }).catch(error => {
+                    console.error('Failed to initialize pet data:', error);
+                });
             }
         }).catch(error => {
-            console.error("Failed to update progress:", error);
+            console.error("Failed to retrieve pet data:", error);
         });
     };
     
-    const updateCoinCount = (userId, coins) => {
+    
+    
+      
+    
+    const updateCoinCount = (userId, coinsToAdd) => {
         const db = getDatabase();
-        const userRef = ref(db, 'users/' + userId);
+        const userRef = ref(db, `users/${userId}`);
         get(userRef).then(snapshot => {
             const userData = snapshot.val();
-            if (userData && userData.coinCount !== undefined) {
-                const newCoinCount = userData.coinCount + coins;
-                const updates = {};
-                updates['coinCount'] = newCoinCount;
-                update(ref(db, 'users/' + userId), updates);
+            if (userData) {
+                const currentCoins = userData.coinCount || 0;
+                const newCoinCount = currentCoins + coinsToAdd;
+                update(ref(db, `users/${userId}`), { coinCount: newCoinCount }).then(() => {
+                    console.log(`Updated coin count to ${newCoinCount}`);
+                }).catch(error => {
+                    console.error('Failed to update coin count:', error);
+                });
+            } else {
+                console.log('No user data available, initializing coin count.');
+                update(ref(db, `users/${userId}`), { coinCount: coinsToAdd }).then(() => {
+                    console.log(`Initialized coin count to ${coinsToAdd}`);
+                }).catch(error => {
+                    console.error('Failed to initialize coin count:', error);
+                });
             }
+        }).catch(error => {
+            console.error('Failed to fetch user data:', error);
         });
     };
+    
     
     const items1 = [
         { imgSrc: "sunny.png", tag: "Sunny" },

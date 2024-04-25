@@ -18,8 +18,12 @@ export const PetImageProvider = ({ children }) => {
                 get(userRef).then((snapshot) => {
                     if (snapshot.exists()) {
                         setCurrentPetImage(snapshot.val());
+                    } else {
+                        setCurrentPetImage('dog1.png')
                     }
                 });
+            } else {
+                setCurrentPetImage('dog1.png')
             }
         });
     }, []);

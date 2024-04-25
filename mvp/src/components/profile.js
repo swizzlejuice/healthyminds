@@ -62,16 +62,20 @@ function Profile() {
       
       onValue(moodRef, (snapshot) => {
         const data = snapshot.val();
+        console.log("Fetched mood entries:", data);  // Add this line to check what you receive from Firebase
         if (data) {
           const entries = Object.values(data);
           setMoodEntries(entries);
           const overallCounts = countOverallMoodOccurrences(entries);
           setOverallMoodCounts(overallCounts);
         } else {
-          setMoodEntries([]);
+          setMoodEntries([]);  // Ensure this is an empty array if nothing is fetched
         }
       });
     }
+    
+
+
   }, []);
 
   useEffect(() => {
@@ -185,7 +189,7 @@ function Profile() {
     }
   }, []);
 
-  const calculateTagCounts = (entries) => {
+  /*const calculateTagCounts = (entries) => {
     const tagCounts = {};
     entries.forEach((entry) => {
       entry.tags.forEach((tag) => {
@@ -194,6 +198,23 @@ function Profile() {
     });
     return tagCounts;
   };
+
+  */
+
+  const calculateTagCounts = (entries) => {
+    const tagCounts = {};
+    if (Array.isArray(entries)) {
+      entries.forEach((entry) => {
+        if (entry.tags && Array.isArray(entry.tags)) {
+          entry.tags.forEach((tag) => {
+            tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+          });
+        }
+      });
+    }
+    return tagCounts;
+  };
+  
 
   const sortTagsByCount = (tagCounts) => {
     return Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]).map(tag => ({ tag, count: tagCounts[tag] }));
