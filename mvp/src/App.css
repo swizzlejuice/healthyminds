@@ -149,8 +149,8 @@ nav {
 
 /* LOGIN PAGE - CLARABELLE */
 .signin-card {
-    width: 16rem;
-    height: 26rem;
+    width: 25rem;
+    height: 26.5rem;
     padding: 2rem;
     border-radius: 16px;
     margin-left: auto;
@@ -162,7 +162,16 @@ nav {
 
 .signin-header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0rem;
+    font-weight: 300;
+    font-size: 1.25rem;
+}
+
+.signin-head {
+    text-align: center;
+    margin-bottom: 1.5rem !important;
+    font-weight: 500 !important;
+    font-size: 2.5rem;
 }
 
 .signin-field {
@@ -198,7 +207,7 @@ nav {
 }
 
 .signin-btn {
-    margin-top: 3.6rem;
+    margin-top: 1.75rem !important;
     margin-left: 25%;
     padding: .4rem;
     width: 6rem;
@@ -1184,13 +1193,6 @@ nav {
         display: none;
     }
 
-    .signin-card {
-        width: 20rem;
-        height: 26rem;
-        background-color: #5E4CC5;
-        padding: 2rem;
-        border-radius: 16px;
-    }
 
     .login-btn {
         margin-left: .05rem;
@@ -1261,11 +1263,6 @@ nav {
 
     .hamburger {
         display: none;
-    }
-
-    .signin-card {
-        width: 25rem;
-        height: 26rem;
     }
 
     .login-btn {

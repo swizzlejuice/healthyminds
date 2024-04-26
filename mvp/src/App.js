@@ -28,7 +28,6 @@ function App() {
   const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
   const [currentPetImage, setCurrentPetImage] = useState('dog1.png');
 
-
   const updateStreak = (newStreakCount) => {
     setStreakCount(newStreakCount);
   };
@@ -66,7 +65,6 @@ function App() {
           <Route path="/myplaces" element={<MyPlaces />} />
         </Routes>
         <Footer />
-
         </div>
       </PetImageProvider>
   );

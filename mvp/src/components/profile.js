@@ -73,9 +73,6 @@ function Profile() {
         }
       });
     }
-    
-
-
   }, []);
 
   useEffect(() => {
@@ -215,7 +212,6 @@ function Profile() {
     return tagCounts;
   };
   
-
   const sortTagsByCount = (tagCounts) => {
     return Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]).map(tag => ({ tag, count: tagCounts[tag] }));
   };

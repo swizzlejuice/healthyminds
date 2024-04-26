@@ -85,10 +85,6 @@ function DiaryTags() {
         });
     };
     
-    
-    
-      
-    
     const updateCoinCount = (userId, coinsToAdd) => {
         const db = getDatabase();
         const userRef = ref(db, `users/${userId}`);
@@ -114,7 +110,6 @@ function DiaryTags() {
             console.error('Failed to fetch user data:', error);
         });
     };
-    
     
     const items1 = [
         { imgSrc: "sunny.png", tag: "Sunny" },

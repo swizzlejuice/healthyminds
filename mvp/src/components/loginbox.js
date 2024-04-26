@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {  signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../index';
 import { NavLink, useNavigate } from 'react-router-dom'
- 
+import { TypeWriter } from './Typewriter.js';
+
 const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -26,7 +27,8 @@ const Login = () => {
  
     return (
       <div className='signin-card'>
-        <h2 className="signin-header">Sign In</h2>
+        <h2 className="signin-header">Sign in to</h2>
+        <TypeWriter></TypeWriter>
         <input className="signin-field" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input className="signin-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
