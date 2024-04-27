@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, update, get } from 'firebase/database';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate, NavLink } from 'react-router-dom'; 
 
 function ItemBox({ imgSrc, itemName, price }) {
     const [currentUser, setCurrentUser] = useState(null);
