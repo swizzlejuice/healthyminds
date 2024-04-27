@@ -357,7 +357,7 @@ nav {
 }
 
 .mood-summary-list {
-    margin-left: -1.5rem;
+    margin-left: -2.3rem;
 }
 
 .mood-card {
@@ -488,7 +488,7 @@ nav {
 }
 
 .logout {
-    margin-left: 24.5rem !important;
+    margin-left: 24.85rem !important;
     margin-top: 4rem;
     padding: .25rem;
     width: 4.5rem;
@@ -524,29 +524,36 @@ nav {
     margin-top: 1.5rem;
     font-size: 22px !important;
     font-weight: 600;
-    margin-left: 13.8rem !important;
+    text-align: center;
     padding-bottom: .8rem;
 }
 
 .tagz-card {
-    width: 45rem !important;
+    width: 53rem !important;
     height: 10rem !important;
     background-color: white;
     margin-top: 3rem;
     border-radius: 20px;
     border: 1px solid black;
-    margin-left: 5rem !important;
+    margin-left: .9rem !important;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.top-tags-section {
+/* .top-tags-section {
     display: flex; 
     flex-wrap: wrap; 
-    margin-left: 5.25rem !important;
-}
+    margin-left: 2rem !important; 
+    margin-right: 0rem;
+} */
   
+.top-tags-section {
+    display: flex;
+    flex-wrap: nowrap; 
+    justify-content: center; 
+}
+
 .top-tag {
-    margin-right: 60px; /* spacing between tags */
+    margin-right: 50px; /* spacing between tags */
 }
   
 .diarytag-img {
@@ -574,7 +581,7 @@ nav {
 
 .filterby {
     margin-right: .5rem;
-    margin-left: 8rem;
+    margin-left: 7.5rem;
 }
 
 .filterbymonth {
@@ -620,7 +627,7 @@ nav {
     margin-top: 3rem;
     border-radius: 20px;
     border: 1px solid black;
-    margin-left: 16.5rem !important;
+    margin-left: 16.75rem !important;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -649,7 +656,7 @@ nav {
     background-color: white;
     width: 35rem;
     padding: 2rem;
-    margin-left: 10.75rem;
+    margin-left: 10.5rem;
     margin-bottom: 3rem;
     border-radius: 20px;
     border: 1px solid black;

@@ -195,7 +195,6 @@ function Profile() {
     });
     return tagCounts;
   };
-
   */
 
   const calculateTagCounts = (entries) => {
@@ -280,7 +279,7 @@ function Profile() {
         return ''; 
     }
 };
-    
+
   return (
     <div className="profile-body">
       <div className="flex-container-profile">
@@ -343,4 +342,3 @@ function Profile() {
 }
 
 export default Profile;
-
