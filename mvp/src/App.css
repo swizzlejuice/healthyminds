@@ -1077,6 +1077,18 @@ nav {
     padding-right: 3rem;
 }
 
+.necessity-image {
+    max-width: 8.5rem;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px;
+    left: 37%;
+    right: 0;
+
+
+}
+
 
 
 /* Animation for the coin count when the coin count increases */

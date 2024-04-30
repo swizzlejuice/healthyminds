@@ -3,11 +3,12 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, update, get } from 'firebase/database';
 import { useNavigate, NavLink } from 'react-router-dom'; 
 
-function ItemBox({ imgSrc, itemName, price }) {
+function ItemBox({ imgSrc, itemName, price, isNecessity}) {
     const [currentUser, setCurrentUser] = useState(null);
     const [coinCount, setCoinCount] = useState(0);
     const [isPurchased, setIsPurchased] = useState(false); 
     const navigate = useNavigate(); 
+
 
     useEffect(() => {
         const auth = getAuth();
@@ -36,41 +37,40 @@ function ItemBox({ imgSrc, itemName, price }) {
 
     const handleClick = (itemPrice, itemName, imgSrc) => () => {
         if (currentUser) {
-            if (isPurchased) {
-                navigate('/mycloset'); 
-            } else {
-                const db = getDatabase();
-                const userId = currentUser.uid;
-                const userRef = ref(db, `users/${userId}`);
-
-                get(userRef).then((snapshot) => {
-                    const userData = snapshot.val();
-                    if (userData) {
-                        const currentCoins = userData.coinCount || 0;
-                        const newCoinCount = currentCoins - itemPrice;
-    
-                        if (newCoinCount < 0) {
-                            alert("You need more coins to purchase this item!");
-                        } else {
-                            const updates = {};
-                            updates['coinCount'] = newCoinCount; 
-                            updates[`purchasedItems/${itemName}`] = { imgSrc, itemName };
-    
-                            update(userRef, updates) 
-                                .then(() => {
-                                    setCoinCount(newCoinCount); 
-                                    setIsPurchased(true); 
-                                    alert("Purchase successful! You can view the item in your closet.");
-                                })
-                                .catch((error) => {
-                                    console.error("Error updating user data: ", error);
-                                });
-                        }
-                    }
+          if (isPurchased) {
+            navigate('/mycloset'); // Navigate to the closet if already purchased
+            return;
+          }
+          const db = getDatabase();
+          const userId = currentUser.uid;
+          const userRef = ref(db, `users/${userId}`);
+          get(userRef).then((snapshot) => {
+            const userData = snapshot.val();
+            if (userData) {
+              const currentCoins = userData.coinCount || 0;
+              const newCoinCount = currentCoins - itemPrice;
+      
+              if (newCoinCount < 0) {
+                alert("You need more coins to purchase this item!");
+              } else {
+                const updates = {};
+                updates['coinCount'] = newCoinCount; 
+                updates[`purchasedItems/${itemName}`] = { imgSrc, itemName, isNecessity };
+                console.log(updates);
+      
+                update(userRef, updates).then(() => {
+                  setCoinCount(newCoinCount); 
+                  setIsPurchased(true); 
+                  alert("Purchase successful! You can view the item in your closet.");
+                }).catch((error) => {
+                  console.error("Error updating user data: ", error);
                 });
+              }
             }
+          });
         }
-    };
+      };
+      
 
     return (
         <div className="col-md-2">

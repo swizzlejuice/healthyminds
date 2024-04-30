@@ -5,16 +5,16 @@ import Footer from './hpfooter';
 
 function Necessities() {
     const items = [
-        { imgSrc: "basicbowl.png", itemName: "Basic Bowl", price: 1 },
-        { imgSrc: "catbowl.png", itemName: "Cat Bowl", price: 35 },
-        { imgSrc: "dogbowl.png", itemName: "Dog Bowl", price: 35 },
-        { imgSrc: "polkadot.png", itemName: "Polka Dot", price: 40 },
-        { imgSrc: "dogball.png", itemName: "Dog Ball", price: 30 },
+        { imgSrc: "basicbowlT.png", itemName: "Basic Bowl", price: 1, isNecessity: true },
+        { imgSrc: "catbowlT.png", itemName: "Cat Bowl", price: 1, isNecessity: true },
+        { imgSrc: "dogbowlT.png", itemName: "Dog Bowl", price: 1, isNecessity: true },
+        { imgSrc: "polkadotT.png", itemName: "Polka Dot", price: 1, isNecessity: true },
+        { imgSrc: "dogballT.png", itemName: "Dog Ball", price: 1, isNecessity: true },
         // inspo attribution: freepik, vector created in figma
-        { imgSrc: "cattoy.png", itemName: "Cat Toy", price: 50 },
+        { imgSrc: "cattoyT.png", itemName: "Cat Toy", price: 1, isNecessity: true },
         // inspo attribution: shutterstock, vector created in figma
-        { imgSrc: "basicmouse.png", itemName: "Basic Mouse", price: 25 },
-        { imgSrc: "ultimate.png", itemName: "Ultimate Mouse Toy", price: 60 },
+        { imgSrc: "basicmouseT.png", itemName: "Basic Mouse", price: 1, isNecessity: true },
+        { imgSrc: "ultimatemousetoyT.png", itemName: "Ultimate Mouse Toy", price: 1, isNecessity: true },
     ];
 
     const firstHalf = items.slice(0, Math.ceil(items.length / 2));
@@ -26,12 +26,12 @@ function Necessities() {
                 <StoreNavigator />
                 <div className="row mt-4 justify-content-center">
                     {firstHalf.map(item => (
-                        <ItemBox key={item.itemName} imgSrc={item.imgSrc} itemName={item.itemName} price={item.price} />
+                        <ItemBox key={item.itemName} imgSrc={item.imgSrc} itemName={item.itemName} price={item.price} isNecessity={item.isNecessity}/>
                     ))}
                 </div>
                 <div className="row mt-4 justify-content-center">
                     {secondHalf.map(item => (
-                        <ItemBox key={item.itemName} imgSrc={item.imgSrc} itemName={item.itemName} price={item.price} />
+                        <ItemBox key={item.itemName} imgSrc={item.imgSrc} itemName={item.itemName} price={item.price} isNecessity={item.isNecessity}/>
                     ))}
                 </div>
             </div>

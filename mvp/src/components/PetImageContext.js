@@ -8,6 +8,8 @@ export const usePetImage = () => useContext(PetImageContext);
 
 export const PetImageProvider = ({ children }) => {
     const [currentPetImage, setCurrentPetImage] = useState('dog1.png');
+    const [necessityImage, setNecessityImage] = useState('');
+
 
     useEffect(() => {
         const auth = getAuth();
@@ -22,8 +24,18 @@ export const PetImageProvider = ({ children }) => {
                         setCurrentPetImage('dog1.png')
                     }
                 });
+                const necessityRef = ref(db, `users/${user.uid}/necessity`);
+                get(necessityRef).then((snapshot) => {
+                    if (snapshot.exists()) {
+                        setNecessityImage(snapshot.val());
+                    } else {
+                        setNecessityImage('');
+                    }
+                });
             } else {
                 setCurrentPetImage('dog1.png')
+                setNecessityImage('');
+
             }
         });
     }, []);
@@ -39,8 +51,19 @@ export const PetImageProvider = ({ children }) => {
         }
     };
 
+    const updateNecessityImage = (image) => {
+        const auth = getAuth();
+        const user = auth.currentUser;
+        if (user) {
+            const db = getDatabase();
+            const userRef = ref(db, `users/${user.uid}/necessity`);
+            set(userRef, image);
+            setNecessityImage(image);
+        }
+    };
+
     return (
-        <PetImageContext.Provider value={{ currentPetImage, updatePetImage }}>
+        <PetImageContext.Provider value={{ currentPetImage, updatePetImage, necessityImage, updateNecessityImage }}>
             {children}
         </PetImageContext.Provider>
     );

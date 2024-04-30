@@ -9,6 +9,8 @@ export default function MyCloset() {
   const [selectedOutfit, setSelectedOutfit] = useState('');  // Store the selected outfit name as a string
   const location = useLocation();
   const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
+  const { updateNecessityImage } = usePetImage(); // Using context for pet image updates
+
 
   const { updatePetImage } = usePetImage();
   const [basePetName, setBasePetName] = useState('');
@@ -40,13 +42,18 @@ export default function MyCloset() {
   }, []);
 
   const handleItemClick = (item) => {
-    console.log("Item clicked:", item.itemName); // Debug output
-    const formattedItemName = item.itemName.replace(/\s+/g, '').toLowerCase(); // Remove spaces and convert to lower case
-    const newPetImage = `${basePetName}${formattedItemName}.png`;
-    updatePetImage(newPetImage);
-    setSelectedOutfit(item.itemName);  
-    console.log("Selected outfit set to:", item.itemName); // Check what is being set
-  };
+    console.log("Item clicked:", item);
+    if (item.isNecessity) {
+        console.log("Applying as necessity");
+        updateNecessityImage(item.imgSrc.replace('T', ''));
+    } else {
+        console.log("Applying as clothing or pet");
+        const formattedItemName = item.itemName.replace(/\s+/g, '').toLowerCase();
+        const newPetImage = `${basePetName}${formattedItemName}.png`;
+        updatePetImage(newPetImage);
+    }
+};
+
 
   return (
     <div className="checkin-body" style={{ backgroundImage: `url(${backgroundImage})` }}>

@@ -11,7 +11,7 @@ function Home({ updateBackgroundImage }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
   const [showModal, setShowModal] = useState(false);
-  const { currentPetImage } = usePetImage('dog1.png');
+  const { currentPetImage, necessityImage } = usePetImage();
 
   useEffect(() => {
     const auth = getAuth();
@@ -129,13 +129,20 @@ function Home({ updateBackgroundImage }) {
           </button>
         ))}
       </div>
+
       <NavLink to={{ pathname: '/mycloset', search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
         <button className='outfit-buttons'>Change Pet Outfit</button>
       </NavLink>
       
       <NavLink to={{ pathname: '/viewpet', search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
-        <img className="dog" src={currentPetImage} alt="picture of dog"></img>
+        <div className="pet-and-necessity-display">
+          {necessityImage && (
+            <img src={necessityImage} alt="Necessity" className="necessity-image" />
+          )}
+          <img className="dog" src={currentPetImage} alt="Current Pet" />
+        </div>
       </NavLink>
+      
       <NavLink to="/help"><img className="help-home" src="helphome.png"/></NavLink>
     </div>
   );
