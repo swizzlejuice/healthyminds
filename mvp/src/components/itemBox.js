@@ -71,7 +71,6 @@ function ItemBox({ imgSrc, itemName, price, isNecessity}) {
         }
       };
       
-
     return (
         <div className="col-md-2">
             <div className="item-box d-flex flex-column align-items-center">

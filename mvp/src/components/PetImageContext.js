@@ -10,7 +10,6 @@ export const PetImageProvider = ({ children }) => {
     const [currentPetImage, setCurrentPetImage] = useState('dog1.png');
     const [necessityImage, setNecessityImage] = useState('');
 
-
     useEffect(() => {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {

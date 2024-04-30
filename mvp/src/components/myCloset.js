@@ -10,8 +10,6 @@ export default function MyCloset() {
   const location = useLocation();
   const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
   const { updateNecessityImage } = usePetImage(); // Using context for pet image updates
-
-
   const { updatePetImage } = usePetImage();
   const [basePetName, setBasePetName] = useState('');
 
@@ -53,7 +51,6 @@ export default function MyCloset() {
         updatePetImage(newPetImage);
     }
 };
-
 
   return (
     <div className="checkin-body" style={{ backgroundImage: `url(${backgroundImage})` }}>

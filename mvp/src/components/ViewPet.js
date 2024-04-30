@@ -34,7 +34,6 @@ export default function ViewPet() {
     }
   }, [auth.currentUser, db]);
 
-  // Additional useEffect for handling other pet-related data
   useEffect(() => {
     if (auth.currentUser) {
       const userId = auth.currentUser.uid;

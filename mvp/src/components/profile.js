@@ -62,7 +62,7 @@ function Profile() {
       
       onValue(moodRef, (snapshot) => {
         const data = snapshot.val();
-        console.log("Fetched mood entries:", data);  // Add this line to check what you receive from Firebase
+        console.log("Fetched mood entries:", data);  
         if (data) {
           const entries = Object.values(data);
           setMoodEntries(entries);
@@ -185,17 +185,6 @@ function Profile() {
       });
     }
   }, []);
-
-  /*const calculateTagCounts = (entries) => {
-    const tagCounts = {};
-    entries.forEach((entry) => {
-      entry.tags.forEach((tag) => {
-        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
-      });
-    });
-    return tagCounts;
-  };
-  */
 
   const calculateTagCounts = (entries) => {
     const tagCounts = {};

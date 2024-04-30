@@ -54,7 +54,6 @@ function CheckIn({ updateStreak, backgroundImage}) {
             mood: selectedEmoji,
             timestamp: currentDate
           };
-
           push(ref(db, `${userId}/moodEntries`), moodEntry)
             .then(() => {
               updateStreakInDatabase(userId); 
@@ -82,36 +81,6 @@ function CheckIn({ updateStreak, backgroundImage}) {
       });
   };
 
-  /*const updateProgressBy = (increment, userId) => {
-    const db = getDatabase();
-    const today = new Date().toLocaleDateString();
-    const progressRef = ref(db, `users/${userId}/petData`);
-
-    get(progressRef).then((snapshot) => {
-      if (snapshot.exists()) {
-          const data = snapshot.val();
-          console.log("Existing petData:", data); // Debugging log
-          let newProgress = data.progress || 25;
-          console.log(`Current progress: ${newProgress}, Increment: ${increment}, New progress: ${newProgress}`);
-
-          if (data.lastProgressUpdate === today) {
-              newProgress = Math.min(newProgress + increment, 100);
-          } else {
-              newProgress = Math.min(25 + increment, 100);  // Assumes reset to 25% if not today
-          }
-          update(ref(db, `users/${userId}/petData`), { progress: newProgress, lastProgressUpdate: today });
-      } else {
-          console.log("Initializing petData for the first time"); // Debugging log
-          // Initialize if there's no data
-          const initialProgress = Math.min(25 + increment, 100);
-          update(ref(db, `users/${userId}/petData`), { progress: initialProgress, lastProgressUpdate: today });
-      }
-  }).catch(error => {
-      console.error("Failed to update progress:", error);
-  });
-
-};*/
-
 const updateProgressBy = (increment, userId) => {
   const db = getDatabase();
   const today = new Date().toLocaleDateString();
@@ -120,8 +89,8 @@ const updateProgressBy = (increment, userId) => {
   get(progressRef).then((snapshot) => {
     if (snapshot.exists()) {
         const data = snapshot.val();
-        console.log("Existing petData:", data); // Debugging log
-        let currentProgress = data.progress || 25; // Ensuring fallback value and consistent variable use
+        console.log("Existing petData:", data); 
+        let currentProgress = data.progress || 25; 
 
         if (data.lastProgressUpdate === today) {
             currentProgress = Math.min(currentProgress + increment, 100); // Adjusting progress on the same day
@@ -134,8 +103,8 @@ const updateProgressBy = (increment, userId) => {
           lastProgressUpdate: today 
         });
     } else {
-        console.log("Initializing petData for the first time"); // Debugging log
-        let initialProgress = Math.min(25 + increment, 100); // Initial setup if no data exists
+        console.log("Initializing petData for the first time"); 
+        let initialProgress = Math.min(25 + increment, 100); 
         update(ref(db, `users/${userId}/petData`), {
           progress: initialProgress, 
           lastProgressUpdate: today
@@ -149,7 +118,6 @@ const updateProgressBy = (increment, userId) => {
     console.error("Failed to update progress:", error);
   });
 };
-
 
   const checkIfCheckedInToday = (timestamp) => {
     if (timestamp) {

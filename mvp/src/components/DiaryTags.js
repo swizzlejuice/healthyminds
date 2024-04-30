@@ -44,7 +44,6 @@ function DiaryTags() {
         }
     };
       
-    
     const updateProgressBy = (increment, userId) => {
         const db = getDatabase();
         const today = new Date().toLocaleDateString();
@@ -57,9 +56,7 @@ function DiaryTags() {
                 let newProgress = currentProgress + increment;
     
                 if (newProgress > 100) newProgress = 100; // Ensure it does not exceed 100%
-    
                 console.log(`Current progress: ${currentProgress}, Increment: ${increment}, New progress: ${newProgress}`);
-    
                 update(ref(db, `users/${userId}/petData`), {
                     progress: newProgress,
                     lastProgressUpdate: today

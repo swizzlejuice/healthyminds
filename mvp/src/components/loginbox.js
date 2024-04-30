@@ -86,18 +86,17 @@ const Login = () => {
                         navigate("/home");
                     }).catch((error) => {
                         console.error("Failed to reset progress:", error);
-                        navigate("/home"); // Navigate even if error
+                        navigate("/home"); 
                     });
                 } else {
                     navigate("/home");
                 }
             } else {
-                // No pet data found, possibly initialize here or just navigate
                 navigate("/home");
             }
         }).catch((error) => {
             console.error("Failed to fetch pet data:", error);
-            navigate("/home"); // Navigate even if error
+            navigate("/home"); 
         });
     }
 
@@ -107,7 +106,6 @@ const Login = () => {
         <TypeWriter></TypeWriter>
         <input className="signin-field" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input className="signin-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-
         <button className="signin-btn" onClick={onLogin}>Sign in</button>
         <p className="signup-field">Don't have an account? <Link to="/signup" className="signup-link">Sign Up</Link></p>
       </div>
