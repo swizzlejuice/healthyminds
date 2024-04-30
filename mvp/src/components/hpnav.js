@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+/*import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
@@ -102,16 +102,16 @@ export function HappyPawsNav({ updateStreak, backgroundImage}) {
       <nav>
         <ul>
           <li><NavLink to="/clothing" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="store" src="store.png" alt="store icon" />Store</NavLink></li>
-          {/* // <a href="https://www.flaticon.com/free-icons/shop" title="shop icons">Shop icons created by Freepik - Flaticon</a> */}
+          {/* // <a href="https://www.flaticon.com/free-icons/shop" title="shop icons">Shop icons created by Freepik - Flaticon</a> }
           <li><NavLink to="/diary" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="diary" src="bluediary.png" alt="diary icon" />Diary</NavLink></li>
-          {/* <a href="https://www.flaticon.com/free-icons/diary" title="diary icons">Diary icons created by Freepik - Flaticon</a> */}
+          {/* <a href="https://www.flaticon.com/free-icons/diary" title="diary icons">Diary icons created by Freepik - Flaticon</a> }
           <li><NavLink to="/checkin" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="fire" src="checkinimg.png" alt="checkin icon" />Check in</NavLink></li>
-          {/* <a href="https://www.flaticon.com/free-icons/mood" title="mood icons">Mood icons created by Freepik - Flaticon</a> */}
+          {/* <a href="https://www.flaticon.com/free-icons/mood" title="mood icons">Mood icons created by Freepik - Flaticon</a> }
           <li><img className={`coins ${coinCountUpdated ? 'bounce' : ''}`} src="coins.png" alt="coins icon" />{coinCount}</li>
-          {/* dollar PNG Designed By IYIKON from https://pngtree.com/freepng/vector-coins-icon_3788228.html?sol=downref&id=bef */}
+          {/* dollar PNG Designed By IYIKON from https://pngtree.com/freepng/vector-coins-icon_3788228.html?sol=downref&id=bef }
           <li><img className="fire" src="fire.png" alt="fire icon" style={{ transform: streakUpdated ? 'scale(1.5)' : 'scale(1)', transition: 'transform 0.8s ease-in-out' }}/>{streakCount}</li>
           <li><NavLink to="/profile"><img className="profileimage" src={avatar} alt="profile icon" /></NavLink></li>
-          {/* <a href="https://www.vecteezy.com/free-vector/avatar">Avatar Vectors by Vecteezy</a> */}
+          {/* <a href="https://www.vecteezy.com/free-vector/avatar">Avatar Vectors by Vecteezy</a> }
         </ul>
       </nav>
     </header>
@@ -119,3 +119,79 @@ export function HappyPawsNav({ updateStreak, backgroundImage}) {
 }
 
 export default HappyPawsNav;
+*/
+
+import React, { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { getDatabase, ref, onValue } from 'firebase/database';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
+export function HappyPawsNav({ updateStreak, backgroundImage}) {
+  const [avatar, setAvatar] = useState('profileimage.png');
+  const [coinCount, setCoinCount] = useState(0);
+  const [streakCount, setStreakCount] = useState(0); 
+  const [coinCountUpdated, setCoinCountUpdated] = useState(false);
+  const [streakUpdated, setStreakUpdated] = useState(false);
+  const [user, setUser] = useState(null); // State to track the authenticated user
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser); // Set user if logged in, null if not
+      if (currentUser) {
+        fetchData(currentUser);
+      } else {
+        setAvatar('profileimage.png');
+        setCoinCount(0);
+        setStreakCount(0);
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup subscription
+  }, []);
+
+  const fetchData = (user) => {
+    const db = getDatabase();
+    const userId = user.uid;
+
+    const coinCountRef = ref(db, `users/${userId}/coinCount`);
+    const streakRef = ref(db, `users/${userId}/streakCount`);
+    const avatarRef = ref(db, `${userId}/userAvatar`);
+
+    onValue(coinCountRef, (snapshot) => {
+      const count = snapshot.val() || 0;
+      setCoinCount(count);
+    });
+
+    onValue(streakRef, (snapshot) => {
+      const streak = snapshot.val() || 0;
+      setStreakCount(streak);
+    });
+
+    onValue(avatarRef, (snapshot) => {
+      const avatarUrl = snapshot.val();
+      setAvatar(avatarUrl || 'profileimage.png');
+    });
+  };
+  return (
+    <header>
+      <h1> {user ? (<NavLink to="/home" style={{ color: '#f6f3eb', textDecoration: 'none' }}>happy paws</NavLink>) : (
+        <span style={{ color: '#f6f3eb', textDecoration: 'none' }}>happy paws</span>)}
+      </h1>
+
+      <nav>
+        <ul>
+          <li>{user ? <NavLink to="/clothing" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="store" src="store.png" alt="store icon" />Store</NavLink> : <span style={{ color: '#f6f3eb', opacity: 0.5 }}><img className="store" src="store.png" alt="store icon" />Store</span>}</li>
+          <li>{user ? <NavLink to="/diary" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="diary" src="bluediary.png" alt="diary icon" />Diary</NavLink> : <span style={{ color: '#f6f3eb', opacity: 0.5 }}><img className="diary" src="bluediary.png" alt="diary icon" />Diary</span>}</li>
+          <li>{user ? <NavLink to="/checkin" style={{ color: '#f6f3eb', textDecoration: 'none'}}><img className="fire" src="checkinimg.png" alt="checkin icon" />Check in</NavLink> : <span style={{ color: '#f6f3eb', opacity: 0.5 }}><img className="fire" src="checkinimg.png" alt="checkin icon" />Check in</span>}</li>
+          <li>{coinCount} <img className={`coins ${coinCountUpdated ? 'bounce' : ''}`} src="coins.png" alt="coins icon" /></li>
+          <li>{streakCount} <img className="fire" src="fire.png" alt="fire icon" style={{ transform: streakUpdated ? 'scale(1.5)' : 'scale(1)', transition: 'transform 0.8s ease-in-out' }}/></li>
+          <li>{user ? <NavLink to="/profile"><img className="profileimage" src={avatar} alt="profile icon" /></NavLink> : <img className="profileimage" src={avatar} alt="profile icon" style={{ opacity: 0.5 }}/>}</li>
+        </ul>
+      </nav>
+    </header>
+  );
+}
+
+export default HappyPawsNav;
+

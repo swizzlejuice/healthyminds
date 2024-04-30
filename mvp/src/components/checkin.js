@@ -82,7 +82,7 @@ function CheckIn({ updateStreak, backgroundImage}) {
       });
   };
 
-  const updateProgressBy = (increment, userId) => {
+  /*const updateProgressBy = (increment, userId) => {
     const db = getDatabase();
     const today = new Date().toLocaleDateString();
     const progressRef = ref(db, `users/${userId}/petData`);
@@ -110,7 +110,46 @@ function CheckIn({ updateStreak, backgroundImage}) {
       console.error("Failed to update progress:", error);
   });
 
+};*/
+
+const updateProgressBy = (increment, userId) => {
+  const db = getDatabase();
+  const today = new Date().toLocaleDateString();
+  const progressRef = ref(db, `users/${userId}/petData`);
+
+  get(progressRef).then((snapshot) => {
+    if (snapshot.exists()) {
+        const data = snapshot.val();
+        console.log("Existing petData:", data); // Debugging log
+        let currentProgress = data.progress || 25; // Ensuring fallback value and consistent variable use
+
+        if (data.lastProgressUpdate === today) {
+            currentProgress = Math.min(currentProgress + increment, 100); // Adjusting progress on the same day
+        } else {
+            currentProgress = 25; // Resetting and adding for a new day
+        }
+
+        update(ref(db, `users/${userId}/petData`), {
+          progress: currentProgress, 
+          lastProgressUpdate: today 
+        });
+    } else {
+        console.log("Initializing petData for the first time"); // Debugging log
+        let initialProgress = Math.min(25 + increment, 100); // Initial setup if no data exists
+        update(ref(db, `users/${userId}/petData`), {
+          progress: initialProgress, 
+          lastProgressUpdate: today
+        }).then(() => {
+          console.log('Pet data initialized and progress updated to:', initialProgress);
+        }).catch(error => {
+          console.error('Failed to initialize pet data:', error);
+        });
+    }
+  }).catch(error => {
+    console.error("Failed to update progress:", error);
+  });
 };
+
 
   const checkIfCheckedInToday = (timestamp) => {
     if (timestamp) {
