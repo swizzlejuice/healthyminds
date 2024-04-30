@@ -60,7 +60,7 @@ body, main, div {
 
 li {
     display: inline-block;
-    margin-left: 2.5rem;
+    margin-left: 2.25rem;
     font-weight: 600;
 }
 
@@ -83,11 +83,18 @@ nav {
 .coins {
     width: 45px;
     margin-right: .25rem;
+    margin-left: -.2rem;
 }
 
 .fire {
     width: 40px;
     margin-right: .25rem;
+    margin-left: -.3rem;
+}
+
+.check-smile {
+    width: 40px;
+    margin-right: .5rem;
 }
 
 .diary {

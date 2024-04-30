@@ -223,7 +223,7 @@ export function HappyPawsNav({ updateStreak, backgroundImage }) {
           <li>
             {user ? (
               <NavLink to="/checkin" style={{ color: '#f6f3eb', textDecoration: 'none' }}>
-                <img className="fire" src="checkinimg.png" alt="checkin icon" />
+                <img className="check-smile" src="checkinimg.png" alt="checkin icon" />
                 Check in
               </NavLink>
             ) : (
@@ -234,17 +234,17 @@ export function HappyPawsNav({ updateStreak, backgroundImage }) {
             )}
           </li>
           <li>
-            {coinCount}{' '}
             <img className={`coins ${coinCountUpdated ? 'bounce' : ''}`} src="coins.png" alt="coins icon" />
+            {coinCount}{' '}
           </li>
           <li>
-            {streakCount}{' '}
             <img
               className="fire"
               src="fire.png"
               alt="fire icon"
               style={{ transform: streakUpdated ? 'scale(1.5)' : 'scale(1)', transition: 'transform 0.8s ease-in-out' }}
             />
+            {streakCount}{' '}
           </li>
           <li>
             {user ? (
