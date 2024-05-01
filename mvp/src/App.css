@@ -1085,15 +1085,13 @@ nav {
 }
 
 .necessity-image {
-    max-width: 8.5rem;
+    max-width: 6rem;
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 20px;
-    left: 37%;
+    bottom: 75px;
+    left: 40%;
     right: 0;
-
-
 }
 
 
