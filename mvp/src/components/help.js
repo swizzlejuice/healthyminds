@@ -12,7 +12,7 @@ function Help() {
       <Accordion.Item eventKey="0">
         <Accordion.Header>How to use happy paws Tutorial</Accordion.Header>
         <Accordion.Body>
-        <iframe src="https://scribehow.com/embed/How_to_use_happy_paws__QB-sXZv9RA6pyOLsyGvbhA" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
+        <iframe src="https://scribehow.com/embed/happy_paws_Tutorial__wBc8cfDKTCus5-qYQP5YBQ" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
         <br></br>
         </Accordion.Body>
       </Accordion.Item>
@@ -37,14 +37,7 @@ function Help() {
         <Accordion.Body>
         happy paws was created by a group of 5 students at the University of Washington for their senior capstone project.
         Passionate about mental health and wellness, they decided to create happy paws as a fun resource to encourage
-        Gen Z individuals to prioritize their mental wellbeing.
-        </Accordion.Body>
-      </Accordion.Item>
-      <Accordion.Item eventKey="3">
-        <Accordion.Header>Send Feedback</Accordion.Header>
-        <Accordion.Body>
-        Feel free to send any feedback or suggestions you have to help us improve our app! 
-        <br></br>Google Form to send feedback: https://forms.gle/SNhx7UuDDwFHSNTK8
+        Gen Z individuals to prioritize their mental wellbeing. 
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>

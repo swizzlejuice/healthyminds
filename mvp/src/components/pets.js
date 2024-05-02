@@ -5,25 +5,25 @@ import PetBox from './petBox';
 
 function Pets() {
     const items = [
-        { imgSrc: "dog1.png", price: 1, itemName: "hiro2" },
+        { imgSrc: "dog1.png", price: 150, itemName: "hiro2" },
         // inspo attribution: inspo from freepik, created vector in figma myself
-        { imgSrc: "dog2.png", price: 2, itemName: "cashmere" },
+        { imgSrc: "dog2.png", price: 150, itemName: "cashmere" },
         // inspo attribution: inspo from freepik, created vector in figma myself
-        { imgSrc: "dog3.png", price: 1, itemName: "toto" },
+        { imgSrc: "dog3.png", price: 150, itemName: "toto" },
         // inspo attribution: inspo from vectorStock, created vector in figma myself
-        { imgSrc: "dog4.png", price: 1, itemName: "ayumi" },
+        { imgSrc: "dog4.png", price: 150, itemName: "ayumi" },
         // inspo attribution: inspo from pngTree, created vector in figma myself
-        { imgSrc: "dog5.png", price: 1, itemName: "simba" },
+        { imgSrc: "dog5.png", price: 150, itemName: "simba" },
         // inspo attribution: inspo from redbubble https://www.redbubble.com/i/sticker/Cute-dog-Happy-dog-Adorable-dog-Smiling-dog-Fluffy-dog-Furry-dog-Cartoon-dog-Hand-drawn-dog-Brown-eyes-Dog-paws-Dog-tail-Dog-ears-by-StickerForDays/146379201.EJUG5, created vector in figma
-        { imgSrc: "cat1.png", price: 1, itemName: "cat1" },
+        { imgSrc: "cat1.png", price: 150, itemName: "cat1" },
         // inspo attributon: inspo from pngTree, created vector in figma myself
-        { imgSrc: "cat2.png", price: 1, itemName: "cat2" },
+        { imgSrc: "cat2.png", price: 150, itemName: "cat2" },
         // inspo attribution: inspo from freepik, created vector in figma myself
-        { imgSrc: "cat3.png", price: 2, itemName: "cat3" },
+        { imgSrc: "cat3.png", price: 150, itemName: "cat3" },
         // inspo attribution: inspo from etsy https://www.etsy.com/listing/1514823720/adorable-chibi-cat-sticker-add-a-touch, created vector in figma
-        { imgSrc: "cat4.png", price: 2, itemName: "cat4" },
+        { imgSrc: "cat4.png", price: 150, itemName: "cat4" },
         // inspo attribution: inspo from freepik, created vector in figma myself
-        { imgSrc: "cat5.png", price: 2, itemName: "cat5" },
+        { imgSrc: "cat5.png", price: 150, itemName: "cat5" },
         // inspo attribution: inspo from freepik, created vector in figma myself
     ];
 
