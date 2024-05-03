@@ -364,7 +364,7 @@ nav {
 }
 
 .mood-summary-list {
-    margin-left: -2.3rem;
+    margin-left: -1.5rem;
 }
 
 .mood-card {
@@ -1366,7 +1366,7 @@ nav {
     }
 }
 
-@media (min-width: 1600px) 
+@media (min-width: 1650px) 
 {
     .homepage, .checkin-body {
         background-image: url('/public/basicbg.png') ;
