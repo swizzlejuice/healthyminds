@@ -1358,7 +1358,7 @@ nav {
     }
 }
 
-@media (min-width: 1500px) 
+@media (min-width: 1513px) 
 {
     .homepage, .checkin-body {
         background-image: url('/public/basicbg.png') ;
