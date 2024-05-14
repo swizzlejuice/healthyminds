@@ -1358,7 +1358,7 @@ nav {
     }
 }
 
-@media (min-width: 1200px) 
+@media (min-width: 1400px) 
 {
     .homepage, .checkin-body {
         background-image: url('/public/basicbg.png') ;
@@ -1368,11 +1368,5 @@ nav {
         border-radius: 22px;
         margin-bottom: 0rem;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    }
-
-    .login-body {
-        background-image: url('/public/bg2.png') ;
-        background-size: cover;
-        height: 100vh;
     }
 }
