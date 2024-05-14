@@ -1369,4 +1369,10 @@ nav {
         margin-bottom: 0rem;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
+
+    .login-body {
+        background-image: url('/public/bg2.png') ;
+        background-size: cover;
+        height: 100vh;
+    }
 }
