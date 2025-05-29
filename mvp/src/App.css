@@ -23,7 +23,7 @@ footer {
 
 li:hover, header h1:hover {
     text-decoration: none;
-    color: #f6f3eb;
+    color: #F6F2FF;
 }
 
 footer p {
@@ -33,7 +33,7 @@ footer p {
 
 header, footer {
     width: 100%;
-    background-color: #5E4CC5;
+    background-color: #6527BE;
 }
 
 header h1 {
@@ -44,7 +44,7 @@ header h1 {
 }
 
 body, main, div {
-    font-family: "Nunito", sans-serif;
+    font-family: "Fredoka", "Nunito", sans-serif;
 }
 
 .flex-container-signin, .flex-container-profile, header {
@@ -136,7 +136,7 @@ nav {
     width: 9rem !important;
     border-radius: 16px;
     border: 1px solid black;
-    background-color: #5E4CC5;
+    background-color: #6527BE;
     text-align: center;
     color: white;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -163,7 +163,7 @@ nav {
     margin-left: auto;
     margin-right: auto;
     margin-top: -35rem;
-    background-color: #EDEAFF !important;
+    background-color: #F6F2FF !important;
     border: 2px solid black !important;
 }
 
@@ -240,7 +240,7 @@ nav {
 
 /* PROFILE PAGE - CLARABELLE */
 .profile-body {
-    background-color: #EDEAFF !important;
+    background-color: #F6F2FF !important;
     border-radius: 22px;
 }
 
@@ -392,7 +392,7 @@ nav {
 .diary-card {
     width: 35rem;
     height: 37rem;
-    background-color: #EDEAFF;
+    background-color: #F6F2FF;
     padding: 2rem;
     border-radius: 22px;
     border: 2px solid black;
@@ -500,8 +500,8 @@ nav {
     padding: .25rem;
     width: 4.5rem;
     border-radius: 16px;
-    border: 1px solid #5E4CC5;
-    background-color: #5E4CC5;
+    border: 1px solid #6527BE;
+    background-color: #6527BE;
     text-align: center;
     color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -581,7 +581,7 @@ nav {
     border-radius: 12px;
     border: none;
     color: black !important;
-    background-color: #EDEAFF !important;
+    background-color: #F6F2FF !important;
     border: 1px solid black !important;
     margin-bottom: 2rem;
 }
@@ -624,7 +624,7 @@ nav {
     margin-bottom: 1rem;
     font-weight: 500;
     font-size: 1.1rem;
-    color: #5E4CC5;
+    color: #6527BE;
 }
 
 .diary-ent-card {
@@ -740,7 +740,7 @@ nav {
 }
 
 .store-page {
-    background-color: #EDEAFF;
+    background-color: #F6F2FF;
     height: 100vh;
     padding-top: 30px;
 }
@@ -781,7 +781,7 @@ nav {
 .necessities-btn:hover,
 .pets-btn:hover,
 .places-btn:hover {
-    background-color: #5E4CC5; 
+    background-color: #6527BE; 
     color: white; 
 }
 
@@ -789,7 +789,7 @@ nav {
 .necessities-btn:active,
 .pets-btn:active,
 .places-btn:active {
-    background-color: #7F79B5; 
+    background-color: #6527BE; 
     color: white; 
 }
 
@@ -809,9 +809,9 @@ nav {
     padding-left: 1rem;
     padding-right: 1rem;
     color: white;
-    background-color: #5E4CC5;
+    background-color: #6527BE;
     margin-left: 10px;
-    border: 1px solid #5E4CC5;
+    border: 1px solid #6527BE;
 }
 
 .item-images {
@@ -831,7 +831,7 @@ nav {
 .item-text {
     margin-bottom: 3px;
     margin-top: 5px;
-    font-family: "Nunito", sans-serif;
+    font-family: "Fredoka", "Nunito", sans-serif;
 }
 
 .store-price-buy {
@@ -851,7 +851,7 @@ nav {
     margin-left: 27%;
     padding: .4rem;
     width: 10rem;
-    background-color: #f6f3eb;
+    background-color: #F6F2FF;
     border-radius: 12px;
     border: none;
 }
@@ -859,7 +859,7 @@ nav {
 .checkin-card {
     width: 35rem;
     height: 25rem;
-    background-color: #EDEAFF;
+    background-color: #F6F2FF;
     border-radius: 22px;
     border: 2px solid black;
     margin-top: 1rem;
@@ -1130,7 +1130,7 @@ nav {
 .closet-card {
     width: 35rem;
     height: 25rem;
-    background-color: #EDEAFF;
+    background-color: #F6F2FF;
     border-radius: 22px;
     border: 2px solid black;
     margin-top: 1rem;
@@ -1194,7 +1194,7 @@ nav {
   }
   
   .progress-bar-color {
-    background-color: #5E4CC5;
+    background-color: #6527BE;
     height: 100%;
     color: white;
     font-size: 13.5px;
@@ -1233,7 +1233,7 @@ nav {
         margin-left: .05rem;
         padding: .4rem;
         width: 15.85rem;
-        background-color: #5E4CC5;
+        background-color: #6527BE;
         border-radius: 12px;
         border: 1.5px solid white;
         text-align: left;
@@ -1245,7 +1245,7 @@ nav {
         margin-left: 32%;
         padding: .4rem;
         width: 6rem;
-        background-color: #f6f3eb;
+        background-color: #F6F2FF;
         border-radius: 12px;
         border: none;
     }
