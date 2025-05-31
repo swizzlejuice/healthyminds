@@ -107,7 +107,7 @@ const Login = () => {
         <input className="signin-field" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
         <input className="signin-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
         <button className="signin-btn" onClick={onLogin}>Sign in</button>
-        <p className="signup-field">Don't have an account? <Link to="/signup" className="signup-link">Sign Up</Link></p>
+        <p className="signup-field">Don't have an account? <Link to="/signup" className="signup-link">Sign up</Link></p>
       </div>
     );
 }

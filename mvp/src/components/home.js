@@ -142,8 +142,6 @@ function Home({ updateBackgroundImage }) {
           <img className="dog" src={currentPetImage} alt="Current Pet" />
         </div>
       </NavLink>
-      
-      <NavLink to="/help"><img className="help-home" src="helphome.png"/></NavLink>
     </div>
   );
 }

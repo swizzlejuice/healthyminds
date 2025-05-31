@@ -13,8 +13,8 @@ function Necessities() {
         // inspo attribution: freepik, vector created in figma
         { imgSrc: "cattoyT.png", itemName: "Cat Toy", price: 60, isNecessity: true },
         // inspo attribution: shutterstock, vector created in figma
-        { imgSrc: "basicmouseT.png", itemName: "Basic Mouse", price: 35, isNecessity: true },
-        { imgSrc: "ultimatemousetoyT.png", itemName: "Ultimate Mouse", price: 50, isNecessity: true },
+        { imgSrc: "basicmouseT.png", itemName: "Basic Mouse", price: 40, isNecessity: true },
+        { imgSrc: "ultimatemousetoyT.png", itemName: "Ultimate Mouse", price: 60, isNecessity: true },
     ];
 
     const firstHalf = items.slice(0, Math.ceil(items.length / 2));

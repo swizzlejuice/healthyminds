@@ -27,6 +27,7 @@ li:hover, header h1:hover {
 }
 
 footer p {
+    font-weight: 400;
     font-size: 14px;
     padding-left: .5rem;
 }
@@ -61,12 +62,12 @@ body, main, div {
 li {
     display: inline-block;
     margin-left: 2.25rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 nav ul {
     color: white;
-    padding-top: .2rem;
+    padding-top: .9rem;
     font-size: 1rem;
     margin-left: 10rem;
 }
@@ -76,8 +77,9 @@ nav {
 }
 
 .store {
-    width: 82px;
-    margin-right: -.75rem;
+    width: 45px;
+    margin-bottom: .4rem;
+    margin-right: .4rem;
 }
 
 .coins {
@@ -122,6 +124,11 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     width: 9.6rem;
     font-size: 13px;
+}
+
+.bg-buttons:hover {
+    background-color: #6527BE;
+    color: white;
 }
 
 .bg-btns {
@@ -170,7 +177,7 @@ nav {
 .signin-header {
     text-align: center;
     margin-bottom: 0rem;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1.25rem;
 }
 
@@ -193,14 +200,6 @@ nav {
 .signup-link {
     color: black !important;
     text-decoration: underline;
-}
-
-.back-btn {
-    color: black !important;
-    text-decoration: underline;
-    text-align: center;
-    padding-top: 3rem;
-    padding-bottom: 1rem;
 }
 
 .signup-field {
@@ -249,7 +248,7 @@ nav {
     margin-left: 7rem;
     margin-top: -5.85rem;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .profile-email {
@@ -258,24 +257,11 @@ nav {
     margin-bottom: 0.5rem;
     margin-top: -1rem;
     font-size: 13px;
-    font-weight: 200;
+    font-weight: 400;
 }
 
 .profile-pic {
     width: 100px;
-}
-
-.change-pass {
-    margin-left: 7rem;
-    padding: .25rem;
-    width: 7rem;
-    border-radius: 16px;
-    border: 1px solid black;
-    background-color: white;
-    text-align: center;
-    color: black;
-    box-shadow: 0px 2px 2px 0px #d3d3d3;
-    font-size: 11px;
 }
 
 .help-icon {
@@ -301,7 +287,7 @@ nav {
 
 .about-help {
     font-size: 25px;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     margin-bottom: 2.8rem;
     margin-top: 1rem;
@@ -311,7 +297,7 @@ nav {
 .about-help {
     margin-top: 1.5rem;
     font-size: 25px !important;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     padding-bottom: .8rem;
     text-decoration: none;
@@ -326,7 +312,7 @@ nav {
 .back-help {
     font-size: 16px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 400;
     text-decoration: none !important;
     margin-top: 1rem;
     color: black;
@@ -344,14 +330,18 @@ nav {
 .mood-summary {
     margin-top: 1.5rem;
     font-size: 22px !important;
-    font-weight: 600;
+    font-weight: 500 !important;
     margin-left: 19.15rem !important;
     padding-bottom: .8rem;
 }
 
+.mood-date {
+    font-weight: 400;
+}
+
 .chart-text {
     font-size: 22px !important;
-    font-weight: 600;
+    font-weight: 500;
     margin-top: -3rem;
     margin-bottom: 1.5rem;
 }
@@ -396,7 +386,7 @@ nav {
     padding: 2rem;
     border-radius: 22px;
     border: 2px solid black;
-    margin-top: -2.5rem;
+    margin-top: -3.2rem;
     max-height: 700px; 
     overflow-y: auto; 
 }
@@ -406,7 +396,7 @@ nav {
 }
 
 .diary-p, .diary-p2 {
-    font-weight: 300;
+    font-weight: 400;
     text-align: center;
     font-size: 17px;
     font-style: italic;
@@ -426,7 +416,7 @@ nav {
 }
 
 .diary-heading {
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     font-size: 24px;
     margin-bottom: 0.4rem;
@@ -447,7 +437,7 @@ nav {
 }
   
 .diary-text {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 18px;
     text-align: left;
     margin-bottom: -2.5rem;
@@ -464,7 +454,7 @@ nav {
 }
 
 .tag-title {
-    font-size: 11px;
+    font-size: 13px;
     text-align: center;
 }
 
@@ -494,10 +484,18 @@ nav {
     font-size: 16px;
 }
 
+.diary-btn:hover {
+    background-color: #6527BE;
+    color: white;
+}
+
+.profile-divv {
+    margin-top: -2.25rem !important;
+}
+
 .logout {
-    margin-left: 24.85rem !important;
-    margin-top: 4rem;
     padding: .25rem;
+    margin-left: 48.75rem !important;
     width: 4.5rem;
     border-radius: 16px;
     border: 1px solid #6527BE;
@@ -506,6 +504,23 @@ nav {
     color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-size: 11px;
+}
+
+.change-pass {
+    padding: .25rem;
+    width: 7rem;
+    border-radius: 16px;
+    border: 1px solid black;
+    background-color: white;
+    text-align: center;
+    color: black;
+    box-shadow: 0px 2px 2px 0px #d3d3d3;
+    font-size: 11px;
+}
+
+.change-pass:hover {
+    color: white;
+    background-color: #6527BE;
 }
 
 .flex-container-profile {
@@ -530,7 +545,7 @@ nav {
 .tagz-summary {
     margin-top: 1.5rem;
     font-size: 22px !important;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     padding-bottom: .8rem;
 }
@@ -622,28 +637,32 @@ nav {
     margin-top: 1rem;
     text-align: center;
     margin-bottom: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1.1rem;
     color: #6527BE;
 }
 
 .diary-ent-card {
-    width: 22rem !important;
+    width: 53rem !important;
     height: 8rem !important;
     background-color: white;
     margin-top: 3rem;
+    margin-left: .9rem !important;
     border-radius: 20px;
     border: 1px solid black;
-    margin-left: 16.75rem !important;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.diary-ent-card:hover {
+    border: 3px solid #6527BE;
 }
 
 .diary-ent-text {
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     margin-top: 2.75rem;
-    color: black !important;
+    color: black;
     text-decoration: none !important;
 }
 
@@ -674,29 +693,34 @@ nav {
     text-align: center;
     margin-top: -3rem;
     margin-bottom: 2rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .tagtitle {
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 0rem;
 }
 
 .tagtitle-two {
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 0rem;
     margin-top: 1rem;
 }
 
 .entrytext {
     font-size: 16px;
+    font-weight: 400;
 }
 
 .diaryentrydate {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
+}
+
+.mood-recorded {
+    font-size: 18px;
 }
 
 .tagspan {
@@ -706,7 +730,7 @@ nav {
 .back-help2 {
     font-size: 16px;
     text-align: left;
-    font-weight: 600;
+    font-weight: 400;
     margin-left: 1.5rem;
     text-decoration: none !important;
     margin-top: 1rem;
@@ -714,8 +738,10 @@ nav {
 }
 
 .back-help2:hover {
+    font-weight: 500;
     font-size: 18px;
-    text-decoration: none !important;
+    color: #6527BE;
+    text-decoration: underline !important;
 }
 
 .diarytag-img {
@@ -831,6 +857,7 @@ nav {
 .item-text {
     margin-bottom: 3px;
     margin-top: 5px;
+    font-weight: 400;
     font-family: "Fredoka", "Nunito", sans-serif;
 }
 
@@ -858,7 +885,7 @@ nav {
 
 .checkin-card {
     width: 35rem;
-    height: 25rem;
+    height: 26.5rem;
     background-color: #F6F2FF;
     border-radius: 22px;
     border: 2px solid black;
@@ -886,12 +913,12 @@ nav {
 .checkin-time {
     font-style: italic;
     text-align: center;
-    font-weight: 300;
-    font-size: 24px;
+    font-weight: 400;
+    font-size: 22px;
 }
 
 .checkin-question {
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     font-size: 30px;
     margin-top: -.6rem;
@@ -912,6 +939,11 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     width: 9.6rem;
     font-size: 20px;
+}
+
+.checkin-btn:hover {
+    background-color: #6527BE;
+    color: white;
 }
 
 .xbtn {
@@ -958,7 +990,7 @@ nav {
 }
 
 .checkin-state {
-    font-weight: 500;
+    font-weight: 400;
     text-align: center;
     font-size: 18px;
     margin-bottom: 1.5rem;
@@ -968,7 +1000,7 @@ nav {
 .checkedin-already {
     text-align: center;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
     margin-top: 2.5rem;
 }
 
@@ -979,8 +1011,14 @@ nav {
     margin-top: 0rem;
 }
 
+.pencil-edit-name {
+    height: 30px;
+    margin-top: 1.75rem;
+    padding-left: .3rem;
+}
+
 .pet-name {
-    font-weight: 700;
+    font-weight: 500;
     font-size: 28px;
     margin-bottom: 1rem;
     margin-top: 1.25rem; 
@@ -1009,27 +1047,43 @@ nav {
     left: 45%;
     right: 0;
 }
+
 .cow img {
   align-self: flex-end;
 }
 
+.closet-divv {
+    display: flex;
+    justify-content: center;
+    margin-top: -3.5rem;
+} 
+
 .closet-title {
-    font-weight: 600;
+    font-weight: 500;
+    margin-top: 1.25rem;
     font-size: 26px;
-    margin-bottom: 0rem;
-    margin-top: 1rem;  
     text-align: center;
 }
 
+.x-btn2 {
+    width: 2.5rem;
+    margin-left: 28.5rem;
+    margin-top: .8rem;
+}
+
 .place-closet {
-    width: 6.5rem !important;
-    height: 4rem;
-    background-color: white;
+    width: 8rem !important;
+    height: 5rem;
+    background-color: #FFFFFF;
     border-radius: 35px;
     border: 1px solid black;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     text-align: center;
     display: inline-block;
+}
+
+.place-closet:hover {
+    border: 2.5px solid #6527BE;
 }
 
 .closet-btn-image {
@@ -1038,11 +1092,17 @@ nav {
     width: 35px;
 }
 
+.closet-btn {
+    width: 45px;
+    margin-top: .4rem;
+}
+
 .clothing-item:hover {
     box-shadow: 0 0 8px black; /* Example hover effect */
 }
 
 .clothing-item {
+    font-weight: 400;
     cursor: grab; /* Change the cursor to indicate it's clickable */
     transition: all 0.3s ease; /* Smooth transition for hover effects */
     border: 2px solid transparent; /* Default border to ensure layout doesn't shift on selection */
@@ -1053,7 +1113,6 @@ nav {
 }
 
 
-
 .places-btn-image {
     width: 35px;
     margin-top: 9.5px;
@@ -1062,8 +1121,8 @@ nav {
 
 .closet-places-text {
     text-align: center;
-    font-size: 12px;
-    margin-bottom: 7px;
+    font-size: 14px;
+    margin-bottom: 6px;
     color: black;
     text-decoration: none;
 }
@@ -1120,7 +1179,8 @@ nav {
 }
 
 .clothing-list, .places-list {
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 25px;

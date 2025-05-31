@@ -10,13 +10,6 @@ function Help() {
       <h2 className="about-help">About & Help</h2>
       <Accordion className="accordion">
       <Accordion.Item eventKey="0">
-        <Accordion.Header>How to use happy paws Tutorial</Accordion.Header>
-        <Accordion.Body>
-        <iframe src="https://scribehow.com/embed/happy_paws_Tutorial__wBc8cfDKTCus5-qYQP5YBQ" width="100%" height="640" allowfullscreen frameborder="0"></iframe>
-        <br></br>
-        </Accordion.Body>
-      </Accordion.Item>
-      <Accordion.Item eventKey="1">
         <Accordion.Header>Disclaimer</Accordion.Header>
         <Accordion.Body>
         Our website and all content displayed on this website are not to be perceived as or relied upon 
@@ -32,11 +25,11 @@ function Help() {
         certifications to provide medical or mental health advice.
         </Accordion.Body>
       </Accordion.Item>
-      <Accordion.Item eventKey="2">
-        <Accordion.Header>About the Creators of happy paws</Accordion.Header>
+      <Accordion.Item eventKey="1">
+        <Accordion.Header>About the Creators of Pawse</Accordion.Header>
         <Accordion.Body>
-        happy paws was created by a group of 5 students at the University of Washington for their senior capstone project.
-        Passionate about mental health and wellness, they decided to create happy paws as a fun resource to encourage
+        Pawse was created by a group of 5 students at the University of Washington for their senior capstone project.
+        Passionate about mental health and wellness, they decided to create Pawse as a fun resource to encourage
         Gen Z individuals to prioritize their mental wellbeing. 
         </Accordion.Body>
       </Accordion.Item>

@@ -57,7 +57,10 @@ export default function MyCloset() {
       <div className="flex-container-profile">
         <div className="closet-card">
           <div className="closet-div">
-            <p className="closet-title">My Closet</p>
+            <NavLink to="/home"><img className="x-btn2" src="x.png" alt="close button"></img></NavLink>
+            <div className="closet-divv">
+              <p className="closet-title">My Closet</p>
+            </div>
             <div className='clothing-list'>
               {Object.values(items).map((item) => (
                 <div key={item.itemName} className={`clothing-item ${selectedOutfit === item.itemName ? 'closet-selected' : ''}`} onClick={() => handleItemClick(item)}>
@@ -67,7 +70,6 @@ export default function MyCloset() {
               ))}
             </div>
           </div>
-          <NavLink to={{ pathname: "/viewpet", search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}><p className="back-btn">Back</p></NavLink>
         </div>
       </div>
     </div>

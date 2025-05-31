@@ -272,18 +272,19 @@ function Profile() {
   return (
     <div className="profile-body">
       <div className="flex-container-profile">
-        <div className="profile-card">
+        <div className="profile-card">   
+        <LogoutButton />
+        <div className="profile-divv">     
           <img
             className="profile-pic"
             src={selectedAvatar || 'profilepic.png'} 
             alt="profile pic"
             onClick={() => setShowAvatarModal(true)} 
-          />
-          <NavLink to="/help"><img className="help-icon" src="help.png"/></NavLink>
-          <p className="profile-name">{displayName}</p>
-          {userEmail && <p className="profile-email">{userEmail}</p>}
+          />  
+          <p className="profile-name">{displayName}</p> 
+          {userEmail && <p className="profile-email">{userEmail}</p>} 
           <button className="change-pass" onClick={() => handleChangeDisplayName(prompt('Enter new display name'))}>
-            Change Name
+              Change Name
           </button>
           <AvatarSelection 
             show={showAvatarModal} 
@@ -301,12 +302,12 @@ function Profile() {
               ))}
             </ul>
           </div>
+          </div>
           <div className="bar-card">
           <div className="bar-chart">
             <p className="chart-text">All-time Mood Summary</p>
             <canvas id="moodChart" height="200"></canvas>
           </div></div>
-
           <div className="tagz-card">
             <h2 className="tagz-summary">Most Recorded Diary Tags</h2>
             <div className="top-tags-section">
@@ -319,11 +320,9 @@ function Profile() {
               ))}
             </div>
           </div>
-          
           <NavLink to="/diaryentries" style={{ textDecoration: 'none'}}><div className="diary-ent-card">
             <p className="diary-ent-text">View All Diary Entries</p>
           </div></NavLink>
-          <LogoutButton />
         </div>
       </div>
     </div>

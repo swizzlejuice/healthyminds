@@ -68,6 +68,7 @@ export default function ViewPet() {
             <NavLink to="/home"><img className="xbutton" src="x.png" alt="Close button" /></NavLink>
             <div className='arrows-name'>
               <p className="pet-name" onClick={() => handleChangePetName(prompt('Enter new pet name'))}>{displayPetName}</p>
+              <img className="pencil-edit-name" src="pencil.png" alt="Edit icon" />
             </div>
             <div>
               <img className='dog-view' src={currentPetImage} alt="Pet" />
@@ -81,8 +82,8 @@ export default function ViewPet() {
             <div className='closet-places-btns'>
               <NavLink to={{ pathname: "/mycloset", search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
                 <div className="place-closet">
-                  <img className="closet-btn-image" src="Boy_Shirt.png" alt="Closet icon" />
-                  <p className="closet-places-text">My Closet</p>
+                  <img className="closet-btn" src="closet-btn.png" alt="Closet icon" />
+                  <p className="closet-places-text">View Closet</p>
                 </div>
               </NavLink>
             </div>

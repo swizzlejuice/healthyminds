@@ -125,6 +125,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import LogoutButton from './logout';
 
 export function HappyPawsNav({ updateStreak, backgroundImage }) {
   const [avatar, setAvatar] = useState('profileimage.png');
