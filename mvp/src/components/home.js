@@ -103,7 +103,8 @@ function Home({ updateBackgroundImage }) {
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
-        marginTop: '.4rem',
+        height: '79.5vh',
+        marginTop: '.3rem',
         borderRadius: '22px',
         marginBottom: '0rem',
       }}

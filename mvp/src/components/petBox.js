@@ -68,7 +68,7 @@ function PetBox({ imgSrc, itemName, price }) {
                 <img src={imgSrc} alt={itemName} className="pet-images" />
                 <div className="store-price-buy">
                     <div className="store-price">
-                        <img src="coin.png" alt="Coin" />
+                        <img src="coins.png" alt="Coin" />
                         <span>{price}</span>
                     </div>
                     <button className="buy-button" onClick={handleClick(price, imgSrc, itemName)}>

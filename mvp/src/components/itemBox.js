@@ -78,7 +78,7 @@ function ItemBox({ imgSrc, itemName, price, isNecessity}) {
                 <p className="item-text">{itemName}</p>
                 <div className="store-price-buy">
                     <div className="store-price">
-                        <img src="coin.png" alt="Coin" />
+                        <img src="coins.png" alt="Coin" />
                         <span>{price}</span>
                     </div>
                     <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>
