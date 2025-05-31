@@ -5,6 +5,7 @@ header {
     flex-direction: row;
     justify-content: space-between;
     height: 75px;
+    position: absolute;
     border-bottom-right-radius: 22px;
     border-bottom-left-radius: 22px;
     white-space: nowrap;
@@ -15,10 +16,12 @@ footer {
     border-top-right-radius: 22px;
     border-top-left-radius: 22px;
     color: white;
-    padding: 1rem;
-    padding-bottom: 1px;
+    padding-bottom: .5rem;
+    padding-top: .45rem;
+    padding-left: 1.5rem;
     position: fixed;
     bottom: 0;
+    height: 2rem;
 }
 
 li:hover, header h1:hover {
@@ -27,14 +30,19 @@ li:hover, header h1:hover {
 }
 
 footer p {
-    font-weight: 400;
-    font-size: 14px;
-    padding-left: .5rem;
+    font-weight: 300;
+    font-size: 12px;
 }
 
 header, footer {
     width: 100%;
     background-color: #6527BE;
+}
+
+.logo-img {
+    width: 120px;
+    margin: -.65rem;
+    margin-left: .2rem;
 }
 
 header h1 {
@@ -115,6 +123,7 @@ nav {
 .bg-buttons {
     padding: .25rem;
     margin-right: 1rem;
+    margin-top: 5.5rem;
     width: 9rem !important;
     border-radius: 16px;
     border: 1px solid black;
@@ -395,7 +404,7 @@ nav {
     padding: 2rem;
     border-radius: 22px;
     border: 2px solid black;
-    margin-top: -3.2rem;
+    margin-top: 2.5rem;
     max-height: 700px; 
     overflow-y: auto; 
 }
@@ -546,7 +555,7 @@ nav {
     padding-top: 1.5rem;
     border-radius: 20px;
     border: 1px solid black;
-    margin-top: -1.5rem;
+    margin-top: 4rem;
     margin-bottom: 2rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
@@ -682,7 +691,7 @@ nav {
     padding-top: 1.5rem;
     border-radius: 20px;
     border: 1px solid black;
-    margin-top: -1.5rem;
+    margin-top: 4rem;
     margin-bottom: 2rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
@@ -725,7 +734,7 @@ nav {
 
 .diaryentrydate {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .mood-recorded {
@@ -767,8 +776,7 @@ nav {
 .homepage, .checkin-body {
     background-image: url('/public/basicbg.png') ;
     background-size: cover;
-    height: 80vh;
-    margin-top: .4rem;
+    height: 100vh;
     border-radius: 22px;
     margin-bottom: 0rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -782,7 +790,7 @@ nav {
 
 .store-navigator {
     width: 70rem;
-    height: 4rem;
+    height: 4.75rem;
     background-color: white;
     padding-left: 1.5rem;
     padding-top: 1.5rem;
@@ -793,6 +801,7 @@ nav {
     align-items: center;
     padding: 1.5rem;
     margin: auto;
+    margin-top: 5.25rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -899,7 +908,7 @@ nav {
     background-color: #F6F2FF;
     border-radius: 22px;
     border: 2px solid black;
-    margin-top: 1rem;
+    margin-top: 4rem;
 }
 
 .arrows-name {
@@ -1203,7 +1212,7 @@ nav {
     background-color: #F6F2FF;
     border-radius: 22px;
     border: 2px solid black;
-    margin-top: 1rem;
+    margin-top: 4rem;
     max-height: 700px; 
     overflow-y: auto; 
 }
@@ -1434,7 +1443,6 @@ nav {
         background-image: url('/public/basicbg.png') ;
         background-size: cover;
         height: 100vh;
-        margin-top: .4rem;
         border-radius: 22px;
         margin-bottom: 0rem;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;

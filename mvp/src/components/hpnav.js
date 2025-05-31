@@ -185,11 +185,11 @@ export function HappyPawsNav({ updateStreak, backgroundImage }) {
     <header>
       <h1>
         {user ? (
-          <NavLink to="/home" style={{ color: '#f6f3eb', textDecoration: 'none' }}>
-            happy paws
+          <NavLink to="/home">
+            <img className="logo-img" src="Logo.png"></img>
           </NavLink>
         ) : (
-          <span style={{ color: '#f6f3eb', textDecoration: 'none' }}>happy paws</span>
+          <span><img className="logo-img" src="Logo.png"></img></span>
         )}
       </h1>
 
