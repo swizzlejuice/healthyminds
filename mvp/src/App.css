@@ -1053,7 +1053,7 @@ nav {
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 75px;
+    bottom: 65px;
     left: 45%;
     right: 0;
 }
@@ -1158,8 +1158,8 @@ nav {
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 75px;
-    left: 40%;
+    bottom: 60px;
+    left: 38%;
     right: 0;
 }
 
