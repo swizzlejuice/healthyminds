@@ -35,7 +35,6 @@ function Necessities() {
                     ))}
                 </div>
             </div>
-            <Footer />
         </div>
     );
 }

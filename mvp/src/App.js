@@ -64,7 +64,7 @@ function App() {
           <Route path="/mycloset" element={<MyCloset updatePetImage={updatePetImage} />} />
           <Route path="/myplaces" element={<MyPlaces />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
         </div>
       </PetImageProvider>
   );

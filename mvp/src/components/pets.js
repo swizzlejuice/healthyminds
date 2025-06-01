@@ -45,7 +45,6 @@ function Pets() {
                     ))}
                 </div>
             </div>
-            <Footer />
         </div>
     );
 }
