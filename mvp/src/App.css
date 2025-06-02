@@ -94,11 +94,61 @@ nav {
 }
 
 .coins {
-    width: 42px;
+    width: 40px;
     margin-right: .4rem;
     margin-left: -.2rem;
 }
 
+.coins.bounce {
+    animation: bigBounce 0.8s ease;
+}
+  
+@keyframes bigBounce {
+    0% {
+      transform: scale(1) translateY(0);
+    }
+    20% {
+      transform: scale(1.15) translateY(-12px);
+    }
+    40% {
+      transform: scale(0.95) translateY(0);
+    }
+    60% {
+      transform: scale(1.1) translateY(-6px);
+    }
+    80% {
+      transform: scale(1) translateY(0);
+    }
+    100% {
+      transform: scale(1) translateY(0);
+    }
+}
+
+.coin-number {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    animation: flipIn 0.4s ease-in-out;
+    backface-visibility: hidden;
+    transform-origin: bottom;
+}
+    
+@keyframes flipIn {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    50% {
+        transform: rotateX(20deg);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+    
 .fire {
     width: 40px;
     margin-right: .25rem;
@@ -1449,3 +1499,4 @@ nav {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 }
+
