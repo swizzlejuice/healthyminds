@@ -1,7 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useBackground } from './BackgroundContext';
 
-function CheckModal( {backgroundImage} ) {
+function CheckModal() {
+  const { backgroundImage } = useBackground();
   return (
     <div className="checkin-body" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="flex-container-profile">

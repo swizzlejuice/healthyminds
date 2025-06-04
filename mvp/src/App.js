@@ -21,6 +21,7 @@ import DiaryPage from './components/DiaryPage';
 import MyCloset from './components/myCloset';
 import MyPlaces from './components/myPlaces';
 import { PetImageProvider } from './components/PetImageContext';
+import { BackgroundProvider } from './components/BackgroundContext';
 
 function App() {
   const selectedAvatar = 'profileimage.png';
@@ -41,6 +42,7 @@ function App() {
   };
 
   return (
+    <BackgroundProvider>
       <PetImageProvider>
         <div>
         <HappyPawsNav selectedAvatar={selectedAvatar} updateStreak={updateStreak} streakCount={streakCount} backgroundImage={backgroundImage}/>
@@ -55,11 +57,11 @@ function App() {
           <Route path="/places" element={<Places />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<CreateAccount />} />
-          <Route path="/checkin" element={<CheckIn updateStreak={updateStreak} backgroundImage={backgroundImage} />} />
-          <Route path="/modal" element={<CheckModal backgroundImage={backgroundImage} />} />
+          <Route path="/checkin" element={<CheckIn updateStreak={updateStreak} />} />
+          <Route path="/modal" element={<CheckModal />} />
           <Route path="/help" element={<Help />} />
-          <Route path="/diary" element={<Diary backgroundImage={backgroundImage} />} />
-          <Route path="/diarymodal" element={<DiaryModal backgroundImage={backgroundImage} />} />
+          <Route path="/diary" element={<Diary />} />
+          <Route path="/diarymodal" element={<DiaryModal />} />
           <Route path="/diaryentries" element={<DiaryPage />} />
           <Route path="/mycloset" element={<MyCloset updatePetImage={updatePetImage} />} />
           <Route path="/myplaces" element={<MyPlaces />} />
@@ -67,6 +69,7 @@ function App() {
         {/* <Footer /> */}
         </div>
       </PetImageProvider>
+    </BackgroundProvider>
   );
 }
 

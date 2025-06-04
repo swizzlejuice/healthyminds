@@ -114,6 +114,8 @@ function DiaryTags() {
         { imgSrc: "rainy2.png", tag: "Rainy" },
         { imgSrc: "snow.png", tag: "Snowy" },
         { imgSrc: "windy2.png", tag: "Windy" },
+        { imgSrc: "stormy.png", tag: "Stormy" },
+        { imgSrc: "foggy.png", tag: "Foggy" },
     ];
 
     const items2 = [
@@ -125,9 +127,11 @@ function DiaryTags() {
 
     const items3 = [
         { imgSrc: "family.png", tag: "Family" },
-        { imgSrc: "friends.png", tag: "Friends" },
+        { imgSrc: "friendss.png", tag: "Friends" },
         { imgSrc: "party.png", tag: "Party" },
         { imgSrc: "call.png", tag: "Call" },
+        { imgSrc: "friends.png", tag: "Text" },
+        { imgSrc: "socialmedia.png", tag: "Social Media" },
         { imgSrc: "dating.png", tag: "Dating" },
     ];
 
@@ -135,15 +139,22 @@ function DiaryTags() {
         { imgSrc: "games.png", tag: "Games" },
         { imgSrc: "shopping.png", tag: "Shopping" },
         { imgSrc: "photography.png", tag: "Photography" },
+        { imgSrc: "podcast.png", tag: "Podcast" },
         { imgSrc: "listenmusic.png", tag: "Listening to Music" },
+        { imgSrc: "singing.png", tag: "Singing" },
         { imgSrc: "playinginstrument.png", tag: "Playing Instrument" },
+        { imgSrc: "chores.png", tag: "Chores" },
+        { imgSrc: "cleaning.png", tag: "Cleaning" },
         { imgSrc: "gardening.png", tag: "Gardening" },
         { imgSrc: "baking.png", tag: "Baking" },
         { imgSrc: "cooking.png", tag: "Cooking" },
+        { imgSrc: "selfcare.png", tag: "Self Care" },
         { imgSrc: "art & crafts.png", tag: "Arts & Crafts" },
         { imgSrc: "moviestv.png", tag: "Movies & TV" },
+        { imgSrc: "nap.png", tag: "Nap" },
         { imgSrc: "health&fitness.png", tag: "Fitness" },
         { imgSrc: "sports.png", tag: "Sports" },
+        { imgSrc: "pets.png", tag: "Pets" },
         { imgSrc: "reading.png", tag: "Reading" },
         { imgSrc: "writing.png", tag: "Writing" },
         { imgSrc: "makeup.png", tag: "Makeup" },
@@ -212,6 +223,7 @@ export default DiaryTags;
 // <a href="https://www.flaticon.com/free-icons/beach" title="beach icons">Beach icons created by Freepik - Flaticon</a>
 // <a href="https://www.flaticon.com/free-icons/windy" title="windy icons">Windy icons created by Vitaly Gorbachev - Flaticon</a>
 // <a href="https://www.flaticon.com/free-icons/rain" title="rain icons">Rain icons created by kornkun - Flaticon</a>
+// <a href="https://www.flaticon.com/free-icons/fog" title="fog icons">Fog icons created by kornkun - Flaticon</a>
 // <a href="https://www.flaticon.com/free-icons/snowy" title="snowy icons">Snowy icons created by Superarticons - Flaticon</a>
 // <a href="https://www.flaticon.com/free-icons/sun" title="sun icons">Sun icons created by Freepik - Flaticon</a>
 // <a href="https://www.flaticon.com/free-icons/cloud" title="cloud icons">Cloud icons created by Freepik - Flaticon</a>

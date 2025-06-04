@@ -3,12 +3,13 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, get } from 'firebase/database';
 import { NavLink, useLocation } from 'react-router-dom';
 import { usePetImage } from './PetImageContext';
+import { useBackground } from './BackgroundContext';
 
 export default function MyCloset() {
   const [items, setItems] = useState({});
   const [selectedOutfit, setSelectedOutfit] = useState('');  // Store the selected outfit name as a string
   const location = useLocation();
-  const backgroundImage = new URLSearchParams(location.search).get('backgroundImage') || 'basicbg.png';
+  const { backgroundImage } = useBackground();
   const { updateNecessityImage } = usePetImage(); // Using context for pet image updates
   const { updatePetImage } = usePetImage();
   const [basePetName, setBasePetName] = useState('');

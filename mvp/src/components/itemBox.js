@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, update, get } from 'firebase/database';
 import { useNavigate, NavLink } from 'react-router-dom'; 
+import { useBackground } from './BackgroundContext';
 
 function ItemBox({ imgSrc, itemName, price, isNecessity}) {
     const [currentUser, setCurrentUser] = useState(null);
     const [coinCount, setCoinCount] = useState(0);
     const [isPurchased, setIsPurchased] = useState(false); 
+    const { setBackgroundImage } = useBackground();
     const navigate = useNavigate(); 
-
 
     useEffect(() => {
         const auth = getAuth();
@@ -37,10 +38,24 @@ function ItemBox({ imgSrc, itemName, price, isNecessity}) {
 
     const handleClick = (itemPrice, itemName, imgSrc) => () => {
         if (currentUser) {
+          // if (isPurchased) {
+          //   navigate('/mycloset'); // Navigate to the closet if already purchased
+          //   return;
+          // }
           if (isPurchased) {
-            navigate('/mycloset'); // Navigate to the closet if already purchased
+            const db = getDatabase();
+            const userId = currentUser.uid;
+            const userRef = ref(db, `users/${userId}/backgroundImage`);
+            get(userRef).then((snapshot) => {
+              const savedBackground = snapshot.val();
+              if (savedBackground) {
+                setBackgroundImage(savedBackground);
+              }
+              navigate('/mycloset');
+            });
             return;
           }
+          
           const db = getDatabase();
           const userId = currentUser.uid;
           const userRef = ref(db, `users/${userId}`);

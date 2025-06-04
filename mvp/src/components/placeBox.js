@@ -28,7 +28,6 @@ function PlaceBox({ imgSrc, itemName, price }) {
         });
     };
       
-
 const handleClick = (itemPrice, itemName, imgSrc) => () => {
     if (currentUser) {
         const db = getDatabase();

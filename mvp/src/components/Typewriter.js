@@ -9,9 +9,9 @@ export function TypeWriter() {
     });
 
     return (
-            <div className="signin-head">
-                {text}
-            </div>
+        <div className="signin-head">
+            {text}
+        </div>
     );
 }
 

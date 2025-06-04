@@ -678,7 +678,6 @@ nav {
 
 .filterby {
     margin-right: .5rem;
-    margin-left: 7.5rem;
 }
 
 .filterbymonth {
@@ -712,6 +711,7 @@ nav {
     margin-top: 1rem;
     text-align: center;
     margin-bottom: 1rem;
+    margin-right: 1rem;
     font-weight: 400;
     font-size: 1.1rem;
     color: #6527BE;
@@ -728,6 +728,11 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.diary-ent-cont {
+    text-align: center;
+    margin-right: 1rem;
+}
+
 .diary-ent-card:hover {
     border: 3px solid #6527BE;
 }
@@ -742,7 +747,7 @@ nav {
 }
 
 .diary-entries-card {
-    width: 58rem !important;
+    width: 80rem !important;
     background-color: white;
     padding-left: 1.5rem;
     padding-top: 1.5rem;
@@ -753,19 +758,45 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
+.diary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0rem;
+    padding-top: 2rem;
+}
+
 .each-entry {
     background-color: white;
-    width: 35rem;
+    width: 36rem;
     padding: 2rem;
-    margin-left: 10.5rem;
-    margin-bottom: 3rem;
+    margin-left: .8rem;
+    margin-bottom: 2.5rem;
     border-radius: 20px;
     border: 1px solid black;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
+.each-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem; /* vertical and horizontal spacing */
+    margin-top: 0.5rem;
+}
+  
+.each-tags > div {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    width: 120px; /* fixed width ensures vertical alignment */
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
+    
 .diarypage-text {
     text-align: center;
+    margin-right: 1rem;
     margin-top: -3rem;
     margin-bottom: 2rem;
     font-weight: 500;
@@ -1499,4 +1530,3 @@ nav {
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
 }
-

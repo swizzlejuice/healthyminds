@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 function DiaryPage() {
   const [diaryEntries, setDiaryEntries] = useState([]);
-  const [totalEntries, setTotalEntries] = useState(0); // my total entries count
+  const [totalEntries, setTotalEntries] = useState(0); 
   const [selectedDay, setSelectedDay] = useState(''); 
   const [selectedMonth, setSelectedMonth] = useState(''); 
   const [moodEntries, setMoodEntries] = useState({});
@@ -82,6 +82,10 @@ function DiaryPage() {
         return 'snow.png';
     case 'Windy':
         return 'windy2.png';
+    case 'Stormy':
+        return 'stormy.png';
+    case 'Foggy':
+        return 'foggy.png';
     case 'School':
         return 'school.png';
     case 'Work':
@@ -93,11 +97,15 @@ function DiaryPage() {
     case 'Family':
         return 'family.png';
     case 'Friends':
-        return 'friends.png';
+        return 'friendss.png';
     case 'Party':
         return 'party.png';
     case 'Call':
         return 'call.png';
+    case 'Text':
+        return 'friends.png';
+    case 'Social Media':
+        return 'socialmedia.png';
     case 'Dating':
         return 'dating.png';
     case 'Games':
@@ -106,24 +114,38 @@ function DiaryPage() {
         return 'shopping.png';
     case 'Photography':
         return 'photography.png';
+    case 'Podcast':
+        return 'podcast.png';
     case 'Listening to Music':
         return 'listenmusic.png';
+    case 'Singing':
+        return 'singing.png';
     case 'Playing Instrument':
         return 'playinginstrument.png';
+    case 'Chores':
+        return 'chores.png';
+    case 'Cleaning':
+        return 'cleaning.png';
     case 'Gardening':
         return 'gardening.png';
     case 'Baking':
         return 'baking.png';
     case 'Cooking':
         return 'cooking.png';
+    case 'Self Care':
+        return 'selfcare.png';
     case 'Arts & Crafts':
         return 'art & crafts.png';
     case 'Movies & TV':
         return 'moviestv.png';
+    case 'Nap':
+        return 'nap.png';
     case 'Fitness':
         return 'health&fitness.png';
     case 'Sports':
         return 'sports.png';
+    case 'Pets':
+        return 'pets.png';
     case 'Reading':
         return 'reading.png';
     case 'Writing':
@@ -172,8 +194,8 @@ function DiaryPage() {
             <div className="diary-entries-card">
               <NavLink className="back-link" to="/profile"><p className="back-help2">← Back</p></NavLink>
               <h2 className="diarypage-text">Diary Entries</h2>
-              <div>
               <p className="total-entries-p">Total Entries Made: {totalEntries}</p>
+              <div className="diary-ent-cont">
                 <label htmlFor="dateFilter" className='filterby'>Filter by Day:</label>
                 <input
                   className="filterer"
@@ -207,6 +229,8 @@ function DiaryPage() {
                 <option value="12">December</option>
                 </select>
                 <button className="clear-btn" onClick={clearFilter}>Clear</button>
+              </div>
+              <div className="diary-grid">
                 {filteredEntries.map((entry, index) => (
                   <div key={index} className="each-entry">
                     <p className="diaryentrydate">Date of Entry: {formatDate(entry.timestamp)}</p>
