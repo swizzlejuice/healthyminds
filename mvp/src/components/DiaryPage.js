@@ -6,8 +6,10 @@ import { NavLink } from 'react-router-dom';
 function DiaryPage() {
   const [diaryEntries, setDiaryEntries] = useState([]);
   const [totalEntries, setTotalEntries] = useState(0); 
+  const [monthlyEntries, setMonthlyEntries] = useState(0);
   const [selectedDay, setSelectedDay] = useState(''); 
   const [selectedMonth, setSelectedMonth] = useState(''); 
+  const [selectedYear, setSelectedYear] = useState('');
   const [moodEntries, setMoodEntries] = useState({});
 
   useEffect(() => {
@@ -33,11 +35,27 @@ function DiaryPage() {
           entries.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
           setDiaryEntries(entries);
           setTotalEntries(entries.length);
+      
+          // Count how many entries were made this month
+          const now = new Date();
+          const currentMonth = now.getMonth(); // 0-indexed: 0 = January
+          const currentYear = now.getFullYear();
+      
+          const entriesThisMonth = entries.filter(entry => {
+            const entryDate = new Date(entry.timestamp);
+            return (
+              entryDate.getMonth() === currentMonth &&
+              entryDate.getFullYear() === currentYear
+            );
+          });
+      
+          setMonthlyEntries(entriesThisMonth.length);
         } else {
           setDiaryEntries([]);
           setTotalEntries(0);
+          setMonthlyEntries(0); // Reset monthly count if no data
         }
-      });
+      });      
     }
   }, []);
   
@@ -186,6 +204,8 @@ function DiaryPage() {
   ? diaryEntries.filter(entry => formatDate(entry.timestamp) === selectedDay)
   : selectedMonth
   ? diaryEntries.filter(entry => entry.timestamp.substring(0, 7) === selectedMonth)
+  : selectedYear
+  ? diaryEntries.filter(entry => entry.timestamp.startsWith(selectedYear))
   : diaryEntries;
 
     return (
@@ -194,7 +214,7 @@ function DiaryPage() {
             <div className="diary-entries-card">
               <NavLink className="back-link" to="/profile"><p className="back-help2">← Back</p></NavLink>
               <h2 className="diarypage-text">Diary Entries</h2>
-              <p className="total-entries-p">Total Entries Made: {totalEntries}</p>
+              <p className="total-entries-p">Total Entries Made to Date: {totalEntries} │ Total Entries Made this Month: {monthlyEntries}</p>
               <div className="diary-ent-cont">
                 <label htmlFor="dateFilter" className='filterby'>Filter by Day:</label>
                 <input
@@ -229,6 +249,20 @@ function DiaryPage() {
                 <option value="12">December</option>
                 </select>
                 <button className="clear-btn" onClick={clearFilter}>Clear</button>
+                <label htmlFor="year-filter" className="filterbymonth">Filter by Year:</label>
+                <select
+                  className="month-filter"
+                  id="yearFilter"
+                  name="yearFilter"
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                >
+                  <option value="">All Years</option>
+                  <option value="2024">2024</option>
+                  <option value="2025">2025</option>
+                  <option value="2026">2026</option>
+                </select>
+                <button className="clear-btn" onClick={() => setSelectedYear('')}>Clear</button>
               </div>
               <div className="diary-grid">
                 {filteredEntries.map((entry, index) => (

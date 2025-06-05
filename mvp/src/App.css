@@ -309,8 +309,11 @@ nav {
 
 /* PROFILE PAGE - CLARABELLE */
 .profile-body {
-    background-color: #F6F2FF !important;
+    background-color: #F6F2FF;
     border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .profile-name {
@@ -416,6 +419,13 @@ nav {
     margin-bottom: 1.5rem;
 }
 
+.chart-desc {
+    font-weight: 400;
+    color: black;
+    text-align: center;
+    font-style: italic;
+}
+
 .mood-summary-list .mood-emoji {
     font-size: 2rem;
     display: block;
@@ -424,7 +434,7 @@ nav {
 }
 
 .mood-summary-list {
-    margin-left: -1.5rem;
+    margin-left: -.75rem;
 }
 
 .mood-card {
@@ -440,7 +450,7 @@ nav {
 
 .bar-card {
     width: 53rem !important;
-    height: 37rem !important;
+    height: 41rem !important;
     background-color: white;
     margin-top: 3rem;
     border-radius: 20px;
@@ -565,7 +575,7 @@ nav {
 
 .logout {
     padding: .25rem;
-    margin-left: 48.75rem !important;
+    margin-left: 71rem !important;
     width: 4.5rem;
     border-radius: 16px;
     border: 1px solid #6527BE;
@@ -594,72 +604,159 @@ nav {
 }
 
 .flex-container-profile {
+    display: flex;
     justify-content: center;
     padding-top: 4rem;
     padding-bottom: 4rem;
+    align-items: flex-start; /* automaticcaly shrink and stretch */
 }
 
 .profile-card {
-    width: 58rem !important;
-    height: 100rem !important;
+    width: 80rem !important;
     background-color: white;
     padding-left: 1.5rem;
     padding-top: 1.5rem;
     border-radius: 20px;
     border: 1px solid black;
     margin-top: 2.75rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 5rem;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.tagz-summary {
-    margin-top: 1.5rem;
-    font-size: 22px !important;
-    font-weight: 500;
-    text-align: center;
-    padding-bottom: .8rem;
-}
+.profile-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}  
 
 .tagz-card {
     width: 53rem !important;
-    height: 10rem !important;
     background-color: white;
     margin-top: 3rem;
     border-radius: 20px;
     border: 1px solid black;
-    margin-left: .9rem !important;
+    /* margin-left: 0.9rem !important; */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 1.5rem 1rem; /* Ensures exactly 1rem margin on left & right */
+    box-sizing: border-box;
+    overflow: hidden;
+    padding-bottom: 3rem;
+}
+  
+.tagz-summary {
+    font-size: 22px !important;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+  
+.tagz-subheading {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-/* .top-tags-section {
-    display: flex; 
-    flex-wrap: wrap; 
-    margin-left: 2rem !important; 
-    margin-right: 0rem;
-} */
+.tagz-subhead {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 3rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
   
 .top-tags-section {
     display: flex;
-    flex-wrap: nowrap; 
-    justify-content: center; 
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
-
+  
 .top-tag {
-    margin-right: 50px; /* spacing between tags */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 6.5rem;
+    text-align: center;
+    font-size: 14px;
+    word-wrap: break-word;
 }
   
 .diarytag-img {
-    width: 60px; 
-}
+    width: 40px;
+    height: auto; 
+    margin-bottom: 0.25rem;
+    object-fit: contain; /* Prevents squashing/stretching */
+}  
   
 .tagspan {
     margin-left: 2px; 
 }
 
-.top-tags-section {
-    margin-left: 3rem;
+.profile-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: .75rem;
+    scroll-behavior: smooth;
 }
-
+  
+.profile-sidebar {
+    margin-top: 4.5rem;
+    position: sticky;
+    top: 4rem;
+    align-self: flex-start;
+    padding-left: 0rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background: #fff;
+    border-radius: 1rem;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 4px #6527BE;
+    height: fit-content;
+    width: 15rem;
+    box-sizing: border-box; 
+    text-align: left; 
+  }
+  
+  .profile-sidebar ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start; 
+  }
+  
+  .profile-sidebar li {
+    width: 100%; 
+  }
+  
+  .profile-sidebar a {
+    display: block; 
+    width: 100%;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.4;
+    transition: color 0.2s;
+    word-wrap: break-word; 
+    text-align: left;
+    justify-content: flex-start;
+  }
+  
+.profile-sidebar a:hover {
+    color: #6527BE;
+    font-weight: 600;
+    font-size: 18px;
+}
+  
 .clear-btn {
     padding: .2rem;
     width: 4.5rem;
@@ -714,7 +811,7 @@ nav {
     margin-right: 1rem;
     font-weight: 400;
     font-size: 1.1rem;
-    color: #6527BE;
+    color: black;
 }
 
 .diary-ent-card {
@@ -763,6 +860,7 @@ nav {
     grid-template-columns: repeat(2, 1fr);
     gap: 0rem;
     padding-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .each-entry {
@@ -1436,11 +1534,6 @@ nav {
         margin-left: 11.8rem;
     }
     
-    .profile-card {
-        width: 32rem;
-        height: 36rem;
-    }
-    
 }
 
 @media (min-width: 992px)
@@ -1511,11 +1604,6 @@ nav {
     
     .flex-container-profile {
         padding-top: 4rem;
-    }
-    
-    .profile-card {
-        width: 50rem;
-        height: 40rem;
     }
 }
 

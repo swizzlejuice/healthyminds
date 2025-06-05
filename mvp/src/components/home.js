@@ -122,10 +122,10 @@ function Home() {
     >
       <Modal show={showModal} onHide={toggleModal} centered>
         <Modal.Header>
-          <Modal.Title>Daily Check-In Reminder</Modal.Title>
+          <Modal.Title>Daily Check In Reminder</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Don't forget to complete your daily check-in to earn coins and increase your pet's health!</p>
+          <p>Don't forget to complete your daily check in to earn coins and increase your pet's health!</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={toggleModal}>
