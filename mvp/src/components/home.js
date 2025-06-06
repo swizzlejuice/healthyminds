@@ -108,7 +108,7 @@ function Home() {
     { name: 'Fireside Evening', url: 'bg11.png' },
     { name: 'The Neighborhood', url: 'bg9.png' },
     { name: 'Cabin at Sundown', url: 'bg6.png' },
-    { name: 'Exploring the Farm', url: 'farm.jpg' },
+    { name: 'Day at the Farm', url: 'farm.jpg' },
     { name: 'Roadside Gazebo', url: 'bg8.png' },
     { name: 'Blue Night', url: 'nighthouse.jpg' },
     // all vectors sourced from Vecteezy with a premium license

@@ -45,7 +45,7 @@ const Signup = () => {
 
     return (
         <div className='signin-card'>
-            <h2 className="signin-header">Create an account with</h2>
+            <h2 className="signin-header">Welcome to</h2>
             <TypeWriter></TypeWriter>
             <input className="signin-field" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input className="signin-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />

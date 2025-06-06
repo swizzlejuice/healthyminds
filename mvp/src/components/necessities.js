@@ -8,13 +8,13 @@ function Necessities() {
         { imgSrc: "basicbowlT.png", itemName: "Basic Bowl", price: 30, isNecessity: true },
         { imgSrc: "catbowlT.png", itemName: "Cat Bowl", price: 40, isNecessity: true },
         { imgSrc: "dogbowlT.png", itemName: "Dog Bowl", price: 40, isNecessity: true },
-        { imgSrc: "polkadotT.png", itemName: "Polka Toy", price: 50, isNecessity: true },
-        { imgSrc: "dogballT.png", itemName: "Dog Ball", price: 45, isNecessity: true },
+        { imgSrc: "polkadotT.png", itemName: "Polka Toy", price: 55, isNecessity: true },
+        { imgSrc: "dogballT.png", itemName: "Dog Ball", price: 50, isNecessity: true },
         // inspo attribution: freepik, vector created in figma
         { imgSrc: "cattoyT.png", itemName: "Cat Toy", price: 60, isNecessity: true },
         // inspo attribution: shutterstock, vector created in figma
-        { imgSrc: "basicmouseT.png", itemName: "Basic Mouse", price: 40, isNecessity: true },
-        { imgSrc: "ultimatemousetoyT.png", itemName: "Ultimate Mouse", price: 60, isNecessity: true },
+        { imgSrc: "basicmouseT.png", itemName: "Basic Mouse", price: 45, isNecessity: true },
+        { imgSrc: "ultimatemousetoyT.png", itemName: "Ultimate Mouse", price: 70, isNecessity: true },
     ];
 
     const firstHalf = items.slice(0, Math.ceil(items.length / 2));

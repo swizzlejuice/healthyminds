@@ -179,7 +179,7 @@ function DiaryTags() {
             <div className="row mt-5 justify-content-center">
                 {renderRows(rows3)}
             </div>
-            <p className="diary-text">Hobbies</p>
+            <p className="diary-text">Hobbies and Activities</p>
             <div className="row mt-5 justify-content-center">
                 {renderRows(rows4)}
             </div>

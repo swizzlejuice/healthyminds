@@ -233,21 +233,22 @@ nav {
     margin-right: auto;
     margin-top: -37.5rem;
     background-color: #F6F2FF !important;
-    border: 2px solid black !important;
+    border: 2px solid black;
 }
 
 .signin-header {
     text-align: center;
     margin-bottom: 0rem;
     font-weight: 400;
-    font-size: 1.25rem;
+    font-size: 18px;
 }
 
 .signin-head {
+    color: #6527BE;
     text-align: center;
     margin-bottom: 1.5rem !important;
     font-weight: 500 !important;
-    font-size: 2.5rem;
+    font-size: 44px;
 }
 
 .signin-field {
@@ -297,10 +298,9 @@ nav {
 }
 
 .login-body {
-    background-image: url('/public/bg2.png') ;
+    background-image: url('/public/loginn.jpg') ;
     background-size: cover;
     height: 100vh;
-    /* border-radius: 22px; */
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     background-position: center; 
     /* background-repeat: no-repeat;  */
@@ -320,7 +320,7 @@ nav {
     color: black;
     margin-left: 7rem;
     margin-top: -5.85rem;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
 }
 
