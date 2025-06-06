@@ -111,6 +111,7 @@ function Home() {
     { name: 'Exploring the Farm', url: 'farm.jpg' },
     { name: 'Roadside Gazebo', url: 'bg8.png' },
     { name: 'Blue Night', url: 'nighthouse.jpg' },
+    // all vectors sourced from Vecteezy with a premium license
   ];
 
   if (isLoading) return null; 
