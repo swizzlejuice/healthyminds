@@ -86,26 +86,41 @@ export function HappyPawsNav() {
 
   return (
     <header>
-      <h1>
-        <NavLink to="/home">
-          <img className="logo-img" src="Logo.png" alt="logo" />
-        </NavLink>
+      <h1 style={{ pointerEvents: user ? 'auto' : 'none', opacity: user ? 1 : 0.5 }}>
+      <NavLink to="/home">
+        <img className="logo-img" src="Logo.png" alt="logo" />
+      </NavLink>
       </h1>
-
+  
       <nav>
         <ul>
           <li>
-            <NavLink to="/clothing" style={{ color: '#f6f3eb', textDecoration: 'none' }}><img className="store" src="store.png" alt="store" />Store</NavLink>
+            <NavLink 
+              to={user ? "/clothing" : "#"} 
+              style={{ color: '#f6f3eb', textDecoration: 'none', pointerEvents: user ? 'auto' : 'none', opacity: user ? 1 : 0.5 }}
+            >
+              <img className="store" src="store.png" alt="store" />Store
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/diary" style={{ color: '#f6f3eb', textDecoration: 'none' }}><img className="diary" src="bluediary.png" alt="diary" />Diary</NavLink>
+            <NavLink 
+              to={user ? "/diary" : "#"} 
+              style={{ color: '#f6f3eb', textDecoration: 'none', pointerEvents: user ? 'auto' : 'none', opacity: user ? 1 : 0.5 }}
+            >
+              <img className="diary" src="bluediary.png" alt="diary" />Diary
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/checkin" style={{ color: '#f6f3eb', textDecoration: 'none' }}><img className="check-smile" src="checkinimg.png" alt="checkin" />Check in</NavLink>
+            <NavLink 
+              to={user ? "/checkin" : "#"} 
+              style={{ color: '#f6f3eb', textDecoration: 'none', pointerEvents: user ? 'auto' : 'none', opacity: user ? 1 : 0.5 }}
+            >
+              <img className="check-smile" src="checkinimg.png" alt="checkin" />Check in
+            </NavLink>
           </li>
           <li>
             <img className={`coins ${coinCountUpdated ? 'bounce' : ''}`} src="coins.png" alt="coin icon" />
-            <span key={flipTrigger} className="coin-number">{displayedCoinCount}</span>
+            <span key={flipTrigger} className="coin-number">{user ? displayedCoinCount : '--'}</span>
           </li>
           <li>
             <img
@@ -114,20 +129,25 @@ export function HappyPawsNav() {
               alt="fire icon"
               style={{
                 transform: streakUpdated ? 'scale(1.5)' : 'scale(1)',
-                transition: 'transform 0.8s ease-in-out'
+                transition: 'transform 0.8s ease-in-out',
+                opacity: user ? 1 : 0.5
               }}
             />
-            {streakCount}
+            {user ? streakCount : '--'}
           </li>
           <li>
-            <NavLink to="/profile">
-              <img className="profileimage" src={avatar} alt="profile" />
+            <NavLink 
+              to={user ? "/profile" : "#"} 
+              style={{ pointerEvents: user ? 'auto' : 'none' }}
+            >
+              <img className="profileimage" src={avatar} alt="profile" style={{ opacity: user ? 1 : 0.5 }} />
             </NavLink>
           </li>
         </ul>
       </nav>
     </header>
   );
+  
 }
 
 export default HappyPawsNav;

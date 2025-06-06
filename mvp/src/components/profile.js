@@ -423,13 +423,15 @@ function Profile() {
                 onSelectAvatar={handleAvatarChange}
               />
             </div>
-    
+
+            <p className="insights-heading">✨ Insights Dashboard ✨</p>
             <div className="profile-layout">
               <nav className="profile-sidebar">
                 <ul>
-                  <li><a href="#mood-insights">Mood Insights</a></li>
-                  <li><a href="#diary-insights">Diary Insights</a></li>
-                  <li><a href="#view-entries">View All Entries</a></li>
+                  <p className="navhead">🔍 Navigate to...</p>
+                  <li><a href="#mood-insights">• Mood Insights</a></li>
+                  <li><a href="#diary-insights">• Diary Insights</a></li>
+                  <li><a href="#view-entries">• View All Diary Entries</a></li>
                 </ul>
               </nav>
     

@@ -23,13 +23,16 @@ function Home() {
       if (user) {
         setCurrentUser(user);
 
-        if (!backgroundImage) {
-          fetchBackgroundImage(user.uid);
-        } else {
-          // If context already has background, no need to fetch again
-          setIsLoading(false);
-          checkLastLoginDate(user.uid);
-        }
+        // if (!backgroundImage) {
+        //   fetchBackgroundImage(user.uid);
+        // } else {
+        //   // If context already has background, no need to fetch again
+        //   setIsLoading(false);
+        //   checkLastLoginDate(user.uid);
+        // }
+        fetchBackgroundImage(user.uid);
+        checkLastLoginDate(user.uid);
+
 
       } else {
         setCurrentUser(null);
@@ -101,11 +104,13 @@ function Home() {
   const backgrounds = [
     { name: 'Starter Background', url: 'basicbg.png' },
     { name: 'Red Orchard', url: 'bg2.png' },
+    { name: 'The Stables', url: 'barn.png' },
     { name: 'Fireside Evening', url: 'bg11.png' },
     { name: 'The Neighborhood', url: 'bg9.png' },
     { name: 'Cabin at Sundown', url: 'bg6.png' },
+    { name: 'Exploring the Farm', url: 'farm.jpg' },
     { name: 'Roadside Gazebo', url: 'bg8.png' },
-    { name: 'Day at the Park', url: 'bg3.png' },
+    { name: 'Blue Night', url: 'nighthouse.jpg' },
   ];
 
   if (isLoading) return null; 

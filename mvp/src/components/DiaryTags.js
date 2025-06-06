@@ -183,8 +183,8 @@ function DiaryTags() {
             <div className="row mt-5 justify-content-center">
                 {renderRows(rows4)}
             </div>
-            <p className="diary-p2">Add an optional description :)</p>
-            <Input as="textarea" rows={4} placeholder="Type diary entry here" className="diary-form"
+            <p className="diary-p2">Add an optional description:</p>
+            <Input as="textarea" rows={4} placeholder="Type diary entry here..." className="diary-form"
                 inputRef={textareaRef} />
             <button className="diary-btn" onClick={handleFormSubmit}>Submit</button>
         </div>
