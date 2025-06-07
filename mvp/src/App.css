@@ -175,8 +175,7 @@ nav {
 
 .bg-buttons {
     padding: .25rem;
-    margin-right: 1rem;
-    margin-top: 4.7rem;
+    margin-right: .5rem;
     width: 9rem !important;
     border-radius: 16px;
     border: 1px solid black;
@@ -194,8 +193,11 @@ nav {
 }
 
 .bg-btns {
-    padding-top: 1rem;
+    padding-top: 5.6rem; /* this pushes all buttons down as a group */
     padding-left: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem; 
 }
 
 .outfit-buttons {
@@ -1252,7 +1254,7 @@ nav {
 }
 
 .dog {
-    max-width: 11rem; 
+    max-width: 10rem; 
     /* display: block;
     margin-left: auto;
     margin-right: auto;
@@ -1360,12 +1362,12 @@ nav {
 }
 
 .necessity-image {
-    max-width: 6rem;
+    max-width: 8rem;
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 50px;
-    left: 38%;
+    bottom: 52px;
+    left: 36%;
     right: 0;
 }
 

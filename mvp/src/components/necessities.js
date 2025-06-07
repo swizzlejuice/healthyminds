@@ -5,16 +5,15 @@ import Footer from './hpfooter';
 
 function Necessities() {
     const items = [
-        { imgSrc: "basicbowlT.png", itemName: "Basic Bowl", price: 30, isNecessity: true },
-        { imgSrc: "catbowlT.png", itemName: "Cat Bowl", price: 40, isNecessity: true },
-        { imgSrc: "dogbowlT.png", itemName: "Dog Bowl", price: 40, isNecessity: true },
-        { imgSrc: "polkadotT.png", itemName: "Polka Toy", price: 55, isNecessity: true },
-        { imgSrc: "dogballT.png", itemName: "Dog Ball", price: 50, isNecessity: true },
-        // inspo attribution: freepik, vector created in figma
-        { imgSrc: "cattoyT.png", itemName: "Cat Toy", price: 60, isNecessity: true },
-        // inspo attribution: shutterstock, vector created in figma
-        { imgSrc: "basicmouseT.png", itemName: "Basic Mouse", price: 45, isNecessity: true },
-        { imgSrc: "ultimatemousetoyT.png", itemName: "Ultimate Mouse", price: 70, isNecessity: true },
+        { imgSrc: "basicbowlT.png", itemName: "Pet Bowl", price: 25, isNecessity: true },
+        { imgSrc: "boneT.png", itemName: "Bone Chew", price: 30, isNecessity: true },
+        { imgSrc: "dogballT.png", itemName: "Dog Balls", price: 35, isNecessity: true },
+        { imgSrc: "ballyarnT.png", itemName: "Ball of Yarn", price: 35, isNecessity: true },
+        { imgSrc: "mouseT.png", itemName: "Ultimate Mouse", price: 40, isNecessity: true },
+        { imgSrc: "cattoyT.png", itemName: "Cat Toy", price: 50, isNecessity: true },
+        { imgSrc: "beartoyT.png", itemName: "Stuffed Bear", price: 60, isNecessity: true },
+        { imgSrc: "scratchT.png", itemName: "Scratching Post", price: 70, isNecessity: true },
+        // all vectors sourced from Vecteezy with a premium license
     ];
 
     const firstHalf = items.slice(0, Math.ceil(items.length / 2));

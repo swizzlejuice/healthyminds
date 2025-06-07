@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, update, get } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
+import { useBackground } from './BackgroundContext'; 
 
 function PetBox({ imgSrc, itemName, price }) {
     const [currentUser, setCurrentUser] = useState(null);
     const [coinCount, setCoinCount] = useState(0);
     const [petPurchased, setPetPurchased] = useState(false); 
+    const { backgroundImage } = useBackground();
     const navigate = useNavigate(); 
 
     useEffect(() => {
@@ -37,7 +39,10 @@ function PetBox({ imgSrc, itemName, price }) {
     const handleClick = (price, imgSrc, itemName) => () => {
         if (!currentUser) return;
         if (petPurchased) {
-            navigate('/viewpet');
+            navigate({
+                pathname: '/viewpet',
+                search: `?backgroundImage=${encodeURIComponent(backgroundImage)}`
+            });
             return;
         }
         const db = getDatabase();

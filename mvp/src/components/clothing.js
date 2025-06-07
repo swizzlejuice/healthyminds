@@ -5,16 +5,14 @@ import ItemBox from './itemBox';
 function StorePage() {
     const items = [
         { imgSrc: "basictee.png", itemimage: "basictee", itemName: "Basic Tee", price: 35, isNecessity: false },
-        // inspo attribution: adobe stock, vector created in figma
         { imgSrc: "orangepolo.png", itemName: "Orange Polo", price: 55, isNecessity: false },
         { imgSrc: "onsie.png", itemName: "The Onesie", price: 65, isNecessity: false },
-        // attribution: from https://pforpet.com/winter-dog-clothes/
         { imgSrc: "lavenderwrap.png", itemName: "Lavender Wrap", price: 75, isNecessity: false },
         { imgSrc: "baggysweater.png", itemName: "Baggy Sweater", price: 45, isNecessity: false },
         { imgSrc: "redpuffer.png", itemName: "Red Puffer", price: 85, isNecessity: false},
         { imgSrc: "softtee.png", itemName: "Soft Tee", price: 50, isNecessity: false },
-        // inspo attribution: vectorstock, vector created in figma
         { imgSrc: "loungetee.png", itemName: "Lounge Tee", price: 40, isNecessity: false },
+        // all vectors sourced from Vecteezy with a premium license
     ];
 
     const firstHalf = items.slice(0, Math.ceil(items.length / 2));
