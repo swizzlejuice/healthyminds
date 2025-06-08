@@ -202,8 +202,8 @@ nav {
 
 .outfit-buttons {
     padding: .25rem;
-    margin-left: 1rem;
     margin-top: .75rem;
+    margin-right: .5rem;
     width: 9rem !important;
     border-radius: 16px;
     border: 1px solid black;
@@ -213,6 +213,67 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     width: 9.6rem;
     font-size: 13px;
+}
+
+.outfit-buttons:hover {
+    background-color: white;
+    color: black;
+}
+
+.purple-btns {
+    padding-left: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem; 
+}
+
+.water-bowl {
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 32px;
+    left: 57%;
+}
+
+.food-bowl {
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 32px;
+    left: 65%;
+}
+
+.drag-item {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+}
+  
+.drag-tooltip {
+    position: absolute;
+    top: -1.8rem;
+    left: 4.5rem;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 1.2rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 100;
+}
+  
+.drag-tooltip::after {
+    content: '';
+    position: absolute;
+    left: -0.4rem; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-right-color: rgba(0, 0, 0, 0.85);
 }
 
 .modal {

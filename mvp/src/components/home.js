@@ -9,31 +9,26 @@ import { useBackground } from './BackgroundContext';
 
 function Home() {
   const navigate = useNavigate();
+  const [draggingItem, setDraggingItem] = useState(null); // 'food' or 'water'
+  const [dragPosition, setDragPosition] = useState({ x: 0, y: 0 });
+  const [tooltipText, setTooltipText] = useState('');
+  const [hasFedToday, setHasFedToday] = useState(false);
+  const [hasWateredToday, setHasWateredToday] = useState(false);
+  const [bowlState, setBowlState] = useState({ food: 'empty', water: 'empty' });
   const [currentUser, setCurrentUser] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
   const { currentPetImage, necessityImage } = usePetImage();
   const { backgroundImage, setBackgroundImage } = useBackground();
 
   useEffect(() => {
     const auth = getAuth();
-
     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
-
-        // if (!backgroundImage) {
-        //   fetchBackgroundImage(user.uid);
-        // } else {
-        //   // If context already has background, no need to fetch again
-        //   setIsLoading(false);
-        //   checkLastLoginDate(user.uid);
-        // }
         fetchBackgroundImage(user.uid);
         checkLastLoginDate(user.uid);
-
-
+        checkFeedingStatus(user.uid);
       } else {
         setCurrentUser(null);
         setBackgroundImage('basicbg.png');
@@ -41,10 +36,75 @@ function Home() {
         setIsLoading(false);
       }
     });
-
     return () => unsubscribeAuth();
   }, []);
 
+  const checkFeedingStatus = (userId) => {
+    const db = getDatabase();
+    const today = new Date().toDateString();
+    const foodRef = ref(db, `users/${userId}/lastfoodDate`);
+    const waterRef = ref(db, `users/${userId}/lastwaterDate`);
+
+    get(foodRef).then((snap) => {
+      const lastFed = snap.val();
+      const isFed = lastFed === today;
+      setHasFedToday(isFed);
+      setBowlState((prev) => ({ ...prev, food: isFed ? 'full' : 'empty' }));
+    });
+
+    get(waterRef).then((snap) => {
+      const lastWatered = snap.val();
+      const isWatered = lastWatered === today;
+      setHasWateredToday(isWatered);
+      setBowlState((prev) => ({ ...prev, water: isWatered ? 'full' : 'empty' }));
+    });
+  };
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setDragPosition({ x: e.clientX, y: e.clientY });
+  
+      if (draggingItem) {
+        const bowlElement = document.querySelector(`.${draggingItem}-bowl`);
+        const bowlRect = bowlElement?.getBoundingClientRect();
+  
+        if (
+          bowlRect &&
+          e.clientX > bowlRect.left &&
+          e.clientX < bowlRect.right &&
+          e.clientY > bowlRect.top &&
+          e.clientY < bowlRect.bottom
+        ) {
+          const auth = getAuth();
+          const currentUser = auth.currentUser;
+          if (!currentUser) return;
+  
+          const userId = currentUser.uid;
+          const db = getDatabase();
+          const now = new Date().toDateString();
+          const lastActionRef = ref(db, `users/${userId}/last${draggingItem}Date`);
+  
+          set(lastActionRef, now)
+            .then(() => {
+              setBowlState((prev) => ({ ...prev, [draggingItem]: 'full' }));
+              if (draggingItem === 'food') setHasFedToday(true);
+              if (draggingItem === 'water') setHasWateredToday(true);
+              setDraggingItem(null);
+              setTooltipText('');
+            })
+            .catch((error) => {
+              console.error("Error updating bowl state:", error);
+            });
+        }
+      }
+    };
+  
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [draggingItem]); 
+  
   const fetchBackgroundImage = (userId) => {
     const db = getDatabase();
     const userRef = ref(db, `users/${userId}/backgroundImage`);
@@ -54,7 +114,7 @@ function Home() {
         if (savedBackground) {
           setBackgroundImage(savedBackground);
         } else {
-          setBackgroundImage('basicbg.png'); // fallback
+          setBackgroundImage('basicbg.png');
         }
       })
       .catch(() => {
@@ -92,80 +152,82 @@ function Home() {
     }
   };
 
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
-
-  const handleLogout = () => {
-    const auth = getAuth();
-    signOut(auth);
-  };
+  const toggleModal = () => setShowModal(!showModal);
+  const handleLogout = () => signOut(getAuth());
 
   const backgrounds = [
     { name: 'Starter Background', url: 'basicbg.png' },
-    { name: 'Red Orchard', url: 'bg2.png' },
+    { name: 'The Neighborhood', url: 'bg9.png' },
     { name: 'The Stables', url: 'barn.png' },
     { name: 'Fireside Evening', url: 'bg11.png' },
-    { name: 'The Neighborhood', url: 'bg9.png' },
     { name: 'Cabin at Sundown', url: 'bg6.png' },
     { name: 'Day at the Farm', url: 'farm.jpg' },
     { name: 'Toy Heaven', url: 'bedroom.png' },
     { name: 'Roadside Gazebo', url: 'bg8.png' },
     { name: 'Blue Night', url: 'nighthouse.jpg' },
-    // all vectors sourced from Vecteezy with a premium license
   ];
 
-  if (isLoading) return null; 
+  if (isLoading) return null;
 
   return (
-    <div
-      className="homepage"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: 'cover',
-        borderRadius: '0px',
-        marginBottom: '0rem',
-      }}
-    >
+    <div className="homepage" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover' }}>
       <Modal show={showModal} onHide={toggleModal} centered>
-        <Modal.Header>
-          <Modal.Title>Daily Check In Reminder</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <p>Don't forget to complete your daily check in to earn coins and increase your pet's health!</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={toggleModal}>
-            Dismiss
-          </Button>
-        </Modal.Footer>
+        <Modal.Header><Modal.Title>Daily Reminder</Modal.Title></Modal.Header>
+        <Modal.Body><p>Don't forget to refill your pet's food and water bowls!</p></Modal.Body>
+        <Modal.Footer><Button variant="secondary" onClick={toggleModal}>Dismiss</Button></Modal.Footer>
       </Modal>
 
       <div className="bg-btns">
         {backgrounds.map((bg, index) => (
-          <button className="bg-buttons" key={index} onClick={() => changeBackground(bg.url)}>
-            {bg.name}
-          </button>
+          <button className="bg-buttons" key={index} onClick={() => changeBackground(bg.url)}>{bg.name}</button>
         ))}
       </div>
 
+      <div className="purple-btns">
       <NavLink to={{ pathname: '/mycloset', search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
         <button className="outfit-buttons">Change Pet Outfit</button>
       </NavLink>
 
+      <button className="outfit-buttons" onClick={() => {
+        if (!hasFedToday) {
+          setDraggingItem('food');
+          setTooltipText('Hover over your pet\'s food bowl to feed your pet!');
+        }
+      }}>Feed Your Pet</button>
+
+      <button className="outfit-buttons" onClick={() => {
+        if (!hasWateredToday) {
+          setDraggingItem('water');
+          setTooltipText('Hover over your pet\'s water bowl to give your pet water!');
+        }
+      }}>Give Your Pet Water</button>
+      </div>
+
       <NavLink to={{ pathname: '/viewpet', search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
         <div className="pet-and-necessity-display">
-          {necessityImage && (
-            <img src={necessityImage} alt="Necessity" className="necessity-image" />
-          )}
+          {necessityImage && <img src={necessityImage} alt="Necessity" className="necessity-image" />}
           <img className="dog" src={currentPetImage} alt="Current Pet" />
         </div>
       </NavLink>
+
+      <img src={bowlState.water === 'full' ? 'waterfull.png' : 'waterempty.png'} alt="Water Bowl" className="water-bowl" />
+      <img src={bowlState.food === 'full' ? 'foodfull.png' : 'foodempty.png'} alt="Food Bowl" className="food-bowl" />
+
+      {draggingItem && (
+        <div className="drag-item" style={{ top: dragPosition.y, left: dragPosition.x }}>
+          <img src={draggingItem === 'food' ? 'feedpet.png' : 'waterpet.png'} alt={draggingItem} style={{ width: '5.5rem' }} />
+          <div className="drag-tooltip">{tooltipText}</div>
+        </div>
+      )}
     </div>
   );
 }
 
 export default Home;
+
+
+
+
 
 
 // import React, { useState, useEffect } from 'react';
@@ -177,13 +239,13 @@ export default Home;
 // import { usePetImage } from './PetImageContext';
 // import { useBackground } from './BackgroundContext';
 
-// function Home({ updateBackgroundImage }) {
-//   let navigate = useNavigate();
+// function Home() {
+//   const navigate = useNavigate();
 //   const [currentUser, setCurrentUser] = useState(null);
-//   const [backgroundImage, setBackgroundImage] = useState(null); // no default image
 //   const [showModal, setShowModal] = useState(false);
-//   const [isLoading, setIsLoading] = useState(true); // loading state
+//   const [isLoading, setIsLoading] = useState(true);
 //   const { currentPetImage, necessityImage } = usePetImage();
+//   const { backgroundImage, setBackgroundImage } = useBackground();
 
 //   useEffect(() => {
 //     const auth = getAuth();
@@ -191,11 +253,22 @@ export default Home;
 //     const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
 //       if (user) {
 //         setCurrentUser(user);
+
+//         // if (!backgroundImage) {
+//         //   fetchBackgroundImage(user.uid);
+//         // } else {
+//         //   // If context already has background, no need to fetch again
+//         //   setIsLoading(false);
+//         //   checkLastLoginDate(user.uid);
+//         // }
+        
 //         fetchBackgroundImage(user.uid);
 //         checkLastLoginDate(user.uid);
+
+
 //       } else {
 //         setCurrentUser(null);
-//         setBackgroundImage(null);
+//         setBackgroundImage('basicbg.png');
 //         setShowModal(false);
 //         setIsLoading(false);
 //       }
@@ -212,9 +285,8 @@ export default Home;
 //         const savedBackground = snapshot.val();
 //         if (savedBackground) {
 //           setBackgroundImage(savedBackground);
-//           updateBackgroundImage(savedBackground);
 //         } else {
-//           setBackgroundImage('basicbg.png'); // fallback if no saved background
+//           setBackgroundImage('basicbg.png'); // fallback
 //         }
 //       })
 //       .catch(() => {
@@ -264,14 +336,18 @@ export default Home;
 //   const backgrounds = [
 //     { name: 'Starter Background', url: 'basicbg.png' },
 //     { name: 'Red Orchard', url: 'bg2.png' },
+//     { name: 'The Stables', url: 'barn.png' },
 //     { name: 'Fireside Evening', url: 'bg11.png' },
 //     { name: 'The Neighborhood', url: 'bg9.png' },
 //     { name: 'Cabin at Sundown', url: 'bg6.png' },
+//     { name: 'Day at the Farm', url: 'farm.jpg' },
+//     { name: 'Toy Heaven', url: 'bedroom.png' },
 //     { name: 'Roadside Gazebo', url: 'bg8.png' },
-//     { name: 'Day at the Park', url: 'bg3.png' },
+//     { name: 'Blue Night', url: 'nighthouse.jpg' },
+//     // all vectors sourced from Vecteezy with a premium license
 //   ];
 
-//   if (isLoading) return null; // or replace with a loader/spinner
+//   if (isLoading) return null; 
 
 //   return (
 //     <div
@@ -285,10 +361,10 @@ export default Home;
 //     >
 //       <Modal show={showModal} onHide={toggleModal} centered>
 //         <Modal.Header>
-//           <Modal.Title>Daily Check-In Reminder</Modal.Title>
+//           <Modal.Title>Daily Reminder</Modal.Title>
 //         </Modal.Header>
 //         <Modal.Body>
-//           <p>Don't forget to complete your daily check-in to earn coins and increase your pet's health!</p>
+//           <p>Don't forget to refill your pet's food and water bowls!</p>
 //         </Modal.Body>
 //         <Modal.Footer>
 //           <Button variant="secondary" onClick={toggleModal}>
@@ -306,9 +382,12 @@ export default Home;
 //       </div>
 
 //       <NavLink to={{ pathname: '/mycloset', search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
-//         <button className='outfit-buttons'>Change Pet Outfit</button>
+//         <button className="outfit-buttons">Change Pet Outfit</button>
 //       </NavLink>
-      
+//       <button className="outfit-buttons">Feed Your Pet</button>
+//       <button className="outfit-buttons">Give Your Pet Water</button>
+
+
 //       <NavLink to={{ pathname: '/viewpet', search: `?backgroundImage=${encodeURIComponent(backgroundImage)}` }}>
 //         <div className="pet-and-necessity-display">
 //           {necessityImage && (
@@ -317,11 +396,14 @@ export default Home;
 //           <img className="dog" src={currentPetImage} alt="Current Pet" />
 //         </div>
 //       </NavLink>
+//       <img src='waterempty.png' alt="Water Bowl" className="water-bowl" />
+//       <img src='foodempty.png' alt="Food Bowl" className="food-bowl" />
 //     </div>
 //   );
 // }
 
 // export default Home;
+
 
 
 

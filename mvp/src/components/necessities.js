@@ -5,9 +5,9 @@ import Footer from './hpfooter';
 
 function Necessities() {
     const items = [
-        { imgSrc: "basicbowlT.png", itemName: "Pet Bowl", price: 25, isNecessity: true },
         { imgSrc: "boneT.png", itemName: "Bone Chew", price: 30, isNecessity: true },
         { imgSrc: "dogballT.png", itemName: "Dog Balls", price: 35, isNecessity: true },
+        { imgSrc: "bluetoyT.png", itemName: "Tug Toy", price: 35, isNecessity: true },
         { imgSrc: "ballyarnT.png", itemName: "Ball of Yarn", price: 35, isNecessity: true },
         { imgSrc: "mouseT.png", itemName: "Ultimate Mouse", price: 40, isNecessity: true },
         { imgSrc: "cattoyT.png", itemName: "Cat Toy", price: 50, isNecessity: true },
