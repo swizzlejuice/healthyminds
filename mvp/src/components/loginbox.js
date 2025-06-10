@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../index'; // Ensure db is imported or defined correctly
+import { auth, db } from '../index'; 
 import { NavLink, useNavigate } from 'react-router-dom';
 import { TypeWriter } from './Typewriter.js';
 import { getDatabase, ref, get, update } from 'firebase/database'; 

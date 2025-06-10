@@ -647,6 +647,11 @@ nav {
     font-size: 11px;
 }
 
+.logout:hover {
+    color: black;
+    background-color: white;
+}
+
 .change-pass {
     padding: .25rem;
     width: 7rem;
@@ -1547,6 +1552,218 @@ nav {
     margin-top: 0.5rem;
 }
 
+/* Landing Page CSS */
+.landing-wrapper {
+    font-family: 'Fredoka', 'Dongle', sans-serif;
+    color: black;
+    overflow-x: hidden;
+  }
+  
+  /* HERO SECTION */
+  .landing-hero {
+    position: relative;
+    text-align: center;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .landing-hero-bg {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: auto;
+    z-index: 0;
+  }
+  
+  .landing-title {
+    font-family: 'Dongle', 'Fredoka', sans-serif;
+    color: #24004D;
+    font-size: 12rem;
+    font-weight: 500;
+    margin-top: 3rem;
+    z-index: 1;
+    margin-bottom: 5rem;
+  }
+  
+  .typewriter-container {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    font-family: 'Fredoka', sans-serif; 
+    color: #6527BE;
+    font-size: 1.8rem; 
+    margin-bottom: 3rem;
+  }
+  
+  .typewriter-text {
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: 400;
+  }
+  
+  .invisible-placeholder {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    pointer-events: none;
+  }  
+  
+  @keyframes gentle-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px); /* bounce height */
+    }
+  }
+  
+  .scroll-arrow {
+    width: 10rem;
+    z-index: 1;
+    animation: gentle-bounce 1.25s ease-in-out infinite; /* speed of bounce */
+  }  
+  
+  .login-prompt {
+    position: absolute;
+    bottom: 1.5rem;
+    z-index: 1;
+    color: #24004D;
+    font-size: 1rem;
+  }
+
+  .landing-login-btn {
+    text-align: center;
+    color: #24004D;
+    font-size: 1rem;
+  }
+
+  .landing-login-btn:hover {
+    font-weight: 600;
+    color: #6527BE;
+}
+  
+  /* ABOUT SECTION */
+  .landing-about {
+    height: 100vh;
+    background: #fef7fc;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .about-text {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .about-img {
+    max-width: 250px;
+  }
+  
+  /* FEATURES SECTION */
+  .landing-features {
+    padding: 4rem 2rem;
+    background: #fff;
+    text-align: center;
+  }
+  
+  .features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .feature-item {
+    width: 250px;
+  }
+  
+  .feature-item img {
+    width: 50px;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* HOW TO USE */
+  .landing-howto {
+    height: 100vh;
+    background: #f5f2fd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .video-placeholder {
+    width: 80%;
+    height: 60%;
+    border: 2px dashed #aaa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #777;
+  }
+  
+  /* JOIN CTA */
+  .landing-join {
+    height: 100vh;
+    background: #cdf2ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .join-btn {
+    margin-top: 2rem;
+    background-color: #6f4fcf;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+  
+  /* CREATORS */
+  .landing-creators {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #fff;
+  }
+  
+  .creators-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .creator img {
+    width: 80px;
+    border-radius: 8px;
+  }
+  
+  /* FOOTER */
+  .landing-footer {
+    background: #e0e0e0;
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 2rem;
+  }
+  
+  .footer-note {
+    margin-top: 1rem;
+    color: #555;
+  }
   
   
 

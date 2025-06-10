@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { HappyPawsNav } from './components/hpnav';
 import Necessities from './components/necessities';
 import StorePage from './components/clothing';
@@ -22,12 +23,14 @@ import MyCloset from './components/myCloset';
 import MyPlaces from './components/myPlaces';
 import { PetImageProvider } from './components/PetImageContext';
 import { BackgroundProvider } from './components/BackgroundContext';
+import { Landing } from './components/Landing'; 
 
 function App() {
   const selectedAvatar = 'profileimage.png';
   const [streakCount, setStreakCount] = useState(0);
   const [backgroundImage, setBackgroundImage] = useState('basicbg.png');
   const [currentPetImage, setCurrentPetImage] = useState('dog1.png');
+  const location = useLocation();
 
   const updateStreak = (newStreakCount) => {
     setStreakCount(newStreakCount);
@@ -45,9 +48,17 @@ function App() {
     <BackgroundProvider>
       <PetImageProvider>
         <div>
-        <HappyPawsNav selectedAvatar={selectedAvatar} updateStreak={updateStreak} streakCount={streakCount} backgroundImage={backgroundImage}/>
+        {location.pathname !== '/' && (
+        <HappyPawsNav
+          selectedAvatar={selectedAvatar}
+          updateStreak={updateStreak}
+          streakCount={streakCount}
+          backgroundImage={backgroundImage}
+        />
+        )}
         <Routes>
-          <Route path="/" index element={<LoginPage />} />
+          <Route path="/" element={<Landing />} /> 
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<Home updateBackgroundImage={updateBackgroundImage} />} />
           <Route path="/viewpet" element={<ViewPet />} />
           <Route path="/clothing" element={<StorePage />} />
@@ -55,7 +66,6 @@ function App() {
           <Route path="/necessities" element={<Necessities />} />
           <Route path="/pets" element={<Pets />} />
           <Route path="/places" element={<Places />} />
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<CreateAccount />} />
           <Route path="/checkin" element={<CheckIn updateStreak={updateStreak} />} />
           <Route path="/modal" element={<CheckModal />} />
