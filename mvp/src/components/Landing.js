@@ -28,85 +28,145 @@ export function Landing() {
     
           {/* About Section */}
           <section className="landing-about">
-            <h2>About</h2>
-            <p className="about-text">
-              Pawse is a web application designed to encourage Gen Z to be more proactive about their mental wellness.
-              Pawse blends "pause," representing the support and comfort pets bring, with "paws" as a reminder to take intentional moments for self-care.
-            </p>
-            <img src="about-pets.png" alt="Pets" className="about-img" />
+            <div className="about-text-group">
+              <h2 className="about-header">About</h2>
+              <p className="about-text">
+                Pawse is a web application designed to encourage Gen Z to be more proactive about their mental wellness. 
+
+                Pawse blends “paws,” representing the support and comfort pets bring, with “pause,” a reminder to take 
+                intentional moments for self-care and mental reflection throughout the day. 
+
+                Through personalized resources, a gamified mental wellness model, and evidence-based tools, 
+                Pawse empowers users to develop self-awareness, cultivate healthy coping strategies, and build confidence. 
+
+                By fostering a culture of self-care and reflection, Pawse makes a meaningful impact in the lives of Gen Z - 
+                equipping them with the tools they need to navigate their mental wellness with confidence and resilience.
+              </p>
+            </div>
+            <img src="landing-about-img.png" alt="Pets" className="about-img" />
           </section>
+
     
           {/* Key Features Section */}
           <section className="landing-features">
-            <h2>Key Features</h2>
-            <div className="features-grid">
-              <div className="feature-item">
-                <img src="checkin-icon.png" alt="Checkin" />
-                <h3>Daily Check in</h3>
-                <p>Users are encouraged to take a moment to tune into how they are feeling.</p>
+            <h2 className="landing-features-header">Key Features</h2>
+            <p className="landing-features-text">
+              Gen Z is twice as likely to experience depression and feelings of hopelessness compared to those over 26. 
+              Poor mental health is especially common among Gen Z and often has negative effects on productivity, social relationships, and overall quality of life. 
+              Pawse is designed to encourage users to regularly track their mood, emotions, and thoughts, supporting mental wellness through structured reflection and self-discovery.
+            </p>
+
+            <div className="feature-row">
+              <div className="feature-text">
+                <h3 className="feature-headings">Daily Check In</h3>
+                <p className="feature-paragraphs">Users are encouraged to take a moment to tune into how they’re feeling, fostering emotional awareness and self-reflection.</p>
               </div>
-              <div className="feature-item">
-                <img src="diary-icon.png" alt="Diary" />
-                <h3>Daily Diary</h3>
-                <p>Users write beyond a quick check in by expressing their thoughts and experiences.</p>
+              <img src="features-checkin.png" alt="Checkin" className="feature-img" />
+            </div>
+
+            <div className="feature-row">
+            <img src="features-diary.png" alt="Diary" className="feature-img2" />
+              <div className="feature-text">
+                <h3 className="feature-headings">Daily Diary</h3>
+                <p className="feature-paragraphs">Users are invited to go beyond a quick check in by expressing their thoughts, experiences, and reflections in a more detailed, diary-style format. This practice encourages more thoughtful self-reflection and tracks personal growth over time.</p>
               </div>
-              <div className="feature-item">
-                <img src="rewards-icon.png" alt="Rewards" />
-                <h3>Gamified Rewards</h3>
-                <p>Earn coins through wellness activities and redeem them in the store.</p>
+            </div>
+
+            <div className="feature-row">
+              <div className="feature-text">
+                <h3 className="feature-headings">Gamified Rewards</h3>
+                <p className="feature-paragraphs">Users earn coins by completing daily wellness activities, which can be used to purchase virtual pet items in the Store. This reward system reinforces consistent engagement and makes self-care both fun and motivating.</p>
               </div>
-              <div className="feature-item">
-                <img src="insights-icon.png" alt="Insights" />
-                <h3>Personalized Insights</h3>
-                <p>Custom reports help users understand patterns and progress.</p>
+              <img src="features-rewards.png" alt="Rewards" className="feature-img" />
+            </div>
+
+            <div className="feature-row">
+            <img src="features-insights.png" alt="Insights" className="feature-img2" />
+              <div className="feature-text">
+                <h3 className="feature-headings">Personalized Insights</h3>
+                <p className="feature-paragraphs">Users can view customized reports that summarize their mood patterns and diary entries. These insights help users recognize trends, track progress, and gain a deeper understanding of their mental wellness over time.</p>
               </div>
             </div>
           </section>
     
           {/* How to Use Section */}
           <section className="landing-howto">
-            <h2>How to Use Pawse</h2>
+            <h2 className="landing-howto-header">How to Use Pawse</h2>
             <div className="video-placeholder">[Video tutorial placeholder - 100vh]</div>
           </section>
     
           {/* Closing Section */}
           <section className="landing-join">
-            <img src="pawsitive-message.png" alt="Pawsitive Message" />
-            <button className="join-button" onClick={() => navigate('/login')}>Enter Pawse</button>      </section>
-    
-          {/* Creators Section */}
-          <section className="landing-creators">
-            <h2>Meet the Creators</h2>
-            <p className="creators-description">Pawse was created by a group of students from UW...</p>
-            <div className="creators-grid">
-              <div className="creator">
-                <img src="clarabelle.png" alt="Clarabelle" />
-                <p>Clarabelle<br />Project Manager</p>
-              </div>
-              <div className="creator">
-                <img src="sara.png" alt="Sara" />
-                <p>Sara<br />Full Stack Developer</p>
-              </div>
-              <div className="creator">
-                <img src="aliya.png" alt="Aliya" />
-                <p>Aliya<br />Full Stack Developer</p>
-              </div>
-              <div className="creator">
-                <img src="srishti.png" alt="Srishti" />
-                <p>Srishti<br />UX/UI Designer</p>
-              </div>
-              <div className="creator">
-                <img src="melanie.png" alt="Melanie" />
-                <p>Melanie<br />UX/UI Designer</p>
-              </div>
+            <img src="landing-img-try.jpg" alt="Pawsitive Image" className="landing-img-try" />
+            <div className="landing-join-content">
+              <img className="landing-img-logo" src="landing-logo.png" />
+              <p className="landing-try-msg">
+                Reset, reflect, and grow – Pawse turns mental wellness into a fun, rewarding, and <em>pawsitive</em> daily ritual.
+              </p>
+              <button className="join-button" onClick={() => navigate('/login')}>Try Pawse today</button>
             </div>
           </section>
     
-          {/* Disclaimer */}
-          {/* <footer className="landing-footer">
-            <p>This app is for support purposes only and not a substitute for medical care...</p>
-            <p className="footer-note">© Pawse 2025. Created by Clarabelle, Sara, Aliya, Srishti, Melanie.</p>
-          </footer> */}
+          {/* Creators Section */}
+          <section className="landing-creators">
+            <h2 className="landing-creators-header">Meet the Creators</h2>
+            <p className="creators-description">Pawse was created by a group of 5 students at the University of Washington for their senior capstone project. Passionate about mental health and wellness, they decided to create Pawse as a fun resource to encourage Gen Z individuals to prioritize their mental wellbeing.</p>
+            <div className="creators-grid">
+            <div className="creator">
+              <img src="clarabelle.png" alt="Clarabelle" />
+              <p>
+                <span className="creator-name">Clarabelle</span><br />
+                Project Manager<br />
+                Full Stack Developer<br />
+                Lead UX/UI Designer
+              </p>
+            </div>
+            <div className="creator">
+              <img src="sara.png" alt="Sara" />
+              <p>
+                <span className="creator-name">Sara</span><br />
+                Full Stack Developer<br />
+              </p>
+            </div>
+            <div className="creator">
+              <img src="aliya.png" alt="Aliya" />
+              <p>
+                <span className="creator-name">Aliya</span><br />
+                Full Stack Developer<br />
+              </p>
+            </div>
+            <div className="creator">
+              <img src="srishti.png" alt="Srishti" />
+              <p>
+                <span className="creator-name">Srishti</span><br />
+                UX/UI Designer<br />
+                Project Coordinator
+              </p>
+            </div>
+            <div className="creator">
+              <img src="melanie.png" alt="Melanie" />
+              <p>
+                <span className="creator-name">Melanie</span><br />
+                UX/UI Designer<br />
+                Project Coordinator
+              </p>
+            </div>
+            </div>
+          </section>
+
+          {/* Disclaimer Section */}
+          <section className="landing-disclaimer">
+            <h2 className="landing-creators-header">Disclaimer</h2>
+            <p className="creators-description">This app is for support purposes only and is not a substitute for medical or mental health advice, diagnosis, or treatment by a licensed healthcare provider. 
+            If you are experiencing a mental health crisis or need urgent help, please contact a licensed professional or emergency services immediately. 
+            Always consult a qualified healthcare provider regarding any questions or concerns about your mental health.</p>
+          </section>
+
+          {/* Footer */}
+          <footer className="landing-footer">
+            <p className="footer-note">© Pawse 2025. Created by Clarabelle, Sara, Aliya, Srishti, and Melanie. All Rights Reserved.</p>
+          </footer>
+
         </div>
     );
 }
