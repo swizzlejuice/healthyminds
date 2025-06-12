@@ -52,7 +52,7 @@ function DiaryTags() {
         get(progressRef).then((snapshot) => {
             if (snapshot.exists()) {
                 const data = snapshot.val();
-                let currentProgress = data.progress || 25;  // Ensure there's a fallback value
+                let currentProgress = data.progress || 25;  
                 let newProgress = currentProgress + increment;
     
                 if (newProgress > 100) newProgress = 100; // Ensure it does not exceed 100%

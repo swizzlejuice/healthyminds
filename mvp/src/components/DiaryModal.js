@@ -4,6 +4,7 @@ import { useBackground } from './BackgroundContext';
 
 function DiaryModal() {
   const { backgroundImage } = useBackground();
+  
   return (
     <div className="checkin-body" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="flex-container-profile">

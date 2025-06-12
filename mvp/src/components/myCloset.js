@@ -7,10 +7,10 @@ import { useBackground } from './BackgroundContext';
 
 export default function MyCloset() {
   const [items, setItems] = useState({});
-  const [selectedOutfit, setSelectedOutfit] = useState('');  // Store the selected outfit name as a string
+  const [selectedOutfit, setSelectedOutfit] = useState('');  
   const location = useLocation();
   const { backgroundImage } = useBackground();
-  const { updateNecessityImage } = usePetImage(); // Using context for pet image updates
+  const { updateNecessityImage } = usePetImage();
   const { updatePetImage } = usePetImage();
   const [basePetName, setBasePetName] = useState('');
 
@@ -32,7 +32,7 @@ export default function MyCloset() {
             const fullPetName = snapshot.val(); // e.g., "dog1.png"
             const match = fullPetName.match(/^([a-zA-Z]+\d+)/); // Regex to extract the base pet name with numbers
             if (match) {
-              setBasePetName(match[1]); // Sets something like 'dog1', 'cat3'
+              setBasePetName(match[1]); 
             }
           }
         });

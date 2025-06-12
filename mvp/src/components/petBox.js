@@ -31,7 +31,7 @@ function PetBox({ imgSrc, itemName, price }) {
             const userData = snapshot.val();
             if (userData) {
                 setCoinCount(userData.coinCount || 0);
-                setPetPurchased(userData.currentPet === imgSrc); // Ensure this checks for current pet
+                setPetPurchased(userData.currentPet === imgSrc); 
             }
         });
     };

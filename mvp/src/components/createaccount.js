@@ -3,11 +3,10 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import SignUpForm from './signup.js'; 
 
 function CreateAccount() {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
   return (
     <div>
-      <div className="login-body">
-      </div>
+      <div className="login-body"></div>
       <SignUpForm />
     </div>
   );

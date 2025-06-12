@@ -28,30 +28,30 @@ function PlaceBox({ imgSrc, itemName, price }) {
         });
     };
       
-const handleClick = (itemPrice, itemName, imgSrc) => () => {
-    if (currentUser) {
-        const db = getDatabase();
-        const userId = currentUser.uid;
-        const newCoinCount = coinCount - itemPrice;
-        if(newCoinCount < 0){
-            alert("You need more coins to purchase this item!");
-        } else {
-            const userRef = ref(db, `users/${userId}`);
-            const itemRef = ref(db, `users/${userId}/purchasedItems/${itemName}`); // Specific path to the item
-            update(userRef, { coinCount: newCoinCount })
-            .then(() => {
-                update(itemRef, { imgSrc, itemName })
+    const handleClick = (itemPrice, itemName, imgSrc) => () => {
+        if (currentUser) {
+            const db = getDatabase();
+            const userId = currentUser.uid;
+            const newCoinCount = coinCount - itemPrice;
+            if(newCoinCount < 0){
+                alert("You need more coins to purchase this item!");
+            } else {
+                const userRef = ref(db, `users/${userId}`);
+                const itemRef = ref(db, `users/${userId}/purchasedItems/${itemName}`); // Specific path to the item
+                update(userRef, { coinCount: newCoinCount })
                 .then(() => {
-                    setCoinCount(newCoinCount);
+                    update(itemRef, { imgSrc, itemName })
+                    .then(() => {
+                        setCoinCount(newCoinCount);
+                    })
+                    .catch((error) => {
+                        console.error("Error adding item to closet: ", error);
+                    });
                 })
                 .catch((error) => {
-                    console.error("Error adding item to closet: ", error);
+                    console.error("Error updating coin count: ", error);
                 });
-            })
-            .catch((error) => {
-                console.error("Error updating coin count: ", error);
-            });
-        }
+            }
         }
     }
 

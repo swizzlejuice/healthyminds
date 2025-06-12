@@ -3,11 +3,11 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import SignInForm from './loginbox.js'; 
 
 function LoginPage() {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
+
   return (
     <div>
-      <div className="login-body">
-      </div>
+      <div className="login-body"></div>
       <SignInForm />
     </div>
   );

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { getDatabase, ref, onValue, set } from 'firebase/database';
 import { getAuth } from 'firebase/auth';
@@ -174,11 +173,10 @@ function Profile() {
       const month = (date.getMonth()).toString().padStart(2, '0'); 
       const monthKey = `${year}-${(parseInt(month) + 1).toString().padStart(2, '0')}`;
   
-      // Filter entries for this month
       const count = entries.filter(entry => {
         const entryDate = new Date(entry.timestamp);
         const entryYear = entryDate.getFullYear();
-        const entryMonth = entryDate.getMonth(); // 0-indexed
+        const entryMonth = entryDate.getMonth(); 
         return entryYear === year && entryMonth === date.getMonth();
       }).length;
   
@@ -470,7 +468,6 @@ function Profile() {
     
                 <div className="tagz-card">
                   <h2 className="tagz-summary">Diary Tag Insights</h2>
-    
                   <h3 className="tagz-subheading">Most Frequently Recorded Tags</h3>
                   <div className="top-tags-section">
                     {topTags.map((tag, index) => (

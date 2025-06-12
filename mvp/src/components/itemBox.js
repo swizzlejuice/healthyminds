@@ -38,10 +38,6 @@ function ItemBox({ imgSrc, itemName, price, isNecessity}) {
 
     const handleClick = (itemPrice, itemName, imgSrc) => () => {
         if (currentUser) {
-          // if (isPurchased) {
-          //   navigate('/mycloset'); // Navigate to the closet if already purchased
-          //   return;
-          // }
           if (isPurchased) {
             const db = getDatabase();
             const userId = currentUser.uid;
@@ -99,7 +95,6 @@ function ItemBox({ imgSrc, itemName, price, isNecessity}) {
                     <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>
                       {isPurchased ? <span className="view-in-closet-text">View in closet</span> : <span className="buy-text">Buy</span>}
                     </button>
-                    {/* <button className="buy-button" onClick={handleClick(price, itemName, imgSrc)}>{isPurchased ? 'View in closet' : 'Buy'}</button> */}
                 </div>
             </div>
         </div>

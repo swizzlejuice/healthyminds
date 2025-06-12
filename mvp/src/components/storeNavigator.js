@@ -27,9 +27,6 @@ function StoreNavigator() {
       >
         Pets
       </button>
-      {/* <button className='clothing-btn' onClick={() => navigate('/clothing')}>Clothing</button>
-      <button className='necessities-btn' onClick={() => navigate('/necessities')}>Necessities</button>
-      <button className='pets-btn' onClick={() => navigate('/pets')}>Pets</button> */}
     </nav>
   );
 }

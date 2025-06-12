@@ -38,7 +38,7 @@ function DiaryPage() {
       
           // Count how many entries were made this month
           const now = new Date();
-          const currentMonth = now.getMonth(); // 0-indexed: 0 = January
+          const currentMonth = now.getMonth(); 
           const currentYear = now.getFullYear();
       
           const entriesThisMonth = entries.filter(entry => {
@@ -80,7 +80,6 @@ function DiaryPage() {
   const getMoodForEntry = (entryTimestamp) => {
     const entryDate = formatDate(entryTimestamp); 
     const moodEntriesArray = Object.values(moodEntries);
-    // find mood entry for current diary entry date
     const moodEntry = moodEntriesArray.find(entry => {
       const moodDate = formatDate(entry.timestamp); 
       return moodDate === entryDate;

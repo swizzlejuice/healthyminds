@@ -29,7 +29,6 @@ export default function ViewPet() {
           setDisplayPetName(data.displayPetName || 'Enter Name');
         }
       });
-
       return () => unsubscribe();
     }
   }, [auth.currentUser, db]);

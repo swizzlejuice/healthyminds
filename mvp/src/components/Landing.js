@@ -47,7 +47,6 @@ export function Landing() {
             <img src="landing-about-img.png" alt="Pets" className="about-img" />
           </section>
 
-    
           {/* Key Features Section */}
           <section className="landing-features">
             <h2 className="landing-features-header">Key Features</h2>

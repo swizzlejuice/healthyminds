@@ -27,7 +27,6 @@ export function HappyPawsNav() {
 
   const fetchData = (userId) => {
     const db = getDatabase();
-
     const coinRef = ref(db, `users/${userId}/coinCount`);
     const streakRef = ref(db, `users/${userId}/streakCount`);
     const avatarRef = ref(db, `${userId}/userAvatar`);
@@ -41,11 +40,11 @@ export function HappyPawsNav() {
         setCoinCountUpdated(true);
         setTimeout(() => setCoinCountUpdated(false), 800);
       } else {
-        setDisplayedCoinCount(newCount); // fallback
+        setDisplayedCoinCount(newCount); 
       }
 
       setCoinCount(newCount);
-      previousCoinCountRef.current = newCount; // update ref
+      previousCoinCountRef.current = newCount; 
     });
 
     onValue(streakRef, (snapshot) => {
@@ -64,7 +63,6 @@ export function HappyPawsNav() {
   const animateCoinCount = (from, to) => {
     const duration = 1000;
     const startTime = performance.now();
-
     const easeOutQuad = (t) => t * (2 - t);
 
     const step = (currentTime) => {
@@ -80,7 +78,6 @@ export function HappyPawsNav() {
         requestAnimationFrame(step);
       }
     };
-
     requestAnimationFrame(step);
   };
 

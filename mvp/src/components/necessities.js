@@ -1,7 +1,6 @@
 import React from 'react';
 import StoreNavigator from './storeNavigator'; 
 import ItemBox from './itemBox'; 
-import Footer from './hpfooter';
 
 function Necessities() {
     const items = [
