@@ -3,7 +3,7 @@ import React from 'react';
 
 export function TypeWriter() {
     const [text] = useTypewriter({
-        words: [" Pawse"],
+        words: ["Pawse"],
         loop: 1,
         typeSpeed: 130,
     });

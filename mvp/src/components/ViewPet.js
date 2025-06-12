@@ -58,7 +58,7 @@ export default function ViewPet() {
     }
   };
 
-  const healthMessage = progress === 100 ? "Your pet is healthy! Check in again tomorrow :)" : "Complete more activities to increase their health!";
+  const healthMessage = progress === 100 ? "Your pet is healthy! Check in again tomorrow 🥳" : "Complete more activities to increase your pet's health!";
 
   return (
     <div className="homepage" style={{ backgroundImage: `url(${backgroundImage})` }}>

@@ -13,13 +13,14 @@ export function Landing() {
 
       return (
         <div className="landing-wrapper">
-    
+          <div className="landing-content">
+
           {/* Hero Section */}
           <section className="landing-hero">
             <img src="landingheaderimage.png" alt="Background" className="landing-hero-bg" />
             <h1 className="landing-title">Pawse</h1>
             <div className="typewriter-container">
-                <span className="typewriter-text">{text}</span>
+                <span className="typewriter-text">{text}<span className="typewriter-cursor"> |</span></span>
                 <span className="invisible-placeholder"> a gamified approach to mental wellness</span>
             </div>
             <img className="scroll-arrow" src="chevron.png"></img>
@@ -101,7 +102,7 @@ export function Landing() {
             <div className="landing-join-content">
               <img className="landing-img-logo" src="landing-logo.png" />
               <p className="landing-try-msg">
-                Reset, reflect, and grow – Pawse turns mental wellness into a fun, rewarding, and <em>pawsitive</em> daily ritual.
+                Take a moment to unwind and reflect – Pawse turns mental wellness into a fun, rewarding, and <em>pawsitive</em> daily ritual.
               </p>
               <button className="join-button" onClick={() => navigate('/login')}>Try Pawse today</button>
             </div>
@@ -117,7 +118,7 @@ export function Landing() {
               <p>
                 <span className="creator-name">Clarabelle</span><br />
                 Project Manager<br />
-                Full Stack Developer<br />
+                Full Stack Engineer<br />
                 Lead UX/UI Designer
               </p>
             </div>
@@ -125,14 +126,14 @@ export function Landing() {
               <img src="sara.png" alt="Sara" />
               <p>
                 <span className="creator-name">Sara</span><br />
-                Full Stack Developer<br />
+                Full Stack Engineer<br />
               </p>
             </div>
             <div className="creator">
               <img src="aliya.png" alt="Aliya" />
               <p>
                 <span className="creator-name">Aliya</span><br />
-                Full Stack Developer<br />
+                Full Stack Engineer<br />
               </p>
             </div>
             <div className="creator">
@@ -161,12 +162,12 @@ export function Landing() {
             If you are experiencing a mental health crisis or need urgent help, please contact a licensed professional or emergency services immediately. 
             Always consult a qualified healthcare provider regarding any questions or concerns about your mental health.</p>
           </section>
+          </div>
 
           {/* Footer */}
           <footer className="landing-footer">
             <p className="footer-note">© Pawse 2025. Created by Clarabelle, Sara, Aliya, Srishti, and Melanie. All Rights Reserved.</p>
           </footer>
-
         </div>
     );
 }

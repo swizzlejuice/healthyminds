@@ -10,30 +10,12 @@ header {
     border-bottom-left-radius: 22px;
     white-space: nowrap;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    /* background-color: rgba(255, 255, 255, 0.4) !important; */
     background-color: rgba(101, 39, 190, 0.85) !important;
-}
-
-footer {
-    border-top-right-radius: 22px;
-    border-top-left-radius: 22px;
-    color: white;
-    padding-bottom: .5rem;
-    padding-top: .45rem;
-    padding-left: 1.5rem;
-    position: fixed;
-    bottom: 0;
-    height: 2rem;
 }
 
 li:hover, header h1:hover {
     text-decoration: none;
     color: #F6F2FF;
-}
-
-footer p {
-    font-weight: 300;
-    font-size: 12px;
 }
 
 header, footer {
@@ -170,7 +152,7 @@ nav {
 }
 
 .selected {
-    border: 2px solid white; /* Add your desired styling for the selected emoji */
+    border: 2px solid white; 
 }
 
 .bg-buttons {
@@ -178,7 +160,7 @@ nav {
     margin-right: .5rem;
     width: 9rem !important;
     border-radius: 16px;
-    border: 1px solid black;
+    border: 1px solid #6527BE;
     background-color: white;
     text-align: center;
     color: black;
@@ -206,7 +188,7 @@ nav {
     margin-right: .5rem;
     width: 9rem !important;
     border-radius: 16px;
-    border: 1px solid black;
+    border: 1px solid #6527BE;
     background-color: #6527BE;
     text-align: center;
     color: white;
@@ -330,6 +312,7 @@ nav {
 
 .signup-link:hover {
     color: #6527BE !important;
+    font-weight: 600;
 }
 
 .signup-field {
@@ -600,7 +583,7 @@ nav {
 }
 
 .tags-selected {
-    border: 2px solid black;
+    border: 2px solid #6527BE;
     border-radius: 100px;
     padding: 5px;
 }
@@ -616,7 +599,7 @@ nav {
     padding: .25rem;
     width: 3rem;
     border-radius: 16px;
-    border: 1px solid black;
+    border: 1px solid #6527BE;
     background-color: white;
     text-align: center;
     color: black;
@@ -656,7 +639,7 @@ nav {
     padding: .25rem;
     width: 7rem;
     border-radius: 16px;
-    border: 1px solid black;
+    border: 1px solid #6527BE;
     background-color: white;
     text-align: center;
     color: black;
@@ -846,7 +829,7 @@ nav {
     border: none;
     color: black;
     background-color: #F6F2FF;
-    border: 1px solid black !important;
+    border: 1px solid #6527BE !important;
     margin-bottom: 2rem;
 }
 
@@ -1095,14 +1078,11 @@ nav {
     color: white; 
 }
 
-.clothing-btn:active,
-.necessities-btn:active,
-.pets-btn:active,
-.places-btn:active {
-    background-color: #6527BE; 
-    color: white; 
+.active-tab {
+    background-color: #6527BE;
+    color: white;
+    border: 1px solid #6527BE;
 }
-
 
 .store-price { 
     display: flex;
@@ -1217,7 +1197,7 @@ nav {
     padding: .25rem;
     width: 4.5rem;
     border-radius: 16px;
-    border: 1px solid black;
+    border: 1px solid #6527BE;
     background-color: white;
     text-align: center;
     color: black;
@@ -1250,7 +1230,8 @@ nav {
 }
 
 .selected {
-    border: 2px solid black;
+    border: 2px solid #6527BE;
+    ;
     border-radius: 100px;
     padding: 5px;
 }
@@ -1531,7 +1512,7 @@ nav {
     height: 25px;  
     width: 400px; 
     border-radius: 12px;  
-        
+    border: 1px solid #6527BE; 
   }
   
 .progress-bar-color {
@@ -1543,7 +1524,6 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .health-msg {
@@ -1557,7 +1537,14 @@ nav {
     font-family: 'Fredoka', 'Dongle', sans-serif;
     color: #24004D;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
+
+  .landing-content {
+    flex: 1;
+  }  
   
   /* HERO SECTION */
   .landing-hero {
@@ -1582,11 +1569,11 @@ nav {
   .landing-title {
     font-family: 'Dongle', 'Fredoka', sans-serif;
     color: #24004D;
-    font-size: 12rem;
+    font-size: 13rem;
     font-weight: 500;
-    margin-top: 3rem;
+    margin-top: 0rem;
     z-index: 1;
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
   }
   
   .typewriter-container {
@@ -1595,8 +1582,8 @@ nav {
     white-space: nowrap;
     font-family: 'Fredoka', sans-serif; 
     color: #6527BE;
-    font-size: 1.8rem; 
-    margin-bottom: 3rem;
+    font-size: 1.9rem; 
+    margin-bottom: 5rem;
   }
   
   .typewriter-text {
@@ -1604,6 +1591,30 @@ nav {
     white-space: nowrap;
     font-weight: 400;
   }
+
+  .typewriter-cursor {
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1.4s ease-in-out infinite;    
+    font-weight: 300;
+    font-size: 1.8rem; 
+    color: #6527BE; 
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    45% {
+      opacity: 1;
+    }
+    55% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }  
   
   .invisible-placeholder {
     visibility: hidden;
@@ -1631,7 +1642,7 @@ nav {
   
   .login-prompt {
     position: absolute;
-    bottom: 1.5rem;
+    bottom: 1rem;
     z-index: 1;
     color: #24004D;
     font-size: 1rem;
@@ -1840,7 +1851,7 @@ nav {
     font-family: 'Fredoka';
     font-size: 2.2rem;
     margin-bottom: 2.5rem;
-    max-width: 1000px;
+    max-width: 1100px;
   }
   
   .join-button {
@@ -1877,6 +1888,7 @@ nav {
     font-size: 5rem;
     color: #24004D;
     text-align: left;
+    margin-bottom: 0rem;
     margin-left: 5rem;
   } 
 
@@ -1945,18 +1957,19 @@ nav {
   .landing-footer {
     background: #6527BE;
     text-align: center;
-    font-size: 1rem;
     height: 40px;
-    font-weight: 300;
     font-family: 'Fredoka';
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
+    font-weight: 300;
+    font-size: 12px;
   }
   
   .footer-note {
-    margin-top: .25rem;
+    margin-top: .65rem;
     color: white;
     text-align: left;
+    margin-left: 2rem;
   }
   
   
