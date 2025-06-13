@@ -9,6 +9,8 @@ import { getDatabase, ref, get, update } from 'firebase/database';
 const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState(null);
     const [password, setPassword] = useState('');
 
     const onLogin = (e) => {
@@ -19,10 +21,14 @@ const Login = () => {
             checkAndUpdateProgress(userId);
         })
         .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-        });
+            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                setError('Email or password is incorrect.');
+            } else if (error.code === 'auth/invalid-email') {
+                setError('Please enter a valid email address.');
+            } else {
+                setError('Email or password is incorrect.');
+            }
+        });        
     }
 
     const checkAndUpdateProgress = (userId) => {
@@ -62,7 +68,23 @@ const Login = () => {
         <h2 className="signin-header">Sign in to</h2>
         <TypeWriter></TypeWriter>
         <input className="signin-field" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input className="signin-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <div className="password-wrapper">
+            <input
+                className="signin-field"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+                type="button"
+                className="toggle-password"
+                onClick={() => setShowPassword((prev) => !prev)}
+            >
+                {showPassword ? '🫣' : '👁️'}
+            </button>
+        </div>
+        {error && <p className="error-message">{error}</p>}
         <button className="signin-btn" onClick={onLogin}>Sign in</button>
         <p className="signup-field">Don't have an account? <Link to="/signup" className="signup-link">Sign up</Link></p>
       </div>

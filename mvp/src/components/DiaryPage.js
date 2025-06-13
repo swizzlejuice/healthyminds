@@ -270,12 +270,16 @@ function DiaryPage() {
                     <p className="mood-recorded">Mood Recorded in Check in: {getMoodForEntry(entry.timestamp)}</p>
                     <p className="tagtitle">Tags:</p>
                     <div className="each-tags">
-                      {entry.tags.map((tag, idx) => (
-                        <div key={idx}>
-                          <img src={getImageSource(tag)} alt={tag} className="diarytag-img"/>
-                          <span className="tagspan">{tag}</span>
-                        </div>
-                      ))}
+                      {Array.isArray(entry.tags) && entry.tags.length > 0 ? (
+                        entry.tags.map((tag, idx) => (
+                          <div key={idx}>
+                            <img src={getImageSource(tag)} alt={tag} className="diarytag-img"/>
+                            <span className="tagspan">{tag}</span>
+                          </div>
+                        ))
+                      ) : (
+                        <p className="no-tags-msg">No tags recorded</p>
+                      )}
                     </div>
                     {entry.description && (
                       <div>

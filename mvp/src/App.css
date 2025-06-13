@@ -323,6 +323,15 @@ nav {
     text-decoration: italic;
 }
 
+.error-message {
+    text-align: center;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 15px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-bottom: 0;
+}
+
 .signin-btn {
     margin-top: 1.75rem !important;
     margin-left: 25%;
@@ -350,6 +359,21 @@ nav {
     /* background-repeat: no-repeat;  */
 }
 
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+  
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 32%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+}  
 
 /* PROFILE PAGE - CLARABELLE */
 .profile-body {

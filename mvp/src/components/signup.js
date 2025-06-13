@@ -9,6 +9,7 @@ const Signup = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState(null);
 
     const onSubmit = async (e) => {
@@ -39,21 +40,56 @@ const Signup = () => {
                 navigate('/login'); 
             });
         } catch (error) {
-            setError(error.message);
+            if (error.code === 'auth/email-already-in-use') {
+                setError('This email is already associated with an account. Try logging in instead.');
+            } else if (error.code === 'auth/invalid-email') {
+                setError('Please enter a valid email address.');
+            } else {
+                setError('Something went wrong. Please try again.');
+            }
         }
     };
 
+    // return (
+    //     <div className='signin-card'>
+    //         <h2 className="signin-header">Welcome to</h2>
+    //         <TypeWriter></TypeWriter>
+    //         <input className="signin-field" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+    //         <input className="signin-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+    //         {error && <p className="error-message">{error}</p>}
+    //         <button className="signin-btn" onClick={onSubmit}>Sign Up</button>
+    //         <p className="signup-field">Already have an account? <Link to="/login" className="signup-link">Sign In</Link></p>
+    //     </div>
+    // );
+
     return (
         <div className='signin-card'>
-            <h2 className="signin-header">Welcome to</h2>
-            <TypeWriter></TypeWriter>
-            <input className="signin-field" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input className="signin-field" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            {error && <p className="error-message">{error}</p>}
-            <button className="signin-btn" onClick={onSubmit}>Sign Up</button>
-            <p className="signup-field">Already have an account? <Link to="/login" className="signup-link">Sign In</Link></p>
+          <h2 className="signin-header">Welcome to</h2>
+          <TypeWriter />
+          <input className="signin-field" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+    
+          <div className="password-wrapper">
+            <input
+              className="signin-field"
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              className="toggle-password"
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? '🫣' : '👁️'}
+            </button>
+          </div>
+    
+          {error && <p className="error-message">{error}</p>}
+          <button className="signin-btn" onClick={onSubmit}>Sign Up</button>
+          <p className="signup-field">Already have an account? <Link to="/login" className="signup-link">Sign In</Link></p>
         </div>
-    );
+      );
 }
 
 export default Signup;
